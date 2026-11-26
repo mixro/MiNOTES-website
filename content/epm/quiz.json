@@ -1,0 +1,13 @@
+{
+  "timeLimit": 600,
+  "questions": [
+    { "type": "mcq", "topic": "Critical path", "q": "Activities on the critical path have a total float of:", "options": ["Zero", "One day", "The project duration", "It varies"], "answer": 0, "explain": "Any delay to a critical activity delays the whole project." },
+    { "type": "short", "topic": "Critical path", "q": "A (3 d) precedes B (4 d) and C (2 d); D (5 d) follows both B and C. What is the project duration in days?", "answer": 12, "tolerance": 0, "unit": "days", "explain": "The longest path is A–B–D: $3 + 4 + 5 = 12$ days." },
+    { "type": "short", "topic": "PERT", "q": "PERT estimates are $a = 2$, $m = 5$, $b = 14$ days. What is the expected time $t_e$?", "answer": 6, "tolerance": 0.01, "unit": "days", "explain": "$t_e = (2 + 4 \\times 5 + 14)/6 = 36/6 = 6$ days." },
+    { "type": "short", "topic": "Earned value", "q": "EV = 40 M and AC = 45 M. What is the CPI? Give 2 decimal places.", "answer": 0.89, "tolerance": 0.01, "explain": "$CPI = EV/AC = 40/45 = 0.89$, so the project is over budget." },
+    { "type": "mcq", "topic": "Earned value", "q": "An SPI of 0.8 means the project is:", "options": ["Under budget", "Over budget", "Ahead of schedule", "Behind schedule"], "answer": 3, "explain": "$SPI = EV/PV < 1$ means less work was done than planned." },
+    { "type": "mcq", "topic": "WBS", "q": "The 100% rule of a WBS states that:", "options": ["Every package must be 100 hours", "The WBS covers all the project's work and nothing more", "The budget must be fully spent", "All activities are critical"], "answer": 1, "explain": "The WBS captures exactly the total scope." },
+    { "type": "mcq", "topic": "Life cycle", "q": "The project charter is produced in which phase?", "options": ["Initiation", "Planning", "Execution", "Closure"], "answer": 0, "explain": "The charter formally authorises the project at initiation." },
+    { "type": "mcq", "topic": "Risk", "q": "Buying insurance against equipment damage is an example of risk:", "options": ["Avoidance", "Transfer", "Mitigation", "Acceptance"], "answer": 1, "explain": "The financial impact is transferred to the insurer." }
+  ]
+}

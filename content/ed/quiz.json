@@ -1,0 +1,14 @@
+{
+  "timeLimit": 720,
+  "questions": [
+    { "type": "mcq", "topic": "Drive dynamics", "q": "If $T_m > T_L$, the drive will:", "options": ["Run at constant speed", "Accelerate", "Decelerate", "Stall"], "answer": 1, "explain": "$J\\,d\\omega/dt = T_m - T_L > 0$, so speed increases." },
+    { "type": "short", "topic": "Induction motors", "q": "What is the synchronous speed of a 4-pole, 50 Hz induction motor?", "answer": 1500, "tolerance": 0, "unit": "rpm", "explain": "$n_s = 120f/P = 120 \\times 50 / 4 = 1500$ rpm." },
+    { "type": "short", "topic": "Induction motors", "q": "The same motor runs at 1440 rpm. What is the slip? Give a decimal.", "answer": 0.04, "tolerance": 0.01, "explain": "$s = (1500 - 1440)/1500 = 0.04$." },
+    { "type": "mcq", "topic": "Load types", "q": "For a centrifugal pump, load torque varies with speed as:", "options": ["Constant", "$\\propto \\omega$", "$\\propto \\omega^2$", "$\\propto 1/\\omega$"], "answer": 2, "explain": "Fan and pump loads have torque proportional to speed squared." },
+    { "type": "mcq", "topic": "DC drives", "q": "Speed control of a DC motor above base speed is done by:", "options": ["Increasing armature voltage", "Field weakening", "Adding armature resistance", "Plugging"], "answer": 1, "explain": "Reducing $\\phi$ raises speed in the constant power region." },
+    { "type": "short", "topic": "DC drives", "q": "A 220 V DC motor has $R_a = 0.5\\ \\Omega$ and $K\\phi = 1.2$ V·s/rad. Find the speed in rad/s at $I_a = 20$ A.", "answer": 175, "tolerance": 0.01, "unit": "rad/s", "explain": "$\\omega = (220 - 20 \\times 0.5)/1.2 = 175$ rad/s." },
+    { "type": "mcq", "topic": "Braking", "q": "Which braking method returns energy to the supply?", "options": ["Plugging", "Dynamic braking", "Regenerative braking", "Mechanical braking"], "answer": 2, "explain": "In regenerative braking $E_b > V$ and power flows back to the source." },
+    { "type": "mcq", "topic": "Four quadrants", "q": "Positive speed with negative torque is which quadrant?", "options": ["I", "II", "III", "IV"], "answer": 1, "explain": "Quadrant II is forward braking." },
+    { "type": "mcq", "topic": "Induction motors", "q": "Why is $V/f$ kept constant in variable-frequency control?", "options": ["To keep slip constant", "To keep air-gap flux constant", "To keep current at zero", "To raise the power factor to 1"], "answer": 1, "explain": "Flux is proportional to $V/f$; keeping it constant avoids saturation and keeps torque capability." }
+  ]
+}

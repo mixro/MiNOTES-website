@@ -1,0 +1,13 @@
+[
+  { "title": "Earliest finish", "tex": "EF = ES + d" },
+  { "title": "Latest start", "tex": "LS = LF - d" },
+  { "title": "Total float", "tex": "TF = LS - ES" },
+  { "title": "PERT expected time", "tex": "t_e = \\frac{a+4m+b}{6}" },
+  { "title": "PERT standard deviation", "tex": "\\sigma = \\frac{b-a}{6}" },
+  { "title": "Probability of finishing", "tex": "Z = \\frac{T - T_e}{\\sigma_{path}}" },
+  { "title": "Cost slope (crashing)", "tex": "\\frac{C_c - C_n}{T_n - T_c}" },
+  { "title": "Cost and schedule variance", "tex": "CV = EV - AC,\\quad SV = EV - PV" },
+  { "title": "Performance indices", "tex": "CPI = \\frac{EV}{AC},\\quad SPI = \\frac{EV}{PV}" },
+  { "title": "Estimate at completion", "tex": "EAC = \\frac{BAC}{CPI}" },
+  { "title": "Net present value", "tex": "NPV = \\sum_{t=0}^{n}\\frac{CF_t}{(1+r)^t}" }
+]

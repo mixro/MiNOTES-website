@@ -1,0 +1,12 @@
+{
+  "timeLimit": 600,
+  "questions": [
+    { "type": "short", "topic": "Sampling", "q": "A signal has its highest frequency at 50 Hz. What is the minimum sampling frequency in Hz to avoid aliasing?", "answer": 100, "tolerance": 0, "unit": "Hz", "explain": "The Nyquist criterion needs $f_s > 2f_{max} = 100$ Hz (just above in practice)." },
+    { "type": "mcq", "topic": "Stability", "q": "A discrete-time system is stable when all closed-loop poles lie:", "options": ["In the left half of the z-plane", "Inside the unit circle", "On the unit circle", "Outside the unit circle"], "answer": 1, "explain": "The left half s-plane maps to $\\lvert z \\rvert < 1$." },
+    { "type": "mcq", "topic": "z-transform", "q": "What is the z-transform of a unit step?", "options": ["$1$", "$\\frac{1}{z-1}$", "$\\frac{z}{z-1}$", "$\\frac{Tz}{(z-1)^2}$"], "answer": 2, "explain": "$\\sum z^{-k} = \\frac{z}{z-1}$ for $\\lvert z \\rvert > 1$." },
+    { "type": "mcq", "topic": "Zero-order hold", "q": "The transfer function of a zero-order hold is:", "options": ["$\\frac{1-e^{-sT}}{s}$", "$e^{-sT}$", "$\\frac{1}{1+sT}$", "$\\frac{1}{s}$"], "answer": 0, "explain": "It holds each sample for one period $T$." },
+    { "type": "short", "topic": "Stability", "q": "For $P(z) = z^2 - z + 0.5$, what is $P(1)$?", "answer": 0.5, "tolerance": 0.01, "explain": "$1 - 1 + 0.5 = 0.5 > 0$, so the first Jury condition holds." },
+    { "type": "mcq", "topic": "z-transform", "q": "The relation between the s-plane and the z-plane is:", "options": ["$z = sT$", "$z = e^{sT}$", "$z = \\ln(sT)$", "$z = 1/s$"], "answer": 1, "explain": "Sampling maps $s$ to $z = e^{sT}$." },
+    { "type": "mcq", "topic": "Difference equations", "q": "$\\frac{Y(z)}{U(z)} = \\frac{0.5}{z-0.8}$ gives which difference equation?", "options": ["$y(k)=0.8y(k-1)+0.5u(k-1)$", "$y(k)=0.5y(k-1)+0.8u(k)$", "$y(k)=0.8u(k)+0.5y(k)$", "$y(k)=-0.8y(k-1)+0.5u(k)$"], "answer": 0, "explain": "Divide by $z$: $Y(1-0.8z^{-1}) = 0.5z^{-1}U$." }
+  ]
+}

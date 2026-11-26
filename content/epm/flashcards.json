@@ -1,0 +1,10 @@
+[
+  { "front": "Triple constraint", "back": "Scope, time and cost, with quality at the centre." },
+  { "front": "Critical path", "back": "The longest path through the network; its activities have zero float." },
+  { "front": "Total float", "back": "$LS - ES$ (or $LF - EF$)" },
+  { "front": "PERT expected time", "back": "$t_e = \\frac{a + 4m + b}{6}$" },
+  { "front": "CPI", "back": "$EV / AC$. Below 1 means over budget." },
+  { "front": "SPI", "back": "$EV / PV$. Below 1 means behind schedule." },
+  { "front": "Estimate at completion", "back": "$EAC = BAC / CPI$" },
+  { "front": "Four responses to a threat", "back": "Avoid, transfer, mitigate, accept." }
+]

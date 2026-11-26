@@ -1,0 +1,13 @@
+{
+  "timeLimit": 720,
+  "questions": [
+    { "type": "short", "topic": "Buck converter", "q": "A buck converter steps 24 V down to 12 V. What is the duty cycle $D$?", "answer": 0.5, "tolerance": 0.01, "explain": "$D = V_o / V_s = 12/24 = 0.5$." },
+    { "type": "short", "topic": "Boost converter", "q": "A boost converter has $V_s = 12$ V and $D = 0.6$. What is $V_o$ in volts?", "answer": 30, "tolerance": 0.01, "unit": "V", "explain": "$V_o = V_s/(1-D) = 12/0.4 = 30$ V." },
+    { "type": "mcq", "topic": "Devices", "q": "Which device can be turned on by its gate but NOT turned off by it?", "options": ["MOSFET", "IGBT", "Thyristor (SCR)", "GaN HEMT"], "answer": 2, "explain": "A thyristor latches on and turns off only when current falls below the holding current." },
+    { "type": "mcq", "topic": "Rectifiers", "q": "A single-phase full converter operates as an inverter when the delay angle is:", "options": ["$0° < \\alpha < 90°$", "$\\alpha = 0°$", "$90° < \\alpha < 180°$", "$\\alpha = 90°$"], "answer": 2, "explain": "$\\cos\\alpha < 0$ so $V_{dc} < 0$ and power flows back to the AC side." },
+    { "type": "short", "topic": "Rectifiers", "q": "A single-phase full converter has $V_m = 325$ V and $\\alpha = 60°$. Find $V_{dc}$ in volts.", "answer": 103.5, "tolerance": 0.02, "unit": "V", "explain": "$V_{dc} = (2 \\times 325/\\pi)\\cos 60° = 206.9 \\times 0.5 \\approx 103.5$ V." },
+    { "type": "mcq", "topic": "Converters", "q": "Which converter gives an output of opposite polarity to the input?", "options": ["Buck", "Boost", "Buck-boost", "Full bridge rectifier"], "answer": 2, "explain": "$V_o/V_s = -D/(1-D)$." },
+    { "type": "mcq", "topic": "Losses", "q": "Raising the switching frequency mainly increases:", "options": ["Conduction loss", "Switching loss", "Inductor size", "Capacitor size"], "answer": 1, "explain": "$P_{sw} \\propto f_s$, while filter components get smaller." },
+    { "type": "mcq", "topic": "Rectifiers", "q": "The output ripple frequency of a three-phase full converter on a 50 Hz supply is:", "options": ["50 Hz", "100 Hz", "150 Hz", "300 Hz"], "answer": 3, "explain": "Six pulses per cycle: $6 \\times 50 = 300$ Hz." }
+  ]
+}

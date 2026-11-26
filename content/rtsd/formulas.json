@@ -1,0 +1,7 @@
+[
+  { "title": "Processor utilisation", "tex": "U = \\sum_{i=1}^{n} \\frac{C_i}{T_i}", "note": "Must be at most 1 on a single processor." },
+  { "title": "Liu and Layland bound (RMS)", "tex": "U \\le n\\left(2^{1/n}-1\\right)", "note": "Sufficient test. Tends to $\\ln 2 \\approx 0.693$." },
+  { "title": "Response time analysis", "tex": "R_i = C_i + \\sum_{j \\in hp(i)} \\left\\lceil \\frac{R_i}{T_j} \\right\\rceil C_j", "note": "Iterate from $R_i = C_i$ until it converges. Schedulable if $R_i \\le D_i$." },
+  { "title": "EDF test", "tex": "U \\le 1", "note": "Necessary and sufficient when $D_i = T_i$." },
+  { "title": "Hyperperiod", "tex": "H = \\operatorname{lcm}(T_1, T_2, \\dots, T_n)", "note": "The schedule repeats every hyperperiod." }
+]

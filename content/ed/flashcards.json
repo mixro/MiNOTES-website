@@ -1,0 +1,10 @@
+[
+  { "front": "Fundamental torque equation", "back": "$T_m - T_L = J\\,\\frac{d\\omega_m}{dt}$" },
+  { "front": "Back EMF of a DC motor", "back": "$E_b = K\\phi\\,\\omega$" },
+  { "front": "DC motor torque", "back": "$T = K\\phi\\,I_a$" },
+  { "front": "Synchronous speed", "back": "$n_s = \\frac{120f}{P}$" },
+  { "front": "Slip", "back": "$s = \\frac{n_s - n_r}{n_s}$" },
+  { "front": "Quadrant II operation", "back": "Forward braking: positive speed, negative torque." },
+  { "front": "Why V/f control?", "back": "Keeps the air-gap flux constant while speed changes." },
+  { "front": "Field weakening region", "back": "Above base speed; constant power, torque falls." }
+]

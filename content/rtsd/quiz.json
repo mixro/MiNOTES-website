@@ -1,0 +1,13 @@
+{
+  "timeLimit": 600,
+  "questions": [
+    { "type": "mcq", "topic": "Deadlines", "q": "Missing a deadline in an airbag controller is an example of which type of deadline?", "options": ["Soft", "Firm", "Hard", "Aperiodic"], "answer": 2, "explain": "A missed hard deadline means system failure that may cause harm." },
+    { "type": "mcq", "topic": "Rate monotonic", "q": "Under rate monotonic scheduling, which task gets the highest priority?", "options": ["The longest execution time", "The shortest period", "The earliest absolute deadline", "The task released first"], "answer": 1, "explain": "RMS gives fixed priorities by rate: shorter period means higher priority." },
+    { "type": "short", "topic": "Utilisation", "q": "Three tasks have $(C,T)$ of $(1,4)$, $(2,6)$ and $(1,10)$ ms. What is the total utilisation $U$? Give 3 decimal places.", "answer": 0.683, "tolerance": 0.01, "explain": "$U = 1/4 + 2/6 + 1/10 = 0.250 + 0.333 + 0.100 = 0.683$." },
+    { "type": "short", "topic": "Rate monotonic", "q": "What is the Liu and Layland utilisation bound for $n = 2$ tasks? Give 3 decimal places.", "answer": 0.828, "tolerance": 0.01, "explain": "$2(2^{1/2} - 1) = 0.828$." },
+    { "type": "mcq", "topic": "EDF", "q": "On a single processor with $D_i = T_i$, EDF can schedule a task set if and only if:", "options": ["$U \\le 0.693$", "$U \\le n(2^{1/n}-1)$", "$U \\le 1$", "All periods are harmonic"], "answer": 2, "explain": "EDF is optimal on one processor, so any set with $U \\le 1$ is schedulable." },
+    { "type": "mcq", "topic": "Priority inversion", "q": "Which technique lets a low-priority task holding a lock temporarily run at the priority of the highest task waiting for it?", "options": ["Round robin", "Priority inheritance", "Time slicing", "Watchdog timer"], "answer": 1, "explain": "Priority inheritance bounds the blocking time caused by priority inversion." },
+    { "type": "mcq", "topic": "Task types", "q": "An emergency stop button with a known minimum time between presses and a hard deadline is a:", "options": ["Periodic task", "Aperiodic task", "Sporadic task", "Background task"], "answer": 2, "explain": "Sporadic tasks are irregular but have a minimum inter-arrival time and a hard deadline." },
+    { "type": "mcq", "topic": "Deadlock", "q": "Which is NOT one of the four necessary conditions for deadlock?", "options": ["Mutual exclusion", "Circular wait", "Pre-emption", "Hold and wait"], "answer": 2, "explain": "The condition is *no* pre-emption. Allowing pre-emption breaks deadlock." }
+  ]
+}

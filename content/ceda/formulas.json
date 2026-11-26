@@ -1,0 +1,10 @@
+[
+  { "title": "z-transform definition", "tex": "X(z) = \\sum_{k=0}^{\\infty} x(k)z^{-k}" },
+  { "title": "Plane mapping", "tex": "z = e^{sT}" },
+  { "title": "Zero-order hold", "tex": "G_{h0}(s) = \\frac{1-e^{-sT}}{s}" },
+  { "title": "Plant with ZOH", "tex": "G(z) = (1-z^{-1})\\,\\mathcal{Z}\\left\\{\\frac{G(s)}{s}\\right\\}" },
+  { "title": "Final value theorem", "tex": "x(\\infty) = \\lim_{z\\to 1}(z-1)X(z)" },
+  { "title": "Unit step", "tex": "\\mathcal{Z}\\{1(k)\\} = \\frac{z}{z-1}" },
+  { "title": "Bilinear transform", "tex": "z = \\frac{1+w}{1-w}", "note": "Maps the unit circle onto the imaginary axis for a Routh test." },
+  {"title": "Jury conditions (2nd order)", "tex": "P(1)>0,\\; P(-1)>0,\\; |a_0|<a_2"}
+]

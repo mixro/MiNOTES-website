@@ -1,0 +1,9 @@
+[
+  { "front": "Nyquist sampling criterion", "back": "$f_s > 2 f_{max}$" },
+  { "front": "What is aliasing?", "back": "High-frequency content appearing as a false low frequency because sampling is too slow." },
+  { "front": "ZOH transfer function", "back": "$G_{h0}(s) = \\frac{1-e^{-sT}}{s}$" },
+  { "front": "s-plane to z-plane mapping", "back": "$z = e^{sT}$" },
+  { "front": "Stability region in the z-plane", "back": "Inside the unit circle, $\\lvert z \\rvert < 1$" },
+  { "front": "Final value theorem (z)", "back": "$\\lim_{k\\to\\infty} x(k) = \\lim_{z\\to 1}(z-1)X(z)$" },
+  { "front": "Z-transform of $a^k$", "back": "$\\frac{z}{z-a}$" }
+]

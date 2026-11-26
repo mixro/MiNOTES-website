@@ -1,0 +1,11 @@
+[
+  { "title": "Torque balance", "tex": "T_m - T_L = J\\frac{d\\omega_m}{dt}" },
+  { "title": "Referred inertia", "tex": "J_{eq} = J_m + a^2 J_L", "note": "$a = \\omega_L / \\omega_m$" },
+  { "title": "DC motor speed", "tex": "\\omega = \\frac{V - I_a R_a}{K\\phi}" },
+  { "title": "DC motor torque", "tex": "T = K\\phi\\, I_a" },
+  { "title": "3-phase full converter", "tex": "V_a = \\frac{3\\sqrt{3}V_m}{\\pi}\\cos\\alpha", "note": "$V_m$ is the peak phase voltage." },
+  { "title": "Chopper output", "tex": "V_a = D\\,V_s" },
+  { "title": "Synchronous speed", "tex": "n_s = \\frac{120 f}{P}" },
+  { "title": "Slip", "tex": "s = \\frac{n_s - n_r}{n_s}" },
+  { "title": "Slip at maximum torque", "tex": "s_{max} = \\frac{R_2'}{\\sqrt{R_1^2 + (X_1+X_2')^2}}" }
+]

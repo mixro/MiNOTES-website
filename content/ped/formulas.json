@@ -1,0 +1,12 @@
+[
+  { "title": "Duty cycle", "tex": "D = \\frac{t_{on}}{T_s}" },
+  { "title": "Buck", "tex": "V_o = D V_s" },
+  { "title": "Boost", "tex": "V_o = \\frac{V_s}{1-D}" },
+  { "title": "Buck-boost", "tex": "V_o = -\\frac{D}{1-D}V_s" },
+  { "title": "Buck minimum inductance", "tex": "L_{min} = \\frac{(1-D)R}{2f_s}" },
+  { "title": "Buck output ripple", "tex": "\\frac{\\Delta V_o}{V_o} = \\frac{1-D}{8LCf_s^2}" },
+  { "title": "1-phase full converter", "tex": "V_{dc} = \\frac{2V_m}{\\pi}\\cos\\alpha" },
+  { "title": "3-phase full converter", "tex": "V_{dc} = \\frac{3V_{mL}}{\\pi}\\cos\\alpha" },
+  { "title": "Switching loss", "tex": "P_{sw} \\approx \\tfrac{1}{2}VI(t_{on}+t_{off})f_s" },
+  { "title": "Junction temperature", "tex": "T_j = T_a + P(R_{\\theta jc}+R_{\\theta cs}+R_{\\theta sa})" }
+]

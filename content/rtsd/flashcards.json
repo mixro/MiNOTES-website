@@ -1,0 +1,10 @@
+[
+  { "front": "What makes a system real-time?", "back": "Its correctness depends on both the result and the time at which the result is produced." },
+  { "front": "Hard vs soft deadline", "back": "Missing a hard deadline is a failure. Missing a soft deadline only lowers quality." },
+  { "front": "Utilisation of a task set", "back": "$U = \\sum C_i / T_i$" },
+  { "front": "RMS priority rule", "back": "Shorter period means higher (fixed) priority." },
+  { "front": "Liu and Layland bound", "back": "$U \\le n(2^{1/n}-1)$, tending to $\\ln 2 \\approx 0.693$" },
+  { "front": "EDF schedulability test", "back": "Schedulable on one CPU if and only if $U \\le 1$ (with $D = T$)." },
+  { "front": "Priority inversion", "back": "A high-priority task is blocked by a lower one holding a resource, while a medium task runs." },
+  { "front": "WCET", "back": "Worst-case execution time: the longest a task can take to run, used in timing analysis." }
+]

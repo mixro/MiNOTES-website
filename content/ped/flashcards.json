@@ -1,0 +1,9 @@
+[
+  { "front": "Buck converter ratio", "back": "$V_o = D\\,V_s$" },
+  { "front": "Boost converter ratio", "back": "$V_o = \\frac{V_s}{1-D}$" },
+  { "front": "Buck-boost ratio", "back": "$V_o = -\\frac{D}{1-D}V_s$" },
+  { "front": "Single-phase full converter output", "back": "$V_{dc} = \\frac{2V_m}{\\pi}\\cos\\alpha$" },
+  { "front": "Holding current", "back": "The minimum anode current that keeps a thyristor latched on." },
+  { "front": "IGBT vs MOSFET", "back": "IGBT: higher voltage and current, slower. MOSFET: faster, best at low voltage." },
+  { "front": "Snubber circuit", "back": "An RC network that limits dv/dt across a switch and absorbs switching energy." }
+]
