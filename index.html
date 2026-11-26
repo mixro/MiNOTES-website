@@ -1,63 +1,20 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MiNOTES · Study smarter</title>
-  <meta name="description" content="MiNOTES: notes, quizzes, flashcards and formula sheets for every Electrical Engineering module.">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/svg+xml" href="assets/img/icon.svg">
-  <link rel="apple-touch-icon" href="assets/img/icon.svg">
-  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <script>
-    try { var t = localStorage.getItem('minotes-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-  </script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-
-  <header class="nav" id="nav">
-    <div class="nav-inner">
-      <a class="brand" href="#/" aria-label="MiNOTES home">
-        <img src="assets/img/icon.svg" alt="" width="28" height="28">
-        <span class="wordmark"><b>Mi</b>NOTES</span>
-      </a>
-      <nav class="nav-links" aria-label="Main">
-        <a href="#/" data-nav="home">Modules</a>
-        <a href="#/dashboard" data-nav="dashboard">Progress</a>
-        <a href="#/search" data-nav="search">Search</a>
-      </nav>
-      <div class="nav-actions">
-        <button class="icon-btn" id="searchBtn" aria-label="Search">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-        <button class="icon-btn" id="themeBtn" aria-label="Switch appearance">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main id="main" tabindex="-1"></main>
-
-  <nav class="tabbar" aria-label="Main">
-    <a href="#/" data-nav="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z" fill="currentColor"/></svg>Modules</a>
-    <a href="#/dashboard" data-nav="dashboard"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>Progress</a>
-    <a href="#/search" data-nav="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Search</a>
-  </nav>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <span class="wordmark small"><b>Mi</b>NOTES</span>
-      <span>Study smarter. Power through the semester.</span>
-      <span class="muted">Progress is saved on this device only.</span>
-    </div>
-  </footer>
-
-  <script src="assets/vendor/marked.min.js"></script>
-  <script src="assets/vendor/katex/katex.min.js"></script>
-  <script src="assets/js/app.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>MiNOTES · Study smarter</title>
+    <meta name="description" content="MiNOTES: notes, quizzes, flashcards and formula sheets for every Electrical Engineering module." />
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="apple-touch-icon" href="./icon.svg" />
+    <script>
+      try { var t = localStorage.getItem('minotes-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
