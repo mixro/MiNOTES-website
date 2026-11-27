@@ -278,7 +278,33 @@
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
       "formulas": "formulas.json",
-      "papers": []
+      "papers": [
+        {
+          "title": "Final exams: Papers 2, 3 and 4 (questions only)",
+          "year": "4 pages",
+          "file": "final-exam-papers-2-4.pdf"
+        }
+      ],
+      "tutorials": [
+        {
+          "id": "final-exam-paper-2",
+          "title": "Final exam · Paper 2",
+          "summary": "IRR, payback, RFQ, NPV/IRR, network, budgets, contracts, tenders",
+          "file": "tutorials/final-exam-paper-2.md"
+        },
+        {
+          "id": "final-exam-paper-3",
+          "title": "Final exam · Paper 3",
+          "summary": "BCR, critical path, bid security, NPV, network, lump sum vs unit price",
+          "file": "tutorials/final-exam-paper-3.md"
+        },
+        {
+          "id": "final-exam-paper-4",
+          "title": "Final exam · Paper 4",
+          "summary": "Payback, IRR limits, retention bond, ITT, NPV, network, cost plus vs lump sum",
+          "file": "tutorials/final-exam-paper-4.md"
+        }
+      ]
     }
   ]
 }
