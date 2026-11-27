@@ -221,22 +221,58 @@
       "summary": "Planning, scheduling, costing and controlling engineering projects from start to handover.",
       "chapters": [
         {
-          "id": "01-fundamentals",
-          "title": "Project management fundamentals",
-          "summary": "Life cycle and the triple constraint",
-          "file": "notes/01-fundamentals.md"
+          "id": "01-introduction",
+          "title": "Introduction to project management",
+          "summary": "Projects, life cycle, classification",
+          "file": "notes/01-introduction.md"
         },
         {
-          "id": "02-scheduling",
-          "title": "Scheduling with CPM and PERT",
-          "summary": "Critical path and float",
-          "file": "notes/02-scheduling.md"
+          "id": "02-identification-and-formulation",
+          "title": "Project identification and formulation",
+          "summary": "Feasibility, appraisal, DPR",
+          "file": "notes/02-identification-and-formulation.md"
         },
         {
-          "id": "03-cost-control",
-          "title": "Cost and earned value",
-          "summary": "EV, PV, AC, CPI and SPI",
-          "file": "notes/03-cost-control.md"
+          "id": "03-financial-analysis",
+          "title": "Financial analysis and risk",
+          "summary": "Pay-back, ROI, NPV, BCR, IRR",
+          "file": "notes/03-financial-analysis.md"
+        },
+        {
+          "id": "04-bar-charts-and-networks",
+          "title": "Bar charts and networks",
+          "summary": "Gantt, PERT/CPM, drawing networks",
+          "file": "notes/04-bar-charts-and-networks.md"
+        },
+        {
+          "id": "05-network-analysis",
+          "title": "Network analysis",
+          "summary": "EST, LST, floats, critical path",
+          "file": "notes/05-network-analysis.md"
+        },
+        {
+          "id": "06-revision-scheduling-resources",
+          "title": "Revision, scheduling and resources",
+          "summary": "Scheduling approaches, resource smoothing",
+          "file": "notes/06-revision-scheduling-resources.md"
+        },
+        {
+          "id": "07-crashing-and-control",
+          "title": "Crashing and project control",
+          "summary": "Time–cost trade-off, control cycle",
+          "file": "notes/07-crashing-and-control.md"
+        },
+        {
+          "id": "08-ms-project",
+          "title": "Microsoft Project basics",
+          "summary": "Views, tasks, links, baseline",
+          "file": "notes/08-ms-project.md"
+        },
+        {
+          "id": "09-procurement-and-contracts",
+          "title": "Procurement and contracts",
+          "summary": "Tendering, evaluation, contract types",
+          "file": "notes/09-procurement-and-contracts.md"
         }
       ],
       "quiz": "quiz.json",
