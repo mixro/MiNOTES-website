@@ -102,6 +102,27 @@ In JSON files, write each LaTeX backslash twice: `"$\\frac{a}{b}$"`.
 [ { "title": "Slip", "tex": "s = \\frac{n_s - n_r}{n_s}", "note": "Optional note" } ]
 ```
 
+### Tutorials
+
+Put one markdown file per tutorial sheet in `src/content/<module id>/tutorials/` and list it in `modules.json`:
+
+```json
+"tutorials": [ { "id": "tutorial-1", "title": "Tutorial I", "summary": "What it covers", "file": "tutorials/tutorial-1.md" } ]
+```
+
+Inside the file, any text before the first question is the introduction. Each question starts with a `## ` heading (its label), then the question, then the answer between `::: answer` and `:::`:
+
+```markdown
+## Question 1
+Define drive and electric drive.
+
+::: answer
+A drive is a system that ...
+:::
+```
+
+Answers stay hidden until the student taps **Show answer**.
+
 ### Past papers
 
 Put PDFs in `public/papers/<module id>/` (for example `public/papers/ed/`) and list them in `src/content/modules.json`:

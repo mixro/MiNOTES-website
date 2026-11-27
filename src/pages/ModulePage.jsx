@@ -1,4 +1,4 @@
-import { BookOpen, FileText, Layers, ListChecks, Sigma } from 'lucide-react';
+import { BookOpen, ClipboardList, FileText, Layers, ListChecks, Sigma } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getModule } from '../lib/content';
@@ -9,12 +9,14 @@ import QuizIntro from './tabs/QuizIntro';
 import Flashcards from './tabs/Flashcards';
 import Formulas from './tabs/Formulas';
 import Papers from './tabs/Papers';
+import Tutorials from './tabs/Tutorials';
 
 const TABS = [
   ['notes', 'Notes', NotesList, BookOpen],
   ['quiz', 'Quizzes', QuizIntro, ListChecks],
   ['flashcards', 'Flashcards', Flashcards, Layers],
   ['formulas', 'Formula sheet', Formulas, Sigma],
+  ['tutorials', 'Tutorials', Tutorials, ClipboardList],
   ['papers', 'Past papers', Papers, FileText],
 ];
 

@@ -511,3 +511,19 @@ a.row:hover { background: color-mix(in srgb, var(--bg-sunken) 55%, transparent);
 .fig .d-box.a { fill: color-mix(in srgb, var(--link) 12%, var(--bg-elev)); stroke: color-mix(in srgb, var(--link) 45%, transparent); }
 .fig .d-box.b { fill: color-mix(in srgb, #f59e0b 16%, var(--bg-elev)); stroke: color-mix(in srgb, #f59e0b 55%, transparent); }
 .fig .d-box.c { fill: color-mix(in srgb, var(--green) 12%, var(--bg-elev)); stroke: color-mix(in srgb, var(--green) 45%, transparent); }
+
+/* Tutorials */
+.tut { max-width: 820px; padding-top: 28px; padding-bottom: 48px; }
+.tut-intro { margin-top: 12px; color: var(--ink-2); }
+.tut-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 16px; font-size: 14px; color: var(--ink-3); }
+.tq-list { display: grid; gap: 14px; }
+.tq { background: var(--bg-elev); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 20px 16px; }
+.tq-head { margin-bottom: 8px; }
+.tq-num { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--link); background: color-mix(in srgb, var(--link) 12%, transparent); padding: 3px 10px; border-radius: 99px; }
+.tq .prose { max-width: none; font-size: 16px; }
+.tq-q > :last-child { margin-bottom: 0; }
+.tq-toggle { margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 14px; font-weight: 500; color: var(--link); background: none; border: 0; padding: 4px 0; cursor: pointer; }
+.tq-toggle svg { transition: transform .2s; }
+.tq-toggle.on svg { transform: rotate(180deg); }
+.tq-a { margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+.tq-a > :last-child { margin-bottom: 0; }

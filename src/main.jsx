@@ -10,6 +10,7 @@ import Modules from './pages/Modules';
 import ModulePage from './pages/ModulePage';
 import Chapter from './pages/Chapter';
 import QuizRunner from './pages/QuizRunner';
+import Tutorial from './pages/Tutorial';
 import Search from './pages/Search';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
@@ -27,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="m/:id/:tab" element={<ModulePage />} />
             <Route path="m/:id/notes/:chapter" element={<Chapter />} />
             <Route path="m/:id/quiz/:mode" element={<QuizRunner />} />
+            <Route path="m/:id/tutorials/:tut" element={<Tutorial />} />
             <Route path="search" element={<Search />} />
             <Route path="progress" element={<Dashboard />} />
             <Route path="*" element={<NotFound />} />

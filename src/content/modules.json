@@ -142,7 +142,33 @@
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
       "formulas": "formulas.json",
-      "papers": []
+      "papers": [
+        {
+          "title": "Test and final exam: solutions and marking scheme",
+          "year": "Scanned, 17 pages",
+          "file": "test-and-final-exam-solutions.pdf"
+        }
+      ],
+      "tutorials": [
+        {
+          "id": "tutorial-1",
+          "title": "Tutorial I",
+          "summary": "Drive basics, AC drive control, heating and duty, calculations",
+          "file": "tutorials/tutorial-1.md"
+        },
+        {
+          "id": "tutorial-2",
+          "title": "Tutorial II",
+          "summary": "Motor starter design: main and control circuits",
+          "file": "tutorials/tutorial-2.md"
+        },
+        {
+          "id": "test-and-exam",
+          "title": "Test and final exam solutions",
+          "summary": "Marking schemes, worked in full",
+          "file": "tutorials/test-and-exam.md"
+        }
+      ]
     },
     {
       "id": "ped",
