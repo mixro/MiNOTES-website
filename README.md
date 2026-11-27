@@ -147,3 +147,7 @@ src/content/                  all module content
 public/                       app icons, screenshots (images/), past papers
 .github/workflows/deploy.yml  builds and publishes to GitHub Pages
 ```
+
+## Deploying to Netlify
+
+`netlify.toml` sets the build command (`npm run build`) and the publish folder (`dist`). Vite uses `base: './'` (relative asset paths), so the same build works on Netlify at `/` and on GitHub Pages under `/<repo>/` with no extra settings. In the Netlify UI, leave **Build command** and **Publish directory** empty (or set them to `npm run build` and `dist`); the toml file applies on every deploy.

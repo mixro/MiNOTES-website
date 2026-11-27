@@ -1,0 +1,13 @@
+# Netlify: build the Vite app and serve the dist folder (not the raw repo).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# The app uses hash routes (#/m/...), so this is only a safety net for deep links.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
