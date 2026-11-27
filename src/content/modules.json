@@ -137,6 +137,12 @@
           "title": "Starting induction motors",
           "summary": "DOL, star–delta, auto-transformer, starter sizing",
           "file": "notes/10-starting-induction-motors.md"
+        },
+        {
+          "id": "11-converter-projects",
+          "title": "Converter designs (group assignments)",
+          "summary": "AC voltage regulator, inverter, cyclo-converter",
+          "file": "notes/11-converter-projects.md"
         }
       ],
       "quiz": "quiz.json",

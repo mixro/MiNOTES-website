@@ -158,5 +158,14 @@
   {
     "title": "Reduced-voltage starting torque",
     "tex": "\\frac{T_{st}}{T_{FL}} = K^2\\left(\\frac{I_{sc}}{I_{FL}}\\right)^2 s_{FL}"
+  },
+  {
+    "title": "AC voltage regulator (R load)",
+    "tex": "V_o = V_s\\sqrt{\\frac{1}{\\pi}\\left(\\pi-\\alpha+\\frac{\\sin 2\\alpha}{2}\\right)}"
+  },
+  {
+    "title": "Inverter LC filter",
+    "tex": "L = \\frac{V_{DC}}{4 f_{sw}\\,\\Delta I_L},\\qquad C = \\frac{1}{(2\\pi f_c)^2 L}",
+    "note": "$f_g \\ll f_c \\le f_{sw}/10$"
   }
 ]

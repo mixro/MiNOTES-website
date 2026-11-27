@@ -507,6 +507,58 @@
       ],
       "answer": 1,
       "explain": "A single winding produces a pulsating field, which gives zero net torque at standstill."
+    },
+    {
+      "type": "mcq",
+      "topic": "Converter designs",
+      "q": "An AC voltage regulator controls which quantity of the load voltage?",
+      "options": [
+        "Its frequency",
+        "Its RMS value, at the same frequency",
+        "Its DC average",
+        "Its phase sequence"
+      ],
+      "answer": 1,
+      "explain": "Phase-angle control changes the RMS voltage; the frequency stays at 50 Hz."
+    },
+    {
+      "type": "mcq",
+      "topic": "Converter designs",
+      "q": "In a TRIAC phase-control circuit, what does the DIAC do?",
+      "options": [
+        "Limits the load current",
+        "Gives a sharp, symmetrical trigger pulse to the TRIAC gate",
+        "Sets the output frequency",
+        "Filters harmonics"
+      ],
+      "answer": 1,
+      "explain": "The DIAC breaks over at about 30 V and fires the TRIAC sharply in both half cycles."
+    },
+    {
+      "type": "mcq",
+      "topic": "Converter designs",
+      "q": "Why is dead time inserted between the two switches of an inverter leg?",
+      "options": [
+        "To raise the output frequency",
+        "To stop both switches conducting together and shorting the DC supply",
+        "To reduce the duty cycle to zero",
+        "To charge the filter capacitor"
+      ],
+      "answer": 1,
+      "explain": "Dead time (0.5–2 µs for MOSFETs, 2–5 µs for IGBTs) prevents shoot-through."
+    },
+    {
+      "type": "mcq",
+      "topic": "Converter designs",
+      "q": "A practical line-commutated cyclo-converter fed from 50 Hz can give an output of up to about:",
+      "options": [
+        "150 Hz",
+        "100 Hz",
+        "50 Hz",
+        "16 Hz (about one third of the input)"
+      ],
+      "answer": 3,
+      "explain": "Output frequency is limited to roughly a third of the input frequency for a usable waveform."
     }
   ]
 }

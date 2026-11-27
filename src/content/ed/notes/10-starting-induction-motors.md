@@ -34,6 +34,18 @@ Common methods:
 
 Pressing S1 energises K1M, which closes the main contacts and its own holding contact, so the motor keeps running when S1 is released. Pressing S2, or an overload tripping F2, drops the coil out.
 
+### Effects of DOL starting on voltage, torque and current
+
+*From the Group 16 assignment on DOL starters.*
+
+| Quantity | What happens | Consequences |
+|---|---|---|
+| **Voltage** | The motor gets the full line voltage at once | Large inrush current and **voltage dips** on the supply, which affect other equipment on the same circuit |
+| **Torque** | Starting torque is high, because $T \propto V^2$ | **Good:** quick start, and it overcomes heavy starting loads such as pumps, compressors and conveyors. **Bad:** sudden jerks put **mechanical stress** on shafts, bearings, couplings, belts and gears |
+| **Current** | About **6 to 8 times full-load current** at the instant of starting | Voltage drop in the supply network, and **thermal stress** on the windings |
+
+The current is so high because there is **no back EMF** at standstill. The slip is 1, so the rotor frequency equals the supply frequency, and the only limit is the motor's small leakage impedance.
+
 ## 2. Star–delta starter
 
 The windings are connected in **star** to start and switched to **delta** to run.
@@ -86,9 +98,10 @@ $$I_{FL} = \frac{P_o}{\sqrt3\,V_L\,\text{pf}\,\eta}$$
 |---|---|
 | Cable | $1.25 \times I_{FL}$ (125% safety factor), then pick the next standard size |
 | Circuit breaker (MCCB) | $1.5 \times I_{FL}$ |
-| Thermal overload relay | Setting range $0.8\,I_{FL}$ to $1.2\,I_{FL}$ |
+| Thermal overload relay | Setting range $0.8\,I_{FL}$ to $1.2\,I_{FL}$ (often set near $1.15\,I_{FL}$) |
 | Main contactor in a star–delta starter | Carries phase current, $I_{FL}/\sqrt3$ |
 | Contactor category | AC-3 (squirrel-cage motors) |
+| Cable voltage drop | Below 5% of the supply voltage |
 
 ## Worked examples
 
@@ -151,5 +164,20 @@ $$I_{FL} = \frac{P_o}{\sqrt3\,V_L\,\text{pf}\,\eta}$$
 > $I_{st} = K I_{sc} = 0.6 \times 5I_{FL} = 3I_{FL}$
 >
 > $\dfrac{T_{st}}{T_{FL}} = K^2\left(\dfrac{I_{sc}}{I_{FL}}\right)^2 s_{FL} = (0.6)^2(5)^2(0.05) = 0.45$, so $T_{st} = 0.45\,T_{FL}$
+
+> **Example 6. Sizing a DOL starter (Group 16 assignment).** A **7.5 kW, 400 V** motor has $\eta = 90\%$ and pf $= 0.85$. Size its overload relay, breaker, contactor and cable.
+>
+> $I_{FL} = \dfrac{7500}{\sqrt3 \times 400 \times 0.85 \times 0.9} = 14.15$ A
+>
+> | Item | Rule used by the group | Result | Selected |
+> |---|---|---|---|
+> | Overload relay | $1.15\,I_{FL}$ | 16.3 A | Relay with a range covering 16.3 A (e.g. 14 to 18 A) |
+> | Contactor | $1.25\,I_{FL}$ | 17.7 A | AC-3, 18 A (e.g. Schneider LC1D18) |
+> | Cable | $1.5\,I_{FL}$ | 21.2 A | 2.5 mm² copper |
+> | Breaker | Must ride through the 6 to 8 × $I_{FL}$ inrush | 85 to 113 A inrush | See the note below |
+>
+> **Check the voltage drop** after choosing the cable. It should be **below 5%** of the supply voltage. The group's simple check is $V_d = I\,R\,L$, using the cable's resistance per metre and its length $L$. For a three-phase circuit, $V_d = \sqrt3\,I\,L\,(R\cos\phi + X\sin\phi)$ is more exact.
+>
+> **Note on the breaker.** The group sizes the breaker at 6 to 8 × $I_{FL}$. The inrush is the current the breaker must **not trip on**, not its rating. In practice you choose a **motor-protection breaker** (or a curve D MCB) rated about 1.25 to 1.5 × $I_{FL}$, here 20 A, whose magnetic trip sits above the inrush. The class rule ($1.5\,I_{FL} \approx 21$ A) gives the same answer.
 
 > **Corrections to the class notes.** In Example 1 (i), $\sqrt3 \times 400 \times 20 = 13.86$ kVA, not 12.86 kVA. In Example 2 (v), 46.1 A comes from a factor of 1.5, not 1.25. In Example 3, the run contactor current works out to 43.97 A. In Example 5, the result 0.45 is the **torque** ratio $T_{st}/T_{FL}$, not a current ratio.

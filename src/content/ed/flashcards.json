@@ -166,5 +166,17 @@
   {
     "front": "Machine losses vs load",
     "back": "$W = W_c + x^2W_v$: constant loss plus full-load copper loss scaled by load fraction squared."
+  },
+  {
+    "front": "AC voltage regulator output (R load)",
+    "back": "$V_o = V_s\\sqrt{\\frac{1}{\\pi}\\left(\\pi-\\alpha+\\frac{\\sin2\\alpha}{2}\\right)}$; frequency unchanged."
+  },
+  {
+    "front": "Inverter LC filter",
+    "back": "$L = \\dfrac{V_{DC}}{4f_{sw}\\Delta I_L}$, $C = \\dfrac{1}{(2\\pi f_c)^2L}$ with $f_g \\ll f_c \\le f_{sw}/10$."
+  },
+  {
+    "front": "Cyclo-converter",
+    "back": "Direct AC–AC frequency changer with P and N thyristor groups; step-down $f_o = f_s/n$, limited to about $f_s/3$; used for large slow drives (mills, winders, ships)."
   }
 ]

@@ -93,4 +93,4 @@ Converters can be divided into five types by function:
 
 **Task:** in groups of five, build one converter, test it, and present it in class (one student presents for the group).
 
-Choppers are covered in detail in the chapter on DC–DC converters.
+Choppers are covered in detail in the chapter on DC–DC converters. The AC voltage regulator, inverter and cyclo-converter group designs are worked through in the chapter on converter designs, and the DOL starter assignment is in the chapter on starting induction motors.
