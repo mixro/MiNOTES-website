@@ -33,6 +33,16 @@ $$\text{Cost slope} = \frac{C_c - C_n}{T_n - T_c}$$
 
 ### Example: agro-technology demonstration blocks
 
+| Activity | Code | Preceding | Normal time (weeks) |
+|---|---|---|---|
+| Levelling the land | A | none | 16 |
+| Stone pitching | B | A | 26 |
+| Raising seedlings | C | A | 26 |
+| Establishing the irrigation system | D | A | 30 |
+| Developing the drainage system | E | C | 28 |
+| Making pits and transplanting | F | B | 27 |
+| Erecting the fence | G | D, E, F | 18 |
+
 <figure class="fig"><svg viewBox="0 0 600 290" role="img" aria-label="Agro-technology demonstration project at normal times (weeks). Critical path A–C–E–G = 88 weeks; A–B–F–G is only one week shorter."><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-fill"/></marker></defs><line x1="69.0" y1="130.0" x2="144.0" y2="130.0" class="d-a w" marker-end="url(#ah)"/><text x="106.5" y="120.0" text-anchor="middle" class="d-t s a">A 16</text><line x1="189.7" y1="116.3" x2="278.6" y2="54.8" class="d-ax" marker-end="url(#ah)"/><text x="225.6" y="78.2" text-anchor="middle" class="d-t s a">B 26</text><line x1="319.7" y1="53.7" x2="408.6" y2="115.2" class="d-ax" marker-end="url(#ah)"/><text x="372.7" y="77.1" text-anchor="middle" class="d-t s a">F 27</text><line x1="194.0" y1="130.0" x2="404.0" y2="130.0" class="d-ax" marker-end="url(#ah)"/><text x="299.0" y="125.0" text-anchor="middle" class="d-t s a">D 30</text><line x1="189.7" y1="143.7" x2="278.6" y2="205.2" class="d-a w" marker-end="url(#ah)"/><text x="226.2" y="190.9" text-anchor="middle" class="d-t s a">C 26</text><line x1="319.7" y1="206.3" x2="408.6" y2="144.8" class="d-a w" marker-end="url(#ah)"/><text x="372.1" y="192.1" text-anchor="middle" class="d-t s a">E 28</text><line x1="454.0" y1="130.0" x2="534.0" y2="130.0" class="d-a w" marker-end="url(#ah)"/><text x="494.0" y="120.0" text-anchor="middle" class="d-t s a">G 18</text><circle cx="45" cy="130" r="24" class="d-box a"/><text x="45.0" y="135.0" text-anchor="middle" class="d-t b">1</text><circle cx="170" cy="130" r="24" class="d-box a"/><text x="170.0" y="135.0" text-anchor="middle" class="d-t b">2</text><circle cx="300" cy="40" r="24" class="d-box"/><text x="300.0" y="45.0" text-anchor="middle" class="d-t b">3</text><circle cx="300" cy="220" r="24" class="d-box a"/><text x="300.0" y="225.0" text-anchor="middle" class="d-t b">4</text><circle cx="430" cy="130" r="24" class="d-box a"/><text x="430.0" y="135.0" text-anchor="middle" class="d-t b">5</text><circle cx="560" cy="130" r="24" class="d-box a"/><text x="560.0" y="135.0" text-anchor="middle" class="d-t b">6</text><text x="300.0" y="280.0" text-anchor="middle" class="d-t s m">Paths: A–C–E–G = 88 (critical), A–B–F–G = 87, A–D–G = 64 weeks</text></svg><figcaption>Agro-technology demonstration project at normal times (weeks). Critical path A–C–E–G = 88 weeks; A–B–F–G is only one week shorter.</figcaption></figure>
 
 | Activity | Normal time (weeks) | Crash time (weeks) | Normal cost (Rs) | Crash cost (Rs) | Time saved | Extra cost | Cost slope (Rs/week) |
