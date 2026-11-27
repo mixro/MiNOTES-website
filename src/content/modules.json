@@ -280,12 +280,43 @@
       "formulas": "formulas.json",
       "papers": [
         {
+          "title": "Final exam (questions only)",
+          "year": "60 marks",
+          "file": "final-exam.pdf"
+        },
+        {
           "title": "Final exams: Papers 2, 3 and 4 (questions only)",
           "year": "4 pages",
           "file": "final-exam-papers-2-4.pdf"
+        },
+        {
+          "title": "Individual Assignment #1 (questions)",
+          "year": "26 Nov 2025",
+          "file": "individual-assignment-1.pdf"
+        },
+        {
+          "title": "In-class group assignment (questions)",
+          "year": "12 Dec 2025",
+          "file": "group-assignment-2025-12-12.pdf"
+        },
+        {
+          "title": "Individual Assignment #2 (questions)",
+          "year": "19 Dec 2025",
+          "file": "individual-assignment-2.pdf"
+        },
+        {
+          "title": "In-class group assignment (questions)",
+          "year": "20 Feb 2026",
+          "file": "group-assignment-2026-02-20.pdf"
         }
       ],
       "tutorials": [
+        {
+          "id": "final-exam",
+          "title": "Final exam (60 marks)",
+          "summary": "Feasibility, NPV and IRR, network and critical path, risk and procurement.",
+          "file": "tutorials/final-exam.md"
+        },
         {
           "id": "final-exam-paper-2",
           "title": "Final exam · Paper 2",
@@ -303,6 +334,42 @@
           "title": "Final exam · Paper 4",
           "summary": "Payback, IRR limits, retention bond, ITT, NPV, network, cost plus vs lump sum",
           "file": "tutorials/final-exam-paper-4.md"
+        },
+        {
+          "id": "individual-assignment-1",
+          "title": "Individual Assignment #1 (26 Nov 2025)",
+          "summary": "Project concepts, life cycle and the 12-activity network (34 days).",
+          "file": "tutorials/individual-assignment-1.md"
+        },
+        {
+          "id": "group-assignment-2025-12-12",
+          "title": "Group assignment (12 Dec 2025)",
+          "summary": "PM software, DCF with payback and NPV, PERT vs CPM and four networks.",
+          "file": "tutorials/group-assignment-2025-12-12.md"
+        },
+        {
+          "id": "individual-assignment-2",
+          "title": "Individual Assignment #2 (19 Dec 2025)",
+          "summary": "Projects vs operations, characteristics, triple constraint, life cycle curves.",
+          "file": "tutorials/individual-assignment-2.md"
+        },
+        {
+          "id": "group-work-2026-01-22",
+          "title": "Group work (22 Jan 2026)",
+          "summary": "Model group notes on bar charts, milestone charts, PERT, CPM, AoA and AoN.",
+          "file": "tutorials/group-work-2026-01-22.md"
+        },
+        {
+          "id": "individual-assignment-2026-02-06",
+          "title": "Individual assignment (Feb 2026)",
+          "summary": "Case study on a troubled project and an AON network (73 weeks).",
+          "file": "tutorials/individual-assignment-2026-02-06.md"
+        },
+        {
+          "id": "group-assignment-2026-02-20",
+          "title": "Group assignment (20 Feb 2026)",
+          "summary": "Ten short questions: charts, networks, financial measures, SCBA.",
+          "file": "tutorials/group-assignment-2026-02-20.md"
         }
       ]
     }
