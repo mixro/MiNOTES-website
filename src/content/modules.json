@@ -10,9 +10,24 @@
       "icon": "clock",
       "summary": "Designing systems that must respond on time: tasks, scheduling, RTOS and timing analysis.",
       "chapters": [
-        { "id": "01-introduction", "title": "Introduction to real-time systems", "summary": "Hard, firm and soft deadlines", "file": "notes/01-introduction.md" },
-        { "id": "02-scheduling", "title": "Task scheduling", "summary": "Rate monotonic and EDF", "file": "notes/02-scheduling.md" },
-        { "id": "03-rtos", "title": "RTOS and synchronisation", "summary": "Semaphores, priority inversion", "file": "notes/03-rtos.md" }
+        {
+          "id": "01-introduction",
+          "title": "Introduction to real-time systems",
+          "summary": "Hard, firm and soft deadlines",
+          "file": "notes/01-introduction.md"
+        },
+        {
+          "id": "02-scheduling",
+          "title": "Task scheduling",
+          "summary": "Rate monotonic and EDF",
+          "file": "notes/02-scheduling.md"
+        },
+        {
+          "id": "03-rtos",
+          "title": "RTOS and synchronisation",
+          "summary": "Semaphores, priority inversion",
+          "file": "notes/03-rtos.md"
+        }
       ],
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
@@ -29,9 +44,24 @@
       "icon": "wave",
       "summary": "Sampled-data control: the z-transform, discrete transfer functions, stability and digital controllers.",
       "chapters": [
-        { "id": "01-sampling", "title": "Sampling and reconstruction", "summary": "Sampling theorem, zero-order hold", "file": "notes/01-sampling.md" },
-        { "id": "02-z-transform", "title": "The z-transform", "summary": "Pulse transfer functions", "file": "notes/02-z-transform.md" },
-        { "id": "03-stability", "title": "Stability of discrete systems", "summary": "Unit circle and Jury test", "file": "notes/03-stability.md" }
+        {
+          "id": "01-sampling",
+          "title": "Sampling and reconstruction",
+          "summary": "Sampling theorem, zero-order hold",
+          "file": "notes/01-sampling.md"
+        },
+        {
+          "id": "02-z-transform",
+          "title": "The z-transform",
+          "summary": "Pulse transfer functions",
+          "file": "notes/02-z-transform.md"
+        },
+        {
+          "id": "03-stability",
+          "title": "Stability of discrete systems",
+          "summary": "Unit circle and Jury test",
+          "file": "notes/03-stability.md"
+        }
       ],
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
@@ -46,11 +76,56 @@
       "credits": 12,
       "color": "#248a3d",
       "icon": "motor",
-      "summary": "Motor and load dynamics, DC and induction motor drives, speed control and braking.",
+      "summary": "Drive parts and types, loads and duty, speed–torque curves and four quadrants, braking, motor heating and rating, converter-fed DC drives and AC drive speed control.",
       "chapters": [
-        { "id": "01-drive-dynamics", "title": "Drive system dynamics", "summary": "Torque balance and load types", "file": "notes/01-drive-dynamics.md" },
-        { "id": "02-dc-drives", "title": "DC motor drives", "summary": "Speed control and braking", "file": "notes/02-dc-drives.md" },
-        { "id": "03-induction-drives", "title": "Induction motor drives", "summary": "Slip, torque and V/f control", "file": "notes/03-induction-drives.md" }
+        {
+          "id": "01-introduction",
+          "title": "Introduction to electric drives",
+          "summary": "Concept, advantages and parts of a drive",
+          "file": "notes/01-introduction.md"
+        },
+        {
+          "id": "02-types-of-drives",
+          "title": "Types and classification of drives",
+          "summary": "DC vs AC, group, individual and multi-motor",
+          "file": "notes/02-types-of-drives.md"
+        },
+        {
+          "id": "03-loads-and-selection",
+          "title": "Loads and drive selection",
+          "summary": "Load torques, duty classes, choosing a drive",
+          "file": "notes/03-loads-and-selection.md"
+        },
+        {
+          "id": "04-speed-torque",
+          "title": "Speed–torque characteristics",
+          "summary": "Motor and load curves, four quadrants, starting",
+          "file": "notes/04-speed-torque.md"
+        },
+        {
+          "id": "05-braking",
+          "title": "Braking",
+          "summary": "Regenerative, dynamic and plugging",
+          "file": "notes/05-braking.md"
+        },
+        {
+          "id": "06-heating-and-rating",
+          "title": "Heating, cooling and motor rating",
+          "summary": "Thermal model, duty ratings, flywheels",
+          "file": "notes/06-heating-and-rating.md"
+        },
+        {
+          "id": "07-rectifier-dc-drives",
+          "title": "Controlled rectifier fed DC drives",
+          "summary": "Single-phase converter drives, conduction modes",
+          "file": "notes/07-rectifier-dc-drives.md"
+        },
+        {
+          "id": "08-ac-drives",
+          "title": "AC drives",
+          "summary": "Induction motor control, V/f, slip power",
+          "file": "notes/08-ac-drives.md"
+        }
       ],
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
@@ -67,9 +142,24 @@
       "icon": "bolt",
       "summary": "Switching devices, rectifiers, DC-DC converters and inverters, with design and loss calculations.",
       "chapters": [
-        { "id": "01-devices", "title": "Power semiconductor devices", "summary": "Diodes, thyristors, MOSFETs, IGBTs", "file": "notes/01-devices.md" },
-        { "id": "02-rectifiers", "title": "Controlled rectifiers", "summary": "Single and three-phase", "file": "notes/02-rectifiers.md" },
-        { "id": "03-dc-dc", "title": "DC-DC converters", "summary": "Buck, boost and buck-boost", "file": "notes/03-dc-dc.md" }
+        {
+          "id": "01-devices",
+          "title": "Power semiconductor devices",
+          "summary": "Diodes, thyristors, MOSFETs, IGBTs",
+          "file": "notes/01-devices.md"
+        },
+        {
+          "id": "02-rectifiers",
+          "title": "Controlled rectifiers",
+          "summary": "Single and three-phase",
+          "file": "notes/02-rectifiers.md"
+        },
+        {
+          "id": "03-dc-dc",
+          "title": "DC-DC converters",
+          "summary": "Buck, boost and buck-boost",
+          "file": "notes/03-dc-dc.md"
+        }
       ],
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
@@ -86,9 +176,24 @@
       "icon": "gantt",
       "summary": "Planning, scheduling, costing and controlling engineering projects from start to handover.",
       "chapters": [
-        { "id": "01-fundamentals", "title": "Project management fundamentals", "summary": "Life cycle and the triple constraint", "file": "notes/01-fundamentals.md" },
-        { "id": "02-scheduling", "title": "Scheduling with CPM and PERT", "summary": "Critical path and float", "file": "notes/02-scheduling.md" },
-        { "id": "03-cost-control", "title": "Cost and earned value", "summary": "EV, PV, AC, CPI and SPI", "file": "notes/03-cost-control.md" }
+        {
+          "id": "01-fundamentals",
+          "title": "Project management fundamentals",
+          "summary": "Life cycle and the triple constraint",
+          "file": "notes/01-fundamentals.md"
+        },
+        {
+          "id": "02-scheduling",
+          "title": "Scheduling with CPM and PERT",
+          "summary": "Critical path and float",
+          "file": "notes/02-scheduling.md"
+        },
+        {
+          "id": "03-cost-control",
+          "title": "Cost and earned value",
+          "summary": "EV, PV, AC, CPI and SPI",
+          "file": "notes/03-cost-control.md"
+        }
       ],
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",

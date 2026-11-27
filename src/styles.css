@@ -492,3 +492,22 @@ a.row:hover { background: color-mix(in srgb, var(--bg-sunken) 55%, transparent);
 @media (prefers-reduced-motion: reduce) { .l-icon { animation: none; } }
 .toc .crumbs a { display: inline-flex; justify-content: flex-start; padding: 0; border-radius: 0; color: var(--link); }
 .toc .crumbs a:hover { background: none; text-decoration: underline; }
+.prose .fig { margin: 24px 0; padding: 18px 18px 12px; background: var(--bg-elev); border-radius: var(--radius); box-shadow: var(--shadow); }
+.prose .fig svg { display: block; width: 100%; height: auto; overflow: visible; border-radius: 0; }
+.prose .fig figcaption { font-size: 14px; color: var(--ink-3); margin-top: 10px; line-height: 1.45; }
+.fig .d-ax { stroke: var(--ink-2); stroke-width: 1.6; fill: none; }
+.fig .d-fill { fill: var(--ink-2); }
+.fig .d-mut { stroke: var(--ink-3); stroke-width: 1.2; stroke-dasharray: 4 4; fill: none; }
+.fig .d-mut2 { stroke: var(--ink-3); stroke-width: 1.4; stroke-dasharray: 3 4; fill: none; opacity: .7; }
+.fig .d-a, .fig .d-b, .fig .d-c, .fig .d-r { fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.fig .d-a { stroke: var(--link); } .fig .d-b { stroke: #f59e0b; } .fig .d-c { stroke: var(--green); } .fig .d-r { stroke: var(--red); }
+.fig .w { stroke-width: 3; } .fig .dash { stroke-dasharray: 7 5; }
+.fig .d-dot { fill: var(--ink); }
+.fig .d-t { fill: var(--ink); font: 500 14px var(--font); letter-spacing: -.01em; }
+.fig .d-t.s { font-size: 13px; } .fig .d-t.b { font-weight: 600; } .fig .d-t.m { fill: var(--ink-3); }
+.fig text.a { fill: var(--link); } .fig text.b { } .fig text.c { fill: var(--green); } .fig text.r { fill: var(--red); }
+.fig text.d-t.s.b { fill: #d97706; font-weight: 500; }
+.fig .d-box { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; }
+.fig .d-box.a { fill: color-mix(in srgb, var(--link) 12%, var(--bg-elev)); stroke: color-mix(in srgb, var(--link) 45%, transparent); }
+.fig .d-box.b { fill: color-mix(in srgb, #f59e0b 16%, var(--bg-elev)); stroke: color-mix(in srgb, #f59e0b 55%, transparent); }
+.fig .d-box.c { fill: color-mix(in srgb, var(--green) 12%, var(--bg-elev)); stroke: color-mix(in srgb, var(--green) 45%, transparent); }

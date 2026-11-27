@@ -1,11 +1,109 @@
 [
-  { "title": "Torque balance", "tex": "T_m - T_L = J\\frac{d\\omega_m}{dt}" },
-  { "title": "Referred inertia", "tex": "J_{eq} = J_m + a^2 J_L", "note": "$a = \\omega_L / \\omega_m$" },
-  { "title": "DC motor speed", "tex": "\\omega = \\frac{V - I_a R_a}{K\\phi}" },
-  { "title": "DC motor torque", "tex": "T = K\\phi\\, I_a" },
-  { "title": "3-phase full converter", "tex": "V_a = \\frac{3\\sqrt{3}V_m}{\\pi}\\cos\\alpha", "note": "$V_m$ is the peak phase voltage." },
-  { "title": "Chopper output", "tex": "V_a = D\\,V_s" },
-  { "title": "Synchronous speed", "tex": "n_s = \\frac{120 f}{P}" },
-  { "title": "Slip", "tex": "s = \\frac{n_s - n_r}{n_s}" },
-  { "title": "Slip at maximum torque", "tex": "s_{max} = \\frac{R_2'}{\\sqrt{R_1^2 + (X_1+X_2')^2}}" }
+  {
+    "title": "Torque balance",
+    "tex": "T_m - T_L = J\\frac{d\\omega_m}{dt}"
+  },
+  {
+    "title": "Load torque law",
+    "tex": "T = C\\,T_r\\left(\\frac{n}{n_r}\\right)^{k}",
+    "note": "$k=0$ hoist, $1$ calender, $2$ fan or pump, $-1$ constant power"
+  },
+  {
+    "title": "Power and torque",
+    "tex": "P = T\\omega = \\frac{2\\pi N T}{60}"
+  },
+  {
+    "title": "DC motor EMF",
+    "tex": "E_b = K\\phi\\,\\omega"
+  },
+  {
+    "title": "DC motor torque",
+    "tex": "T = K\\phi\\,I_a"
+  },
+  {
+    "title": "DC shunt speed",
+    "tex": "\\omega = \\frac{V - I_a R_a}{K\\phi}"
+  },
+  {
+    "title": "DC series motor",
+    "tex": "T \\propto I^2,\\quad n \\propto \\frac{1}{\\sqrt{T}}"
+  },
+  {
+    "title": "Regenerative braking",
+    "tex": "E_b > V,\\quad I_a = \\frac{E_b - V}{R_a}"
+  },
+  {
+    "title": "Plugging current",
+    "tex": "I_a = \\frac{V + E_b}{R_a + R_b}"
+  },
+  {
+    "title": "Heating",
+    "tex": "\\theta = \\theta_{ss}\\left(1 - e^{-t/\\tau}\\right) + \\theta_0\\,e^{-t/\\tau}",
+    "note": "$\\tau = C/D$"
+  },
+  {
+    "title": "Cooling",
+    "tex": "\\theta = \\theta_{ss}' + (\\theta_0 - \\theta_{ss}')\\,e^{-t/\\tau'}"
+  },
+  {
+    "title": "Short-time rating",
+    "tex": "P_{sh} = \\frac{P_r}{\\sqrt{1 - e^{-t_{on}/\\tau}}}",
+    "note": "Motor cools completely between loads; losses $\\propto$ load$^2$"
+  },
+  {
+    "title": "Intermittent duty rating",
+    "tex": "P_m = \\sqrt{\\frac{1 - e^{-\\left(t_{on}/\\tau + t_{off}/\\tau'\\right)}}{1 - e^{-t_{on}/\\tau}}}",
+    "note": "Multiplier on the continuous rating"
+  },
+  {
+    "title": "Equivalent current",
+    "tex": "I_{eq} = \\sqrt{\\frac{\\sum I_k^2 t_k}{\\sum t_k}}"
+  },
+  {
+    "title": "Flywheel energy",
+    "tex": "\\Delta E = \\tfrac12 J\\left(\\omega_1^2 - \\omega_2^2\\right)"
+  },
+  {
+    "title": "1φ full converter",
+    "tex": "V_a = \\frac{2V_m}{\\pi}\\cos\\alpha",
+    "note": "Continuous conduction"
+  },
+  {
+    "title": "1φ half converter",
+    "tex": "V_a = \\frac{V_m}{\\pi}(1+\\cos\\alpha)"
+  },
+  {
+    "title": "3φ full converter",
+    "tex": "V_a = \\frac{3\\sqrt{3}V_m}{\\pi}\\cos\\alpha",
+    "note": "$V_m$ is the peak phase voltage"
+  },
+  {
+    "title": "Synchronous speed",
+    "tex": "N_s = \\frac{120 f}{P}"
+  },
+  {
+    "title": "Slip",
+    "tex": "S = \\frac{N_s - N_m}{N_s}"
+  },
+  {
+    "title": "Rotor power split",
+    "tex": "P_{cu2} = S P_g,\\quad P_m = (1-S) P_g"
+  },
+  {
+    "title": "IM torque",
+    "tex": "T_d = \\frac{3R_r'V_s^2}{S\\,\\omega_s\\left[\\left(R_s + \\frac{R_r'}{S}\\right)^2 + \\left(X_s + X_r'\\right)^2\\right]}"
+  },
+  {
+    "title": "Slip at maximum torque",
+    "tex": "S_m = \\pm\\frac{R_r'}{\\sqrt{R_s^2 + (X_s+X_r')^2}}"
+  },
+  {
+    "title": "Max torque, constant flux",
+    "tex": "T_{max} = \\frac{3V_s^2}{2\\omega_s\\left[R_s + \\sqrt{R_s^2 + (X_s + X_r')^2}\\right]}"
+  },
+  {
+    "title": "V/f control",
+    "tex": "\\frac{V}{f} = \\text{constant}\\ \\Rightarrow\\ \\phi \\approx \\text{constant}",
+    "note": "Below base speed"
+  }
 ]

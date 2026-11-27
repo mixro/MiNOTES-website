@@ -1,10 +1,122 @@
 [
-  { "front": "Fundamental torque equation", "back": "$T_m - T_L = J\\,\\frac{d\\omega_m}{dt}$" },
-  { "front": "Back EMF of a DC motor", "back": "$E_b = K\\phi\\,\\omega$" },
-  { "front": "DC motor torque", "back": "$T = K\\phi\\,I_a$" },
-  { "front": "Synchronous speed", "back": "$n_s = \\frac{120f}{P}$" },
-  { "front": "Slip", "back": "$s = \\frac{n_s - n_r}{n_s}$" },
-  { "front": "Quadrant II operation", "back": "Forward braking: positive speed, negative torque." },
-  { "front": "Why V/f control?", "back": "Keeps the air-gap flux constant while speed changes." },
-  { "front": "Field weakening region", "back": "Above base speed; constant power, torque falls." }
+  {
+    "front": "Electric drive",
+    "back": "A system that controls the motion of a machine using an electric motor: source, power modulator, motor, load, control and sensing."
+  },
+  {
+    "front": "Five parts of a drive",
+    "back": "Power source, power modulator (converter), motor, mechanical load, control unit with sensors."
+  },
+  {
+    "front": "Group drive",
+    "back": "One motor drives several machines through a line shaft. Cheap, but one fault stops everything."
+  },
+  {
+    "front": "Individual drive",
+    "back": "Each machine has its own motor."
+  },
+  {
+    "front": "Multi-motor drive",
+    "back": "Each mechanism of one complex machine has its own motor, e.g. rolling mills, paper machines."
+  },
+  {
+    "front": "Active load torque",
+    "back": "Comes from gravity or stored energy (hoists, lifts). Keeps its direction when motion reverses."
+  },
+  {
+    "front": "Passive load torque",
+    "back": "Always opposes motion: friction, cutting, windage."
+  },
+  {
+    "front": "Load torque law",
+    "back": "$T = C\\,T_r\\left(\\frac{n}{n_r}\\right)^k$, with $k = 0$ (hoist), $1$, $2$ (fan, pump), $-1$ (constant power)."
+  },
+  {
+    "front": "Fundamental torque equation",
+    "back": "$T_m - T_L = J\\,\\dfrac{d\\omega_m}{dt}$"
+  },
+  {
+    "front": "Steady-state stability",
+    "back": "$\\dfrac{dT_L}{d\\omega} > \\dfrac{dT_m}{d\\omega}$ at the operating point."
+  },
+  {
+    "front": "DC series motor curve",
+    "back": "$n \\propto 1/\\sqrt{T}$: high starting torque, speed falls steeply. Never run unloaded."
+  },
+  {
+    "front": "Quadrant I",
+    "back": "Forward motoring: $+\\omega$, $+T$."
+  },
+  {
+    "front": "Quadrant II",
+    "back": "Forward braking: $+\\omega$, $-T$."
+  },
+  {
+    "front": "Quadrant III",
+    "back": "Reverse motoring: $-\\omega$, $-T$."
+  },
+  {
+    "front": "Quadrant IV",
+    "back": "Reverse braking: $-\\omega$, $+T$, e.g. lowering a heavy hoist load."
+  },
+  {
+    "front": "Regenerative braking",
+    "back": "$E_b > V$: the motor generates and returns energy to the supply."
+  },
+  {
+    "front": "Dynamic braking",
+    "back": "Armature disconnected from the supply and connected across a resistor; energy burnt as heat."
+  },
+  {
+    "front": "Plugging",
+    "back": "Supply reversed while running. Fast, but wastes the most energy; must disconnect at zero speed."
+  },
+  {
+    "front": "Heating curve",
+    "back": "$\\theta = \\theta_{ss}\\left(1 - e^{-t/\\tau}\\right) + \\theta_0 e^{-t/\\tau}$"
+  },
+  {
+    "front": "Heating time constant",
+    "back": "$\\tau = C/D$: thermal capacity over heat dissipation rate."
+  },
+  {
+    "front": "Duty classes",
+    "back": "Continuous, short-time, intermittent periodic, and their variations (S1 to S8)."
+  },
+  {
+    "front": "Equivalent current",
+    "back": "$I_{eq} = \\sqrt{\\dfrac{\\sum I_k^2 t_k}{\\sum t_k}}$"
+  },
+  {
+    "front": "Load equalisation",
+    "back": "A flywheel stores energy at light load and releases it at peak load to smooth the supply demand."
+  },
+  {
+    "front": "Full converter output",
+    "back": "$V_a = \\dfrac{2V_m}{\\pi}\\cos\\alpha$ (continuous conduction)"
+  },
+  {
+    "front": "Dual converter",
+    "back": "Two full converters back to back: four-quadrant operation of a DC motor."
+  },
+  {
+    "front": "Synchronous speed",
+    "back": "$N_s = \\dfrac{120f}{P}$"
+  },
+  {
+    "front": "Slip",
+    "back": "$s = \\dfrac{N_s - N}{N_s}$"
+  },
+  {
+    "front": "Rotor power split",
+    "back": "$P_g : P_{cu2} : P_m = 1 : s : (1-s)$"
+  },
+  {
+    "front": "V/f control",
+    "back": "Keep $V/f$ constant below base speed to hold the flux; above base speed $V$ is capped and the flux weakens."
+  },
+  {
+    "front": "Rotor resistance control",
+    "back": "Raises the slip for maximum torque; poor efficiency because slip power is burnt in the resistors."
+  }
 ]

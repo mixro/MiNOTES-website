@@ -1,14 +1,357 @@
 {
-  "timeLimit": 720,
+  "timeLimit": 1200,
   "questions": [
-    { "type": "mcq", "topic": "Drive dynamics", "q": "If $T_m > T_L$, the drive will:", "options": ["Run at constant speed", "Accelerate", "Decelerate", "Stall"], "answer": 1, "explain": "$J\\,d\\omega/dt = T_m - T_L > 0$, so speed increases." },
-    { "type": "short", "topic": "Induction motors", "q": "What is the synchronous speed of a 4-pole, 50 Hz induction motor?", "answer": 1500, "tolerance": 0, "unit": "rpm", "explain": "$n_s = 120f/P = 120 \\times 50 / 4 = 1500$ rpm." },
-    { "type": "short", "topic": "Induction motors", "q": "The same motor runs at 1440 rpm. What is the slip? Give a decimal.", "answer": 0.04, "tolerance": 0.01, "explain": "$s = (1500 - 1440)/1500 = 0.04$." },
-    { "type": "mcq", "topic": "Load types", "q": "For a centrifugal pump, load torque varies with speed as:", "options": ["Constant", "$\\propto \\omega$", "$\\propto \\omega^2$", "$\\propto 1/\\omega$"], "answer": 2, "explain": "Fan and pump loads have torque proportional to speed squared." },
-    { "type": "mcq", "topic": "DC drives", "q": "Speed control of a DC motor above base speed is done by:", "options": ["Increasing armature voltage", "Field weakening", "Adding armature resistance", "Plugging"], "answer": 1, "explain": "Reducing $\\phi$ raises speed in the constant power region." },
-    { "type": "short", "topic": "DC drives", "q": "A 220 V DC motor has $R_a = 0.5\\ \\Omega$ and $K\\phi = 1.2$ V·s/rad. Find the speed in rad/s at $I_a = 20$ A.", "answer": 175, "tolerance": 0.01, "unit": "rad/s", "explain": "$\\omega = (220 - 20 \\times 0.5)/1.2 = 175$ rad/s." },
-    { "type": "mcq", "topic": "Braking", "q": "Which braking method returns energy to the supply?", "options": ["Plugging", "Dynamic braking", "Regenerative braking", "Mechanical braking"], "answer": 2, "explain": "In regenerative braking $E_b > V$ and power flows back to the source." },
-    { "type": "mcq", "topic": "Four quadrants", "q": "Positive speed with negative torque is which quadrant?", "options": ["I", "II", "III", "IV"], "answer": 1, "explain": "Quadrant II is forward braking." },
-    { "type": "mcq", "topic": "Induction motors", "q": "Why is $V/f$ kept constant in variable-frequency control?", "options": ["To keep slip constant", "To keep air-gap flux constant", "To keep current at zero", "To raise the power factor to 1"], "answer": 1, "explain": "Flux is proportional to $V/f$; keeping it constant avoids saturation and keeps torque capability." }
+    {
+      "type": "mcq",
+      "topic": "Concept",
+      "q": "Which part of an electric drive adapts the supply to what the motor needs?",
+      "options": [
+        "Sensing unit",
+        "Power modulator (converter)",
+        "Load",
+        "Control unit"
+      ],
+      "answer": 1,
+      "explain": "The power modulator (converter) changes voltage, current and frequency to suit the motor."
+    },
+    {
+      "type": "mcq",
+      "topic": "Concept",
+      "q": "Which of these is NOT an advantage of electric drives?",
+      "options": [
+        "Available in a wide range of power ratings",
+        "Can be started and loaded quickly",
+        "Can hold a load with zero electrical braking torque",
+        "Clean, with no exhaust fumes"
+      ],
+      "answer": 2,
+      "explain": "Electrical braking cannot produce a holding torque; a mechanical brake is needed for that."
+    },
+    {
+      "type": "mcq",
+      "topic": "Classification",
+      "q": "A single motor driving several machines through a line shaft is a:",
+      "options": [
+        "Individual drive",
+        "Group drive",
+        "Multi-motor drive",
+        "Servo drive"
+      ],
+      "answer": 1,
+      "explain": "In a group drive one motor drives a shaft that feeds several machines through belts and pulleys."
+    },
+    {
+      "type": "mcq",
+      "topic": "Classification",
+      "q": "Which drive is typical of rolling mills and paper machines, where each part of one machine has its own motor?",
+      "options": [
+        "Group drive",
+        "Individual drive",
+        "Multi-motor drive",
+        "Line shaft drive"
+      ],
+      "answer": 2,
+      "explain": "Multi-motor drives give each mechanism of a complex machine its own motor."
+    },
+    {
+      "type": "mcq",
+      "topic": "Loads",
+      "q": "The torque of a loaded hoist (lifting a weight) is:",
+      "options": [
+        "Passive",
+        "Active",
+        "Zero at standstill",
+        "Proportional to speed squared"
+      ],
+      "answer": 1,
+      "explain": "Gravity gives an active load torque that keeps its direction even when the motion reverses."
+    },
+    {
+      "type": "mcq",
+      "topic": "Loads",
+      "q": "For a fan or centrifugal pump the load torque varies roughly as:",
+      "options": [
+        "Constant",
+        "$n$",
+        "$n^2$",
+        "$1/n$"
+      ],
+      "answer": 2,
+      "explain": "Fan and pump loads follow $T \\propto n^2$, so $k = 2$ in $T = C\\,T_r (n/n_r)^k$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Loads",
+      "q": "A machine tool in a lathe needing constant power has load torque that varies as:",
+      "options": [
+        "$n^2$",
+        "$n$",
+        "Constant",
+        "$1/n$"
+      ],
+      "answer": 3,
+      "explain": "Constant power means $T\\omega$ is constant, so $T \\propto 1/n$ ($k = -1$)."
+    },
+    {
+      "type": "mcq",
+      "topic": "Speed–torque",
+      "q": "Which motor has the steepest fall of speed with torque, making it ideal for traction?",
+      "options": [
+        "DC shunt",
+        "DC series",
+        "Synchronous",
+        "Induction near synchronous speed"
+      ],
+      "answer": 1,
+      "explain": "For a DC series motor $T \\propto I^2$ and $n \\propto 1/I$, so $n \\propto 1/\\sqrt{T}$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Speed–torque",
+      "q": "A synchronous motor's speed–torque characteristic is:",
+      "options": [
+        "A rising line",
+        "A falling curve",
+        "A horizontal line up to pull-out torque",
+        "A hyperbola"
+      ],
+      "answer": 2,
+      "explain": "Speed stays at synchronous speed until the load exceeds the pull-out torque."
+    },
+    {
+      "type": "mcq",
+      "topic": "Speed–torque",
+      "q": "The operating point of a drive is stable if, near equilibrium:",
+      "options": [
+        "$dT_m/dn > dT_L/dn$",
+        "$dT_m/dn < dT_L/dn$",
+        "$T_m > T_L$ at all speeds",
+        "$T_L = 0$"
+      ],
+      "answer": 1,
+      "explain": "A small speed rise must make load torque exceed motor torque, so the drive slows back down."
+    },
+    {
+      "type": "mcq",
+      "topic": "Four quadrants",
+      "q": "Positive speed with negative (braking) torque is quadrant:",
+      "options": [
+        "I",
+        "II",
+        "III",
+        "IV"
+      ],
+      "answer": 1,
+      "explain": "Quadrant II is forward braking: the machine generates while turning forward."
+    },
+    {
+      "type": "mcq",
+      "topic": "Four quadrants",
+      "q": "A hoist lowering a heavy load, with the motor holding it back, works in quadrant:",
+      "options": [
+        "I",
+        "II",
+        "III",
+        "IV"
+      ],
+      "answer": 3,
+      "explain": "Speed is reversed (down) while motor torque still acts upward: reverse braking, quadrant IV."
+    },
+    {
+      "type": "mcq",
+      "topic": "Braking",
+      "q": "Which braking method reverses the supply to the armature and wastes the most energy?",
+      "options": [
+        "Regenerative",
+        "Dynamic (rheostatic)",
+        "Plugging",
+        "Mechanical"
+      ],
+      "answer": 2,
+      "explain": "Plugging dissipates both the kinetic energy and power drawn from the supply in the resistance."
+    },
+    {
+      "type": "mcq",
+      "topic": "Braking",
+      "q": "Regenerative braking of a DC motor occurs when:",
+      "options": [
+        "$E_b < V$",
+        "$E_b > V$",
+        "The armature is short-circuited",
+        "The field is opened"
+      ],
+      "answer": 1,
+      "explain": "When the back EMF exceeds the supply voltage, current reverses and power flows back to the supply."
+    },
+    {
+      "type": "mcq",
+      "topic": "Braking",
+      "q": "In dynamic braking the armature is:",
+      "options": [
+        "Connected to a higher supply",
+        "Disconnected and switched across a resistor",
+        "Reversed on the supply",
+        "Left open-circuited"
+      ],
+      "answer": 1,
+      "explain": "The kinetic energy is dissipated as heat in the braking resistor."
+    },
+    {
+      "type": "mcq",
+      "topic": "Heating",
+      "q": "A motor's temperature rise reaches about 63.2% of its final value after:",
+      "options": [
+        "One heating time constant",
+        "Two time constants",
+        "Five time constants",
+        "Half a time constant"
+      ],
+      "answer": 0,
+      "explain": "$\\theta = \\theta_{ss}(1 - e^{-t/\\tau})$, and at $t = \\tau$ this is $1 - e^{-1} = 0.632$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Heating",
+      "q": "The heating time constant is $\\tau = C/D$. For the cooling time constant of a self-ventilated motor at standstill:",
+      "options": [
+        "It is shorter than the heating constant",
+        "It is longer, because ventilation is poorer",
+        "It is the same",
+        "It is zero"
+      ],
+      "answer": 1,
+      "explain": "At standstill a self-cooled motor loses its fan airflow, so $D$ falls and the cooling time constant is longer."
+    },
+    {
+      "type": "mcq",
+      "topic": "Rating",
+      "q": "The equivalent current method sizes a motor for a varying load using:",
+      "options": [
+        "The peak current",
+        "The average current",
+        "The rms current over the cycle",
+        "The starting current"
+      ],
+      "answer": 2,
+      "explain": "Copper losses depend on $I^2$, so the rms current gives the same heating."
+    },
+    {
+      "type": "mcq",
+      "topic": "Load equalisation",
+      "q": "Why is a flywheel fitted to a pulsating load such as a press?",
+      "options": [
+        "To raise the motor speed",
+        "To smooth the power taken from the supply",
+        "To brake the motor",
+        "To reduce inertia"
+      ],
+      "answer": 1,
+      "explain": "The flywheel stores energy at light load and gives it back at peak load, so the motor and supply see a smoother demand."
+    },
+    {
+      "type": "mcq",
+      "topic": "Rectifier drives",
+      "q": "In a single-phase fully controlled rectifier with continuous conduction, the average output voltage is:",
+      "options": [
+        "$\\frac{2V_m}{\\pi}\\cos\\alpha$",
+        "$\\frac{V_m}{\\pi}(1+\\cos\\alpha)$",
+        "$\\frac{3\\sqrt3 V_m}{\\pi}\\cos\\alpha$",
+        "$V_m\\cos\\alpha$"
+      ],
+      "answer": 0,
+      "explain": "For a full converter $V_a = \\frac{2V_m}{\\pi}\\cos\\alpha$; it goes negative for $\\alpha > 90°$, which allows regeneration."
+    },
+    {
+      "type": "mcq",
+      "topic": "Rectifier drives",
+      "q": "A fully controlled converter can work in which quadrants on its own?",
+      "options": [
+        "I only",
+        "I and II",
+        "I and IV",
+        "All four"
+      ],
+      "answer": 2,
+      "explain": "Current cannot reverse, but voltage can, so it works in quadrants I and IV. A dual converter is needed for all four."
+    },
+    {
+      "type": "mcq",
+      "topic": "AC drives",
+      "q": "Below base speed, V/f control keeps what constant?",
+      "options": [
+        "Slip",
+        "Air-gap flux",
+        "Rotor current",
+        "Stator resistance"
+      ],
+      "answer": 1,
+      "explain": "Keeping $V/f$ constant keeps the flux, and so the maximum torque, roughly constant."
+    },
+    {
+      "type": "mcq",
+      "topic": "AC drives",
+      "q": "Adding resistance to the rotor of a slip-ring induction motor:",
+      "options": [
+        "Reduces the maximum torque",
+        "Moves maximum torque to a higher slip, raising starting torque",
+        "Raises the synchronous speed",
+        "Has no effect on speed"
+      ],
+      "answer": 1,
+      "explain": "$s_{max} \\propto R_2$, while the maximum torque itself stays the same."
+    },
+    {
+      "type": "short",
+      "topic": "AC drives",
+      "q": "What is the synchronous speed of a 6-pole, 50 Hz induction motor in rpm?",
+      "answer": 1000,
+      "tolerance": 0,
+      "unit": "rpm",
+      "explain": "$N_s = 120f/P = 120 \\times 50/6 = 1000$ rpm."
+    },
+    {
+      "type": "short",
+      "topic": "AC drives",
+      "q": "A 4-pole, 50 Hz induction motor runs at 1425 rpm. What is its slip? Give a decimal.",
+      "answer": 0.05,
+      "tolerance": 0.02,
+      "explain": "$N_s = 1500$ rpm, so $s = (1500-1425)/1500 = 0.05$."
+    },
+    {
+      "type": "short",
+      "topic": "AC drives",
+      "q": "The rotor input power is 10 kW at slip 0.04. What is the rotor copper loss in watts?",
+      "answer": 400,
+      "tolerance": 0.02,
+      "unit": "W",
+      "explain": "Rotor copper loss $= s\\,P_g = 0.04 \\times 10\\,000 = 400$ W."
+    },
+    {
+      "type": "short",
+      "topic": "Heating",
+      "q": "A motor has $\\theta_{ss} = 60$ °C and $\\tau = 60$ min. Starting cold, what is its temperature rise after 60 min, in °C?",
+      "answer": 37.9,
+      "tolerance": 0.02,
+      "unit": "°C",
+      "explain": "$\\theta = 60(1 - e^{-1}) = 37.9$ °C."
+    },
+    {
+      "type": "short",
+      "topic": "Braking",
+      "q": "A DC shunt motor on 220 V has $R_a = 0.5\\ \\Omega$ and runs with $E_b = 210$ V. What is the armature current in A?",
+      "answer": 20,
+      "tolerance": 0.01,
+      "unit": "A",
+      "explain": "$I_a = (V - E_b)/R_a = (220-210)/0.5 = 20$ A."
+    },
+    {
+      "type": "short",
+      "topic": "Rectifier drives",
+      "q": "A single-phase full converter has $V_m = 325$ V and $\\alpha = 60°$. What is the average armature voltage in volts?",
+      "answer": 103.5,
+      "tolerance": 0.02,
+      "unit": "V",
+      "explain": "$V_a = \\frac{2 \\times 325}{\\pi}\\cos 60° = 103.5$ V."
+    }
   ]
 }
