@@ -1,5 +1,5 @@
 import { Check, CheckCircle2, ChevronLeft, ChevronRight, Circle } from 'lucide-react';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getModule, getNotes } from '../lib/content';
 import { useProgress } from '../lib/progress';
@@ -12,6 +12,15 @@ export default function Chapter() {
   const m = getModule(id);
   const i = m ? m.chapters.findIndex((c) => c.id === chapter) : -1;
   const text = useMemo(() => (i >= 0 ? getNotes(m, m.chapters[i]) : ''), [m, i]);
+  const listRef = useRef(null);
+  // On phones the chapter list is a horizontal strip: keep the current chapter in view.
+  useEffect(() => {
+    const list = listRef.current;
+    const on = list && list.querySelector('a.on');
+    if (on && list.scrollWidth > list.clientWidth) {
+      list.scrollTo({ left: on.offsetLeft - (list.clientWidth - on.offsetWidth) / 2, behavior: 'smooth' });
+    }
+  }, [i]);
   if (i < 0) return <NotFound />;
 
   const c = m.chapters[i];
@@ -25,7 +34,7 @@ export default function Chapter() {
       <aside className="toc" aria-label="Chapters">
         <div className="crumbs" style={{ marginBottom: 14 }}><Link className="back" to={`/m/${m.id}`}><ChevronLeft size={16} strokeWidth={2.4} />{m.title}</Link></div>
         <h4>Chapters</h4>
-        <div className="toc-list">
+        <div className="toc-list" ref={listRef}>
           {m.chapters.map((x) => (
             <Link key={x.id} to={`/m/${m.id}/notes/${x.id}`} className={x.id === c.id ? 'on' : undefined}>
               {x.title}{state.done[`${m.id}/${x.id}`] && <Check className="tick" size={14} strokeWidth={3} />}

@@ -527,3 +527,17 @@ a.row:hover { background: color-mix(in srgb, var(--bg-sunken) 55%, transparent);
 .tq-toggle.on svg { transform: rotate(180deg); }
 .tq-a { margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
 .tq-a > :last-child { margin-bottom: 0; }
+
+/* Mobile chapter strip: full-width pills, clean horizontal scroll, no scrollbar */
+@media (max-width: 860px) {
+  .toc-list { position: relative; gap: 8px; overflow-x: auto; overflow-y: hidden; padding: 4px 2px 6px; margin: 0 -2px; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; overscroll-behavior-x: contain; }
+  .toc-list::-webkit-scrollbar { display: none; }
+  .toc-list a { flex: none; display: inline-flex; justify-content: flex-start; gap: 6px; padding: 8px 14px; border-radius: 999px; font-size: 14px; line-height: 1.2; scroll-snap-align: start; }
+  .toc-list a.on { background: var(--bg-elev); }
+}
+.segmented a, .segmented button { flex: none; }
+
+/* No blue tap flash on touch; keyboard focus keeps the :focus-visible ring */
+html { -webkit-tap-highlight-color: transparent; }
+a, button, [role="button"], label, summary { -webkit-tap-highlight-color: transparent; }
+:focus:not(:focus-visible) { outline: none; }
