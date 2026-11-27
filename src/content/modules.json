@@ -76,7 +76,7 @@
       "credits": 12,
       "color": "#248a3d",
       "icon": "motor",
-      "summary": "Drive parts and types, loads and duty, speed–torque curves and four quadrants, braking, motor heating and rating, converter-fed DC drives and AC drive speed control.",
+      "summary": "Drive parts and types, loads and duty, speed–torque curves and four quadrants, braking, motor heating and rating, converter and chopper fed DC drives, AC drive speed control and induction motor starting.",
       "chapters": [
         {
           "id": "01-introduction",
@@ -121,10 +121,22 @@
           "file": "notes/07-rectifier-dc-drives.md"
         },
         {
-          "id": "08-ac-drives",
+          "id": "08-dc-dc-converters",
+          "title": "DC–DC converters (choppers)",
+          "summary": "Buck, boost and buck-boost, with worked designs",
+          "file": "notes/08-dc-dc-converters.md"
+        },
+        {
+          "id": "09-ac-drives",
           "title": "AC drives",
           "summary": "Induction motor control, V/f, slip power",
-          "file": "notes/08-ac-drives.md"
+          "file": "notes/09-ac-drives.md"
+        },
+        {
+          "id": "10-starting-induction-motors",
+          "title": "Starting induction motors",
+          "summary": "DOL, star–delta, auto-transformer, starter sizing",
+          "file": "notes/10-starting-induction-motors.md"
         }
       ],
       "quiz": "quiz.json",

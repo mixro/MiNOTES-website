@@ -13,7 +13,7 @@ A drive needs a **prime mover** to supply the mechanical energy. Prime movers in
 - gas or steam turbines
 - hydraulic motors and pneumatic cylinders
 
-> A drive that uses an **electric motor** as its prime mover is called an **electric drive**.
+> A **drive** is a system that provides **controlled motion to a load** using a prime mover. A drive that uses an **electric motor** as its prime mover is called an **electric drive**.
 
 ## Concept of an electric drive
 
@@ -36,6 +36,18 @@ In simple words, the systems that control the motion of electrical machines are 
 7. They can operate in **all four quadrants** of the speed–torque plane.
 8. **Electric braking** gives smooth deceleration and longer equipment life; **regenerative braking** saves energy.
 9. They run on **electrical energy**, which is easy to transmit, store and handle.
+
+**Examples from class**
+
+| Advantage | Example |
+|---|---|
+| Easy control of speed and torque over a wide range | A **VFD** controlling the speed of a pump or conveyor |
+| Efficient starting and braking with little energy loss | **Regenerative braking** in electric cranes and trains |
+| Easy conversion of power to the form needed | **AC–DC–AC converters** in electric vehicle drives |
+| Advanced digital control | **PLCs and microcontrollers** give accurate, automatic control |
+| Simple control equipment | **Soft starters** replacing mechanical starters |
+
+Electric drives are found in **electric traction** (trains, trams), **elevators and lifts**, **conveyor belts**, **electric vehicles**, and industrial **pumps and fans**.
 
 ## Parts of an electric drive
 
@@ -80,3 +92,5 @@ Converters can be divided into five types by function:
 | Cyclo-converter | AC → AC (frequency change) | 10 A |
 
 **Task:** in groups of five, build one converter, test it, and present it in class (one student presents for the group).
+
+Choppers are covered in detail in the chapter on DC–DC converters.

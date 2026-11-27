@@ -78,3 +78,5 @@ A motor started at full voltage draws a large **starting current**. The resultin
    Starting torque is reduced.
 3. **Increased-torque starting:** in a **wound-rotor** induction motor, extra **rotor resistance** reduces the current while **raising starting torque**, even up to the motor's maximum torque.
 4. **Smooth variation of voltage or frequency:** a DC motor can be started by raising its voltage smoothly (for example from an AC motor–DC generator set). Induction and synchronous motors can be started from a variable-frequency source, raising frequency and voltage **in proportion**.
+
+Starters for induction motors (DOL, star–delta, auto-transformer and rotor resistance), with sizing examples, are covered in the chapter **Starting induction motors**.

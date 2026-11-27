@@ -37,7 +37,7 @@ Per-phase equivalent circuit: stator $R_s$, $X_s$; magnetising branch $X_m$ with
 | Core loss | $P_c = \dfrac{3V_m^2}{R_m} \approx \dfrac{3V_s^2}{R_m}$ |
 | Air-gap power | $P_g = 3(I_r')^2\dfrac{R_r'}{S}$ |
 | Developed power | $P_d = P_g - P_{ru} = P_g(1 - S)$ |
-| Developed torque | $T_d = \dfrac{P_d}{\omega_m} = \dfrac{P_g}{\omega_s}$ |
+| Developed torque | $T_d = \dfrac{P_d}{\omega_m} = \dfrac{P_g}{\omega_s} = \dfrac{60P_d}{2\pi N_m}$ N·m |
 | Input power | $P_i = 3V_sI_s\cos\phi_m = P_c + P_{su} + P_g$ |
 | Efficiency | $\eta = \dfrac{P_o}{P_i}$, with $P_o = P_d - P_{no\,load}$ |
 

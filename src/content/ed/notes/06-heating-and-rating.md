@@ -52,7 +52,11 @@ $$\tau\frac{d\theta}{dt} + \theta = \theta_{ss}$$
 
 ### Heating
 
-Solving this first-order equation with initial temperature rise $\theta_1$:
+Solving this first-order equation: the homogeneous part $\tau\,\dfrac{d\theta}{dt} + \theta = 0$ has characteristic root $\tau m + 1 = 0$, so $m = -1/\tau$. The complete solution is the complementary function plus the particular integral:
+
+$$\theta = K e^{-t/\tau} + \theta_{ss}$$
+
+At $t = 0$ the temperature rise is $\theta_1$, so $K = \theta_1 - \theta_{ss}$. Therefore, with initial temperature rise $\theta_1$:
 
 $$\theta = \theta_{ss}\left(1 - e^{-t/\tau}\right) + \theta_1 e^{-t/\tau}$$
 

@@ -46,7 +46,11 @@ Conditions:
 - The source and motor circuit must be able to **carry current in either direction**.
 - The converter must **not be a semi-converter**.
 
-> **Homework:** why can regenerative braking not take place in a DC series motor? *(Hint: if the current reverses, the series field reverses too, so the back EMF also reverses and can never exceed the supply voltage.)*
+In regenerative braking $|E_b| > |V|$ and the armature current is **negative**: power flows back to the supply.
+
+> **Homework:** why can regenerative braking not take place in a DC series motor?
+>
+> **Answer:** when the current reverses during generation, the **series field reverses too** and weakens the flux. The motor cannot keep up the generated EMF needed to feed power back to the supply.
 
 ### 2. Dynamic (rheostatic) braking
 
@@ -57,6 +61,11 @@ The motor is disconnected from the supply and its armature is connected across a
 The supply is **reversed**, so the motor tries to turn the other way. It is very fast but **highly inefficient**: the generated power **and** extra power from the supply are both wasted in the braking resistance.
 
 ## DC shunt motor relations
+
+For a motor fed from a single-phase full converter with firing angle $\alpha$:
+
+$$E_a(\alpha) = \frac{2E_m}{\pi}\cos\alpha = I_aR_a + E_b, \qquad E_b = K_a\phi\,\omega$$
+
 
 From the speed equation:
 

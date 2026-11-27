@@ -13,6 +13,11 @@
 
 **Three-phase converter drives** and **chopper drives** follow the same ideas.
 
+- A **half-controlled** rectifier controls the DC voltage in **one direction (one quadrant)** only.
+- A single-phase **full converter** varies $V_a$ in both polarities: a **two-quadrant** drive, limited to applications up to about **15 kW**.
+
+**Assignment topics:** single-phase full converter drive, single-phase dual converter drive, three-phase converter drive, chopper drives, VFDs.
+
 ## How the speed of a DC motor is controlled
 
 The speed of a separately excited DC motor can be varied by:
@@ -91,5 +96,5 @@ So in discontinuous conduction the average voltage **depends on the back EMF**, 
 
 - Single-phase dual converter drive
 - Three-phase converter drives: $V_a = \dfrac{3\sqrt{3}V_m}{\pi}\cos\alpha$ for a full converter, with $V_m$ the peak phase voltage
-- Chopper (DC–DC) drives: $V_a = DV_s$ for duty cycle $D$
+- Chopper (DC–DC) drives: $V_a = DV_s$ for duty cycle $D$ (see the DC–DC converters chapter)
 - Variable-frequency drives (see the AC drives chapter)

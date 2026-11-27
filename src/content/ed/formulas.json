@@ -78,6 +78,38 @@
     "note": "$V_m$ is the peak phase voltage"
   },
   {
+    "title": "Buck output",
+    "tex": "V_o = \\delta E"
+  },
+  {
+    "title": "Buck inductor currents",
+    "tex": "I_{max,\\,min} = \\delta E\\left[\\frac{1}{R} \\pm \\frac{(1-\\delta)T}{2L}\\right]"
+  },
+  {
+    "title": "Buck critical inductance",
+    "tex": "L_{crit} = \\frac{(1-\\delta)TR}{2}"
+  },
+  {
+    "title": "Buck output ripple",
+    "tex": "\\frac{\\Delta V_o}{V_o} = \\frac{1-\\delta}{8LCf^2}"
+  },
+  {
+    "title": "Boost output",
+    "tex": "V_o = \\frac{E}{1-\\delta},\\quad I_L = \\frac{I_o}{1-\\delta}"
+  },
+  {
+    "title": "Boost critical inductance",
+    "tex": "L_c = \\frac{RT}{2}\\,\\delta(1-\\delta)^2,\\quad \\frac{\\Delta V_o}{V_o} = \\frac{\\delta}{RCf}"
+  },
+  {
+    "title": "Buck-boost output",
+    "tex": "|V_o| = \\frac{\\delta E}{1-\\delta},\\quad \\delta = \\frac{V_o}{V_o+V_{in}}"
+  },
+  {
+    "title": "Inductor ripple (boost, buck-boost)",
+    "tex": "\\Delta I_L = \\frac{E\\,\\delta T}{L}"
+  },
+  {
     "title": "Synchronous speed",
     "tex": "N_s = \\frac{120 f}{P}"
   },
@@ -105,5 +137,21 @@
     "title": "V/f control",
     "tex": "\\frac{V}{f} = \\text{constant}\\ \\Rightarrow\\ \\phi \\approx \\text{constant}",
     "note": "Below base speed"
+  },
+  {
+    "title": "Full-load current",
+    "tex": "I_{FL} = \\frac{P_o}{\\sqrt3\\,V_L\\,\\text{pf}\\,\\eta}"
+  },
+  {
+    "title": "Star–delta starting",
+    "tex": "I_{st,\\,Y\\Delta} = \\tfrac13\\,I_{st,\\,DOL}"
+  },
+  {
+    "title": "Auto-transformer starting",
+    "tex": "I_{st,\\,line} = x^2 I_{sc}"
+  },
+  {
+    "title": "Reduced-voltage starting torque",
+    "tex": "\\frac{T_{st}}{T_{FL}} = K^2\\left(\\frac{I_{sc}}{I_{FL}}\\right)^2 s_{FL}"
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "timeLimit": 1200,
+  "timeLimit": 1500,
   "questions": [
     {
       "type": "mcq",
@@ -352,6 +352,126 @@
       "tolerance": 0.02,
       "unit": "V",
       "explain": "$V_a = \\frac{2 \\times 325}{\\pi}\\cos 60° = 103.5$ V."
+    },
+    {
+      "type": "mcq",
+      "topic": "DC–DC converters",
+      "q": "In continuous conduction, the output of a buck converter with duty cycle $\\delta$ is:",
+      "options": [
+        "$\\delta E$",
+        "$E/(1-\\delta)$",
+        "$\\delta E/(1-\\delta)$",
+        "$(1-\\delta)E$"
+      ],
+      "answer": 0,
+      "explain": "Equal inductor current rise and fall give $(E-V_c)\\delta = V_c(1-\\delta)$, so $V_c = \\delta E$."
+    },
+    {
+      "type": "mcq",
+      "topic": "DC–DC converters",
+      "q": "Which converter gives an inverted output that can be above or below the input?",
+      "options": [
+        "Buck",
+        "Boost",
+        "Buck-boost",
+        "Half-bridge inverter"
+      ],
+      "answer": 2,
+      "explain": "For a buck-boost, $|V_o| = \\delta E/(1-\\delta)$ with reversed polarity."
+    },
+    {
+      "type": "mcq",
+      "topic": "DC–DC converters",
+      "q": "Discontinuous conduction in a chopper means:",
+      "options": [
+        "The switch never opens",
+        "The inductor current is zero for part of each cycle",
+        "The capacitor voltage is zero",
+        "The diode never conducts"
+      ],
+      "answer": 1,
+      "explain": "In DCM the inductor current falls to zero before the next switching period starts."
+    },
+    {
+      "type": "short",
+      "topic": "DC–DC converters",
+      "q": "A buck converter has $R = 1.44\\ \\Omega$, $\\delta = 0.6$ and $f = 10$ kHz. What is the critical inductance in µH?",
+      "answer": 28.8,
+      "tolerance": 0.02,
+      "unit": "µH",
+      "explain": "$L = \\frac{TR}{2}(1-\\delta) = \\frac{0.0001 \\times 1.44}{2}(0.4) = 28.8\\ \\mu$H."
+    },
+    {
+      "type": "short",
+      "topic": "DC–DC converters",
+      "q": "A boost converter steps 40 V up to 150 V. What is the duty cycle? Give a decimal.",
+      "answer": 0.733,
+      "tolerance": 0.01,
+      "explain": "$\\delta = 1 - V_{in}/V_o = 1 - 40/150 = 0.733$."
+    },
+    {
+      "type": "short",
+      "topic": "DC–DC converters",
+      "q": "A buck-boost converter gives 50 V from a 35 V source. What is the duty cycle? Give a decimal.",
+      "answer": 0.588,
+      "tolerance": 0.01,
+      "explain": "$\\delta = V_o/(V_o + V_{in}) = 50/85 = 0.588$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Motor starting",
+      "q": "Star–delta starting reduces the starting line current to what fraction of its DOL value?",
+      "options": [
+        "$1/\\sqrt3$",
+        "$1/3$",
+        "$1/2$",
+        "$1/9$"
+      ],
+      "answer": 1,
+      "explain": "Each phase gets $V_L/\\sqrt3$ and the star connection reduces line current again by $\\sqrt3$, giving one third."
+    },
+    {
+      "type": "mcq",
+      "topic": "Motor starting",
+      "q": "Why is a starter used with a 3-phase induction motor?",
+      "options": [
+        "The motor cannot start on its own",
+        "To reduce starting current and give overload protection",
+        "To raise the supply frequency",
+        "To reverse the rotating field"
+      ],
+      "answer": 1,
+      "explain": "A 3-phase IM is self-starting; the starter limits current and protects the motor."
+    },
+    {
+      "type": "short",
+      "topic": "Motor starting",
+      "q": "An auto-transformer starter uses a 60% tapping on a motor whose DOL starting current is 300 A. What is the starting line current in A?",
+      "answer": 108,
+      "tolerance": 0.01,
+      "unit": "A",
+      "explain": "Line current $= x^2 I_{sc} = 0.36 \\times 300 = 108$ A."
+    },
+    {
+      "type": "short",
+      "topic": "Motor starting",
+      "q": "$I_{sc} = 5I_{FL}$, $s_{FL} = 0.05$, and a stator resistance starter applies 60% voltage. What is $T_{st}/T_{FL}$?",
+      "answer": 0.45,
+      "tolerance": 0.01,
+      "explain": "$T_{st}/T_{FL} = K^2 (I_{sc}/I_{FL})^2 s_{FL} = 0.36 \\times 25 \\times 0.05 = 0.45$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Braking",
+      "q": "Why can't a DC series motor regenerate into the supply?",
+      "options": [
+        "Its armature resistance is too high",
+        "Reversed current also reverses the series field, so the EMF cannot be maintained",
+        "It has no commutator",
+        "Its speed is limited"
+      ],
+      "answer": 1,
+      "explain": "The series field reverses with the current and weakens the flux."
     }
   ]
 }

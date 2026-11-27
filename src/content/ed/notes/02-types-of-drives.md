@@ -84,16 +84,18 @@ Each machine has **its own motor**, which also drives the machine's moving parts
 
 ### 3. Multi-motor drive
 
-Several individual drives, each moving **one working part** of a machine. Examples: machine tools, paper machines, rolling mills.
+Several individual drives, each moving **one working part** of a machine. Examples: metal-cutting machine tools, paper-making machines, rolling mills, cranes.
 
 > **Crane example:** three motors, one each for hoisting (vertical), traverse (side) and travel (forward) motion. Each works separately and the operator coordinates them.
 
-## Review questions
+## Review questions with answers
 
-1. Define a drive and an electric drive.
-2. List some examples of prime movers.
-3. List some advantages of electric drives.
-4. Give some examples of electric drives.
-5. What are the types of electric drives?
-6. What is a multi-motor drive? Give some examples.
-7. Give an expression for the losses in a machine.
+1. **Define a drive and an electric drive.** A drive is a system that provides controlled motion to a load using a prime mover. An electric drive is a drive that uses an electric motor as the prime mover for motion control.
+2. **Examples of prime movers:** electric motors, diesel engines, steam turbines, gas turbines, hydraulic motors.
+3. **Advantages of electric drives:** wide and smooth speed control; high efficiency and reliability; easy starting, braking and reversal; low maintenance cost; clean, environmentally friendly operation.
+4. **Examples of electric drives:** electric traction (trains, trams), elevators and lifts, conveyor belt systems, electric vehicles, industrial pumps and fans.
+5. **Types of electric drives:** individual, group and multi-motor drives.
+6. **Multi-motor drive:** uses more than one motor to drive different parts of a single machine independently. Examples: rolling mills, paper mills, cranes, hoists, electric locomotives.
+7. **Losses in a machine:**
+
+$$\text{Total losses} = \text{copper losses} + \text{core (iron) losses} + \text{mechanical losses} + \text{stray losses}$$
