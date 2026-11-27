@@ -5,7 +5,8 @@ import 'katex/dist/katex.min.css';
 import './styles.css';
 import { ProgressProvider } from './lib/progress';
 import Layout from './components/Layout';
-import Home from './pages/Home';
+import Landing from './pages/Landing';
+import Modules from './pages/Modules';
 import ModulePage from './pages/ModulePage';
 import Chapter from './pages/Chapter';
 import QuizRunner from './pages/QuizRunner';
@@ -20,7 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <HashRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<Landing />} />
+            <Route path="modules" element={<Modules />} />
             <Route path="m/:id" element={<ModulePage />} />
             <Route path="m/:id/:tab" element={<ModulePage />} />
             <Route path="m/:id/notes/:chapter" element={<Chapter />} />

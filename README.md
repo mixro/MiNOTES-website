@@ -14,6 +14,8 @@ Notes, quizzes, flashcards and formula sheets for every module of the Electrical
 
 ## Features
 
+- **Landing page** with real screenshots of the app, plus the MiNOTES app icon (default, dark and tinted versions)
+- Professional [Lucide](https://lucide.dev) icons throughout (ISC licence)
 - **Notes reader** with chapters, maths (KaTeX), tables and a "Mark as done" button
 - **Quizzes** in two modes: Practice (instant feedback and explanations) and Exam (shuffled and timed)
 - **Flashcards** that flip, with shuffle and keyboard controls
@@ -116,11 +118,11 @@ vite.config.js                Vite config (relative base path for GitHub Pages)
 src/main.jsx                  app entry and routes
 src/styles.css                design system: colours, type, components, dark mode
 src/components/               layout (nav bar, tab bar, footer) and small UI pieces
-src/pages/                    Home, module tabs, chapter reader, quiz, search, progress
+src/pages/                    Landing, Modules, module tabs, chapter reader, quiz, search, progress
 src/lib/content.js            loads modules, notes, quizzes, flashcards, formulas
 src/lib/markdown.js           Markdown + KaTeX rendering
 src/lib/progress.jsx          progress saved in the browser
 src/content/                  all module content
-public/                       logo, icon, past papers, images
+public/                       app icons, screenshots (images/), past papers
 .github/workflows/deploy.yml  builds and publishes to GitHub Pages
 ```

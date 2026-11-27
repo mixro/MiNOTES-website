@@ -1,3 +1,4 @@
+import { BookOpen, ListChecks, RotateCcw, Target, Trophy } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from '../lib/content';
@@ -17,9 +18,9 @@ export default function Dashboard() {
     <section className="wrap section">
       <h1 className="title-1" style={{ marginBottom: 24 }}>Progress</h1>
       <div className="kpis">
-        <div className="kpi"><b>{done}/{total}</b><span>Chapters done</span></div>
-        <div className="kpi"><b>{taken.length}/{modules.length}</b><span>Modules quizzed</span></div>
-        <div className="kpi"><b>{taken.length ? `${avg}%` : '–'}</b><span>Average best score</span></div>
+        <div className="kpi"><span className="feat-ico" style={{ "--c": "#ff9500" }}><BookOpen size={20} /></span><b>{done}/{total}</b><span>Chapters done</span></div>
+        <div className="kpi"><span className="feat-ico" style={{ "--c": "#0071e3" }}><ListChecks size={20} /></span><b>{taken.length}/{modules.length}</b><span>Modules quizzed</span></div>
+        <div className="kpi"><span className="feat-ico" style={{ "--c": "#34c759" }}><Trophy size={20} /></span><b>{taken.length ? `${avg}%` : '–'}</b><span>Average best score</span></div>
       </div>
 
       <p className="group-label">By module</p>
@@ -42,7 +43,7 @@ export default function Dashboard() {
       <div className="group">
         {weak.length ? weak.slice(0, 8).map((w) => (
           <Link key={`${w.m.id}/${w.t}`} className="row" to={`/m/${w.m.id}/notes`}>
-            <span className="grow"><b style={{ fontWeight: 500 }}>{w.t}</b><div className="sub">{w.m.title}</div></span>
+            <span className="row-ico" style={{ color: 'var(--red)' }}><Target size={18} /></span><span className="grow"><b style={{ fontWeight: 500 }}>{w.t}</b><div className="sub">{w.m.title}</div></span>
             <span className="pill">{w.n} missed</span><Chevron />
           </Link>
         )) : <Empty title="Nothing to revise yet">Topics you miss in quizzes will show up here.</Empty>}
@@ -52,7 +53,7 @@ export default function Dashboard() {
         <p style={{ marginTop: 24 }}>
           <button className={`btn small ${confirm ? '' : 'secondary'}`} style={confirm ? { background: 'var(--red)' } : undefined}
             onClick={() => { if (confirm) { reset(); setConfirm(false); } else setConfirm(true); }}>
-            {confirm ? 'Tap again to erase all progress' : 'Reset progress'}
+            <RotateCcw size={15} />{confirm ? 'Tap again to erase all progress' : 'Reset progress'}
           </button>
         </p>
       )}

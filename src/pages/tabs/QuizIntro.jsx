@@ -1,3 +1,4 @@
+import { PenLine, Timer, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getQuiz } from '../../lib/content';
 import { useProgress, weakTopics } from '../../lib/progress';
@@ -13,18 +14,21 @@ export default function QuizIntro({ m }) {
   return (
     <div className="quiz-setup">
       <div className="card">
+        <span className="feat-ico" style={{ "--c": "#0071e3" }}><PenLine size={22} /></span>
         <h3 className="title-3">Practice</h3>
         <p>Answer at your own pace. You see if you were right, and why, after each question.</p>
         <div className="meta"><span>{n} questions</span><span>No timer</span></div>
         <Link className="btn" to={`/m/${m.id}/quiz/practice`} style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>Start practice</Link>
       </div>
       <div className="card">
+        <span className="feat-ico" style={{ "--c": "#ff9500" }}><Timer size={22} /></span>
         <h3 className="title-3">Exam mode</h3>
         <p>Shuffled questions against the clock. Answers and explanations are shown at the end.</p>
         <div className="meta"><span>{n} questions</span><span>{Math.round((quiz.timeLimit || 600) / 60)} minutes</span></div>
         <Link className="btn" to={`/m/${m.id}/quiz/exam`} style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>Start exam</Link>
       </div>
       <div className="card">
+        <span className="feat-ico" style={{ "--c": "#34c759" }}><Trophy size={22} /></span>
         <h3 className="title-3">Your results</h3>
         {s ? (
           <>

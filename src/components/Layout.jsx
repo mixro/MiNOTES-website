@@ -1,43 +1,71 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { SearchIcon } from './ui';
+import { ChartColumn, LayoutGrid, Moon, Search, Sparkles, Sun } from 'lucide-react';
 
-const logo = `${import.meta.env.BASE_URL}icon.svg`;
+const BASE = import.meta.env.BASE_URL;
 
-function toggleTheme() {
-  const root = document.documentElement;
-  const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-  root.dataset.theme = dark ? 'light' : 'dark';
-  try { localStorage.setItem('minotes-theme', root.dataset.theme); } catch { /* ignore */ }
+// The app icon has a light and a dark appearance; CSS shows the one that matches the theme.
+export const Logo = ({ size = 28, className = '' }) => (
+  <span className={`logo ${className}`} style={{ width: size, height: size }} aria-hidden="true">
+    <img className="logo-light" src={`${BASE}icon.svg`} alt="" width={size} height={size} />
+    <img className="logo-dark" src={`${BASE}icon-dark.svg`} alt="" width={size} height={size} />
+  </span>
+);
+
+export const Wordmark = ({ className = '' }) => <span className={`wordmark ${className}`}>Mi<em>NOTES</em></span>;
+
+const isDark = () => {
+  const t = document.documentElement.dataset.theme;
+  return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+};
+
+function useTheme() {
+  const [dark, setDark] = useState(isDark);
+  useEffect(() => {
+    const mq = matchMedia('(prefers-color-scheme: dark)');
+    const on = () => setDark(isDark());
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
+  const toggle = () => {
+    const next = isDark() ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('minotes-theme', next); } catch { /* ignore */ }
+    setDark(next === 'dark');
+  };
+  return [dark, toggle];
 }
 
-const navClass = ({ isActive }) => (isActive ? 'active' : undefined);
+const cls = ({ isActive }) => (isActive ? 'active' : undefined);
 
 export default function Layout() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const [dark, toggleTheme] = useTheme();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
-  const onModules = pathname === '/' || pathname.startsWith('/m/');
+  const inModules = pathname.startsWith('/modules') || pathname.startsWith('/m/');
+  const landing = pathname === '/';
 
   return (
     <>
       <a className="skip" href="#main">Skip to content</a>
-      <header className="nav">
+      <header className={`nav ${landing ? 'nav-landing' : ''}`}>
         <div className="nav-inner">
           <Link className="brand" to="/" aria-label="MiNOTES home">
-            <img src={logo} alt="" width="28" height="28" />
-            <span className="wordmark"><b>Mi</b>NOTES</span>
+            <Logo size={28} />
+            <Wordmark />
           </Link>
           <nav className="nav-links" aria-label="Main">
-            <NavLink to="/" className={() => (onModules ? 'active' : undefined)}>Modules</NavLink>
-            <NavLink to="/progress" className={navClass}>Progress</NavLink>
-            <NavLink to="/search" className={navClass}>Search</NavLink>
+            <NavLink to="/modules" className={() => (inModules ? 'active' : undefined)}>Modules</NavLink>
+            <NavLink to="/progress" className={cls}>Progress</NavLink>
+            <NavLink to="/search" className={cls}>Search</NavLink>
           </nav>
           <div className="nav-actions">
-            <button className="icon-btn" id="searchBtn" aria-label="Search" onClick={() => navigate('/search')}><SearchIcon /></button>
-            <button className="icon-btn" aria-label="Switch appearance" onClick={toggleTheme}>
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor" /></svg>
+            <button className="icon-btn hide-sm" aria-label="Search" onClick={() => navigate('/search')}><Search size={18} strokeWidth={2} /></button>
+            <button className="icon-btn" aria-label={dark ? 'Use light appearance' : 'Use dark appearance'} onClick={toggleTheme}>
+              {dark ? <Sun size={18} strokeWidth={2} /> : <Moon size={18} strokeWidth={2} />}
             </button>
+            {landing && <Link className="btn small nav-cta" to="/modules">Start studying</Link>}
           </div>
         </div>
       </header>
@@ -47,18 +75,15 @@ export default function Layout() {
       </main>
 
       <nav className="tabbar" aria-label="Main">
-        <NavLink to="/" className={() => (onModules ? 'active' : undefined)}>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z" fill="currentColor" /></svg>Modules
-        </NavLink>
-        <NavLink to="/progress" className={navClass}>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>Progress
-        </NavLink>
-        <NavLink to="/search" className={navClass}><SearchIcon size={24} w={2.4} />Search</NavLink>
+        <NavLink to="/" end className={cls}><Sparkles size={22} strokeWidth={2} />Home</NavLink>
+        <NavLink to="/modules" className={() => (inModules ? 'active' : undefined)}><LayoutGrid size={22} strokeWidth={2} />Modules</NavLink>
+        <NavLink to="/progress" className={cls}><ChartColumn size={22} strokeWidth={2} />Progress</NavLink>
+        <NavLink to="/search" className={cls}><Search size={22} strokeWidth={2} />Search</NavLink>
       </nav>
 
       <footer className="footer">
         <div className="footer-inner">
-          <span className="wordmark small"><b>Mi</b>NOTES</span>
+          <Link className="brand" to="/"><Logo size={22} /><Wordmark className="small" /></Link>
           <span>Study smarter. Power through the semester.</span>
           <span className="muted">Progress is saved on this device only.</span>
         </div>

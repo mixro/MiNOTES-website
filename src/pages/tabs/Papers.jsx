@@ -1,3 +1,4 @@
+import { FileText } from 'lucide-react';
 import { paperUrl } from '../../lib/content';
 import { Chevron, Empty } from '../../components/ui';
 
@@ -7,6 +8,7 @@ export default function Papers({ m }) {
     <div className="group">
       {m.papers.map((p) => (
         <a key={p.file} className="row" href={paperUrl(m, p)} target="_blank" rel="noopener noreferrer">
+          <span className="row-ico"><FileText size={18} /></span>
           <span className="grow"><b style={{ fontWeight: 500 }}>{p.title}</b><div className="sub">{p.year}</div></span>
           <Chevron />
         </a>

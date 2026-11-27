@@ -1,3 +1,4 @@
+import { BookOpen, Check, CheckCircle2, ChevronLeft, RotateCcw, Timer, X, XCircle } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getModule, getQuiz } from '../lib/content';
@@ -75,10 +76,10 @@ function Run({ m, quiz, mode, restart }) {
   return (
     <div className="quiz">
       <div className="quiz-top">
-        <Link to={`/m/${m.id}/quiz`}>‹ {mode === 'exam' ? 'Exam' : 'Practice'}</Link>
+        <Link className="back" to={`/m/${m.id}/quiz`}><ChevronLeft size={16} strokeWidth={2.4} />{mode === 'exam' ? 'Exam' : 'Practice'}</Link>
         <Bar value={Math.round((100 * at) / qs.length)} />
         <span>{at + 1} / {qs.length}</span>
-        {ends > 0 && <span className={`timer ${left < 60 ? 'low' : ''}`}>{Math.floor(left / 60)}:{String(left % 60).padStart(2, '0')}</span>}
+        {ends > 0 && <span className={`timer ${left < 60 ? 'low' : ''}`}><Timer size={15} strokeWidth={2.4} />{Math.floor(left / 60)}:{String(left % 60).padStart(2, '0')}</span>}
       </div>
       <div className="q-card view" key={at}>
         <div className="q-topic">{q.topic || m.title}</div>
@@ -96,7 +97,7 @@ function Run({ m, quiz, mode, restart }) {
               if (showFb) cls = k === q.answer ? 'right' : a === k ? 'wrong' : '';
               return (
                 <button key={k} className={`opt ${cls}`} disabled={showFb} onClick={() => setAnswer(k)}>
-                  <span className="key">{LETTERS[k]}</span><Md src={o} inline />
+                  <span className="key">{showFb && k === q.answer ? <Check size={15} strokeWidth={3} /> : showFb && a === k ? <X size={15} strokeWidth={3} /> : LETTERS[k]}</span><Md src={o} inline />
                 </button>
               );
             })}
@@ -104,7 +105,7 @@ function Run({ m, quiz, mode, restart }) {
         )}
         {showFb && (
           <div className="explain">
-            <b className={ok ? 'ok' : 'no'}>{ok ? 'Correct.' : 'Not quite.'}</b>{' '}
+            <b className={ok ? 'ok' : 'no'}>{ok ? <CheckCircle2 size={16} /> : <XCircle size={16} />}{ok ? 'Correct.' : 'Not quite.'}</b>{' '}
             {q.type === 'short' && !ok && <>Answer: {String(q.answer)}{q.unit && <> <Md src={q.unit} inline /></>}. </>}
             <Md src={q.explain || ''} inline />
           </div>
@@ -135,8 +136,8 @@ function Result({ m, qs, answers, mode, right, score, best, restart }) {
         <h2 className="title-2" style={{ marginBottom: 6 }}>{score >= 70 ? 'Great work.' : score >= 50 ? 'Getting there.' : 'Keep practising.'}</h2>
         <p className="muted" style={{ margin: 0 }}>{right} of {qs.length} correct · Best {best}%</p>
         <div className="q-actions" style={{ justifyContent: 'center' }}>
-          <Link className="btn secondary" to={`/m/${m.id}/notes`}>Review notes</Link>
-          <button className="btn" onClick={restart}>Try again</button>
+          <Link className="btn secondary" to={`/m/${m.id}/notes`}><BookOpen size={16} />Review notes</Link>
+          <button className="btn" onClick={restart}><RotateCcw size={16} />Try again</button>
         </div>
         {mode === 'exam' && (
           <div className="review">
@@ -147,7 +148,7 @@ function Result({ m, qs, answers, mode, right, score, best, restart }) {
                 const correct = q.type === 'short' ? `${q.answer}${q.unit ? ' ' + q.unit : ''}` : q.options[q.answer];
                 return (
                   <div className="row" key={i} style={{ alignItems: 'flex-start' }}>
-                    <span className={`num ${ok ? 'done' : ''}`} style={ok ? undefined : { background: 'var(--red)', color: '#fff' }}>{ok ? '✓' : '✕'}</span>
+                    <span className={`num ${ok ? 'done' : ''}`} style={ok ? undefined : { background: 'var(--red)', color: '#fff' }}>{ok ? <Check size={16} strokeWidth={3} /> : <X size={16} strokeWidth={3} />}</span>
                     <span className="grow">
                       <Md as="b" style={{ fontWeight: 500 }} src={q.q} inline />
                       <div className="sub">Answer: <Md src={correct} inline />. <Md src={q.explain || ''} inline /></div>
