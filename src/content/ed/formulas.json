@@ -4,6 +4,11 @@
     "tex": "T_m - T_L = J\\frac{d\\omega_m}{dt}"
   },
   {
+    "title": "Losses at part load",
+    "tex": "W = W_c + x^2 W_v",
+    "note": "$x$ = load as a fraction of rated load"
+  },
+  {
     "title": "Load torque law",
     "tex": "T = C\\,T_r\\left(\\frac{n}{n_r}\\right)^{k}",
     "note": "$k=0$ hoist, $1$ calender, $2$ fan or pump, $-1$ constant power"

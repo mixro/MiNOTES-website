@@ -158,5 +158,13 @@
   {
     "front": "Auto-transformer starting",
     "back": "Line current $= x^2 I_{sc}$ for tapping $x$. Works with star or delta motors."
+  },
+  {
+    "front": "Control classes of electric drives",
+    "back": "Manual (switch and regulator), semi-automatic (manual command plus preset automatic sequence), automatic (no manual devices)."
+  },
+  {
+    "front": "Machine losses vs load",
+    "back": "$W = W_c + x^2W_v$: constant loss plus full-load copper loss scaled by load fraction squared."
   }
 ]

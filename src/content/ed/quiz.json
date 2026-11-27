@@ -472,6 +472,41 @@
       ],
       "answer": 1,
       "explain": "The series field reverses with the current and weakens the flux."
+    },
+    {
+      "type": "mcq",
+      "topic": "Classification",
+      "q": "A drive where a manual command starts a preset automatic sequence (start, brake, reverse) uses:",
+      "options": [
+        "Manual control",
+        "Semi-automatic control",
+        "Automatic control",
+        "Open-loop control"
+      ],
+      "answer": 1,
+      "explain": "Semi-automatic control pairs a manual command device with an automatic device that runs a preset sequence."
+    },
+    {
+      "type": "short",
+      "topic": "Losses",
+      "q": "A motor has constant loss 400 W and full-load copper loss 800 W. What are its total losses at half load, in W?",
+      "answer": 600,
+      "tolerance": 0.01,
+      "unit": "W",
+      "explain": "$W = W_c + x^2W_v = 400 + 0.5^2 \\times 800 = 600$ W."
+    },
+    {
+      "type": "mcq",
+      "topic": "AC drives",
+      "q": "Why does a single-phase induction motor not self-start?",
+      "options": [
+        "Its rotor resistance is too high",
+        "Its stator field pulsates instead of rotating, giving zero net starting torque",
+        "Its slip is zero at standstill",
+        "It has no air gap"
+      ],
+      "answer": 1,
+      "explain": "A single winding produces a pulsating field, which gives zero net torque at standstill."
     }
   ]
 }
