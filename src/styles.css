@@ -530,8 +530,13 @@ a.row:hover { background: color-mix(in srgb, var(--bg-sunken) 55%, transparent);
 
 /* Mobile chapter strip: full-width pills, clean horizontal scroll, no scrollbar */
 @media (max-width: 860px) {
-  .toc-list { position: relative; gap: 8px; overflow-x: auto; overflow-y: hidden; padding: 4px 2px 6px; margin: 0 -2px; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; overscroll-behavior-x: contain; }
-  .toc-list::-webkit-scrollbar { display: none; }
+  .toc-list { position: relative; gap: 8px; overflow-x: auto; overflow-y: hidden; padding: 4px 2px 12px; margin: 0 -2px; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; overscroll-behavior-x: contain; }
+  /* Thin, rounded Apple-style scrollbar (Chromium/Safari), no arrow buttons */
+  .toc-list::-webkit-scrollbar { height: 4px; }
+  .toc-list::-webkit-scrollbar-track { background: color-mix(in srgb, var(--ink-3) 12%, transparent); border-radius: 999px; margin: 0 16px; }
+  .toc-list::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--ink-3) 55%, transparent); border-radius: 999px; }
+  .toc-list::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+  @supports (-moz-appearance: none) { .toc-list { scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--ink-3) 55%, transparent) transparent; } }
   .toc-list a { flex: none; display: inline-flex; justify-content: flex-start; gap: 6px; padding: 8px 14px; border-radius: 999px; font-size: 14px; line-height: 1.2; scroll-snap-align: start; }
   .toc-list a.on { background: var(--bg-elev); }
 }
