@@ -298,31 +298,99 @@
       "credits": 9,
       "color": "#e07a00",
       "icon": "bolt",
-      "summary": "Switching devices, rectifiers, DC-DC converters and inverters, with design and loss calculations.",
+      "summary": "Diode and phase-controlled rectifiers (single and three phase), DC–DC converters (buck, boost, buck-boost, Ćuk) and inverters (single-phase, six-step and PWM), with checked worked examples.",
       "chapters": [
         {
-          "id": "01-devices",
-          "title": "Power semiconductor devices",
-          "summary": "Diodes, thyristors, MOSFETs, IGBTs",
-          "file": "notes/01-devices.md"
+          "id": "01-introduction",
+          "title": "Introduction to power electronics",
+          "summary": "Conversion types, the power processor, course outline",
+          "file": "notes/01-introduction.md"
         },
         {
-          "id": "02-rectifiers",
-          "title": "Controlled rectifiers",
-          "summary": "Single and three-phase",
-          "file": "notes/02-rectifiers.md"
+          "id": "02-diode-rectifiers",
+          "title": "Diode rectifiers",
+          "summary": "Half-wave R and RL, full-wave bridge, three-phase bridge",
+          "file": "notes/02-diode-rectifiers.md"
         },
         {
-          "id": "03-dc-dc",
-          "title": "DC-DC converters",
-          "summary": "Buck, boost and buck-boost",
-          "file": "notes/03-dc-dc.md"
+          "id": "03-phase-controlled-rectifiers",
+          "title": "Single-phase controlled rectifiers",
+          "summary": "Firing angle, R and inductive loads, design, ripple, harmonics",
+          "file": "notes/03-phase-controlled-rectifiers.md"
+        },
+        {
+          "id": "04-full-converter-rl",
+          "title": "Full converter with RL and back-EMF loads",
+          "summary": "Continuous and discontinuous current, worked examples",
+          "file": "notes/04-full-converter-rl.md"
+        },
+        {
+          "id": "05-three-phase-controlled",
+          "title": "Three-phase controlled rectifiers",
+          "summary": "Six-pulse bridge, line currents, power factor",
+          "file": "notes/05-three-phase-controlled.md"
+        },
+        {
+          "id": "06-buck",
+          "title": "DC–DC converters: the buck converter",
+          "summary": "CCM and DCM analysis, ripple, critical inductance",
+          "file": "notes/06-buck.md"
+        },
+        {
+          "id": "07-boost",
+          "title": "The boost converter",
+          "summary": "Step-up analysis, ripple, capacitor current, design",
+          "file": "notes/07-boost.md"
+        },
+        {
+          "id": "08-buck-boost-cuk",
+          "title": "Buck-boost, Ćuk and full-bridge converters",
+          "summary": "Inverting converters and a comparison",
+          "file": "notes/08-buck-boost-cuk.md"
+        },
+        {
+          "id": "09-single-phase-inverters",
+          "title": "Single-phase inverters",
+          "summary": "Half and full bridge, R, RL and RLC loads",
+          "file": "notes/09-single-phase-inverters.md"
+        },
+        {
+          "id": "10-three-phase-inverters",
+          "title": "Three-phase six-step inverter",
+          "summary": "Pole, line and phase voltages, Fourier series",
+          "file": "notes/10-three-phase-inverters.md"
+        },
+        {
+          "id": "11-pwm",
+          "title": "PWM voltage control",
+          "summary": "Single, multiple and sinusoidal PWM; bipolar and unipolar",
+          "file": "notes/11-pwm.md"
         }
       ],
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
       "formulas": "formulas.json",
-      "papers": []
+      "papers": [],
+      "tutorials": [
+        {
+          "id": "rectifier-examples",
+          "title": "Rectifier worked examples",
+          "summary": "Diode, controlled and three-phase rectifiers, checked",
+          "file": "tutorials/rectifier-examples.md"
+        },
+        {
+          "id": "dc-dc-examples",
+          "title": "DC–DC converter worked examples",
+          "summary": "Buck, boost and buck-boost problems and designs",
+          "file": "tutorials/dc-dc-examples.md"
+        },
+        {
+          "id": "inverter-examples",
+          "title": "Inverter worked examples",
+          "summary": "Half and full bridge, six-step and PWM",
+          "file": "tutorials/inverter-examples.md"
+        }
+      ]
     },
     {
       "id": "epm",

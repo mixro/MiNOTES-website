@@ -160,7 +160,7 @@ The boost converter gives an output voltage **higher than the input**.
 >
 > (d) $I_D = I_o = 6$ A
 >
-> (e) $I_C = 6\sqrt{\dfrac{0.733}{0.267}} = 9.94$ A
+> (e) The inductor ripple is large here, so include it: $I_{C,rms} = \sqrt{\delta I_o^2 + (1 - \delta)\left[(I_L - I_o)^2 + \dfrac{\Delta I_L^2}{12}\right]} = 10.87$ A. The small-ripple shortcut $6\sqrt{0.733/0.267} = 9.94$ A underestimates it.
 >
 > (f) $L_c = \dfrac{25 \times 0.0002}{2}(0.733)(1 - 0.733)^2 = 1.30\times10^{-4}$ H $= 130\ \mu$H
 
@@ -213,4 +213,4 @@ The buck-boost converter gives an **inverted** output that can be **lower or hig
 >
 > The class notes leave this one for revision. **Answer (added):** the output is a square wave of $\pm V/2$, so $V_1 = \dfrac{4(V/2)}{\pi\sqrt2} = 0.45V = 0.45 \times 48 = 21.6$ V.
 
-> **Corrections to the class notes.** The discontinuous-mode expressions for $\delta_2$ and $I_{max}$ use $+2/k$ inside the root. Example 4's source current is $\delta(I_{max}+I_{min})/2$. Example 6's rms capacitor current works out to 9.94 A, not 10.87 A.
+> **Corrections to the class notes.** The discontinuous-mode expressions for $\delta_2$ and $I_{max}$ use $+2/k$ inside the root. Example 4's source current is $\delta(I_{max}+I_{min})/2$. In Example 6 the formula written for the capacitor current is the small-ripple one (giving 9.94 A); the answer 10.87 A is right because it includes the large inductor ripple.

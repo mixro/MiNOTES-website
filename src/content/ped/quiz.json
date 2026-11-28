@@ -1,13 +1,509 @@
 {
-  "timeLimit": 720,
+  "timeLimit": 1800,
   "questions": [
-    { "type": "short", "topic": "Buck converter", "q": "A buck converter steps 24 V down to 12 V. What is the duty cycle $D$?", "answer": 0.5, "tolerance": 0.01, "explain": "$D = V_o / V_s = 12/24 = 0.5$." },
-    { "type": "short", "topic": "Boost converter", "q": "A boost converter has $V_s = 12$ V and $D = 0.6$. What is $V_o$ in volts?", "answer": 30, "tolerance": 0.01, "unit": "V", "explain": "$V_o = V_s/(1-D) = 12/0.4 = 30$ V." },
-    { "type": "mcq", "topic": "Devices", "q": "Which device can be turned on by its gate but NOT turned off by it?", "options": ["MOSFET", "IGBT", "Thyristor (SCR)", "GaN HEMT"], "answer": 2, "explain": "A thyristor latches on and turns off only when current falls below the holding current." },
-    { "type": "mcq", "topic": "Rectifiers", "q": "A single-phase full converter operates as an inverter when the delay angle is:", "options": ["$0° < \\alpha < 90°$", "$\\alpha = 0°$", "$90° < \\alpha < 180°$", "$\\alpha = 90°$"], "answer": 2, "explain": "$\\cos\\alpha < 0$ so $V_{dc} < 0$ and power flows back to the AC side." },
-    { "type": "short", "topic": "Rectifiers", "q": "A single-phase full converter has $V_m = 325$ V and $\\alpha = 60°$. Find $V_{dc}$ in volts.", "answer": 103.5, "tolerance": 0.02, "unit": "V", "explain": "$V_{dc} = (2 \\times 325/\\pi)\\cos 60° = 206.9 \\times 0.5 \\approx 103.5$ V." },
-    { "type": "mcq", "topic": "Converters", "q": "Which converter gives an output of opposite polarity to the input?", "options": ["Buck", "Boost", "Buck-boost", "Full bridge rectifier"], "answer": 2, "explain": "$V_o/V_s = -D/(1-D)$." },
-    { "type": "mcq", "topic": "Losses", "q": "Raising the switching frequency mainly increases:", "options": ["Conduction loss", "Switching loss", "Inductor size", "Capacitor size"], "answer": 1, "explain": "$P_{sw} \\propto f_s$, while filter components get smaller." },
-    { "type": "mcq", "topic": "Rectifiers", "q": "The output ripple frequency of a three-phase full converter on a 50 Hz supply is:", "options": ["50 Hz", "100 Hz", "150 Hz", "300 Hz"], "answer": 3, "explain": "Six pulses per cycle: $6 \\times 50 = 300$ Hz." }
+    {
+      "type": "mcq",
+      "topic": "Introduction",
+      "q": "Which converter type changes DC into AC?",
+      "options": [
+        "Rectifier",
+        "Chopper",
+        "Inverter",
+        "AC voltage controller"
+      ],
+      "answer": 2,
+      "explain": "An inverter converts DC to AC; a rectifier does AC to DC and a chopper DC to DC."
+    },
+    {
+      "type": "mcq",
+      "topic": "Introduction",
+      "q": "Why can power converters reach high efficiency?",
+      "options": [
+        "They use transformers",
+        "Their devices work as switches, fully on or fully off",
+        "They run at low frequency",
+        "They use large resistors"
+      ],
+      "answer": 1,
+      "explain": "An on switch has almost no voltage and an off switch almost no current, so little power is lost in it."
+    },
+    {
+      "type": "mcq",
+      "topic": "Diode rectifiers",
+      "q": "What is the average output voltage of a half-wave diode rectifier with a resistive load?",
+      "options": [
+        "$V_m/2$",
+        "$V_m/\\pi$",
+        "$2V_m/\\pi$",
+        "$V_m/\\sqrt2$"
+      ],
+      "answer": 1,
+      "explain": "$V_{dc} = \\frac{1}{2\\pi}\\int_0^\\pi V_m\\sin\\omega t\\,d\\omega t = V_m/\\pi$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Diode rectifiers",
+      "q": "In a half-wave rectifier with an RL load, why does the output go negative for part of the cycle?",
+      "options": [
+        "The diode breaks down",
+        "The inductor keeps the diode conducting after π until the current reaches zero",
+        "The supply has a DC offset",
+        "The resistor stores energy"
+      ],
+      "answer": 1,
+      "explain": "Stored inductor energy keeps the current flowing to the extinction angle β > π."
+    },
+    {
+      "type": "short",
+      "topic": "Diode rectifiers",
+      "q": "A three-phase diode bridge is fed from a supply with a peak phase voltage of 200 V. What is the average output voltage?",
+      "answer": 330.8,
+      "tolerance": 1.0,
+      "unit": "V",
+      "explain": "$V_{dc} = 1.654V_m = 1.654 \\times 200 = 330.8$ V."
+    },
+    {
+      "type": "mcq",
+      "topic": "Diode rectifiers",
+      "q": "For how long does each diode in a three-phase bridge conduct per cycle?",
+      "options": [
+        "60°",
+        "90°",
+        "120°",
+        "180°"
+      ],
+      "answer": 2,
+      "explain": "Each diode conducts for 120°, in two 60° line-voltage segments."
+    },
+    {
+      "type": "mcq",
+      "topic": "Diode rectifiers",
+      "q": "What is the peak inverse voltage of each diode in a three-phase bridge ($V_m$ = peak phase voltage)?",
+      "options": [
+        "$V_m$",
+        "$\\sqrt2V_m$",
+        "$\\sqrt3V_m$",
+        "$2V_m$"
+      ],
+      "answer": 2,
+      "explain": "A diode blocks the peak line-to-line voltage, $\\sqrt3V_m$."
+    },
+    {
+      "type": "short",
+      "topic": "Controlled rectifiers",
+      "q": "A half-wave controlled rectifier with a resistive load has $V_m = 339.4$ V and α = 40°. What is the average output voltage?",
+      "answer": 95.4,
+      "tolerance": 0.3,
+      "unit": "V",
+      "explain": "$V_{av} = \\frac{V_m}{2\\pi}(1 + \\cos\\alpha) = 54.0 \\times 1.766 = 95.4$ V."
+    },
+    {
+      "type": "short",
+      "topic": "Controlled rectifiers",
+      "q": "A full-wave controlled rectifier with a resistive load has $V_m = 339.4$ V and α = 40°. What is the average output voltage?",
+      "answer": 190.8,
+      "tolerance": 0.5,
+      "unit": "V",
+      "explain": "$V_{av} = \\frac{V_m}{\\pi}(1 + \\cos\\alpha) = 190.8$ V."
+    },
+    {
+      "type": "short",
+      "topic": "Controlled rectifiers",
+      "q": "A single-phase full converter with continuous current is fed at 240 V rms with α = 40°. What is the average output voltage?",
+      "answer": 165.5,
+      "tolerance": 0.5,
+      "unit": "V",
+      "explain": "$V_{av} = \\frac{2V_m}{\\pi}\\cos\\alpha = 0.9 \\times 240 \\times \\cos40° = 165.5$ V."
+    },
+    {
+      "type": "mcq",
+      "topic": "Controlled rectifiers",
+      "q": "A single-phase full converter with a highly inductive load is fired at α = 120°. What happens?",
+      "options": [
+        "It rectifies with a positive average voltage",
+        "The average output voltage is negative, so with a source in the load it inverts",
+        "The thyristors cannot turn on",
+        "The output is zero"
+      ],
+      "answer": 1,
+      "explain": "$V_{av} = \\frac{2V_m}{\\pi}\\cos\\alpha < 0$ for α > 90°: inverter operation when the load has an EMF."
+    },
+    {
+      "type": "mcq",
+      "topic": "Controlled rectifiers",
+      "q": "With continuous current, what is the rms output voltage of a single-phase full converter fed at V rms?",
+      "options": [
+        "$0.9V\\cos\\alpha$",
+        "$V$",
+        "$V\\cos\\alpha$",
+        "$V/\\sqrt2$"
+      ],
+      "answer": 1,
+      "explain": "The output follows the supply for a full half cycle (α to π + α), so $V_{rms} = V$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Ripple",
+      "q": "If FF is the form factor, what is the ripple factor?",
+      "options": [
+        "$FF - 1$",
+        "$\\sqrt{FF^2 - 1}$",
+        "$FF^2 - 1$",
+        "$1/FF$"
+      ],
+      "answer": 1,
+      "explain": "$(V_{rms}/V_{dc})^2 = 1 + r^2$, so $r = \\sqrt{FF^2 - 1}$."
+    },
+    {
+      "type": "short",
+      "topic": "Ripple",
+      "q": "What is the voltage ripple factor of a single-phase full converter with continuous current at α = 0?",
+      "answer": 0.483,
+      "tolerance": 0.005,
+      "explain": "$RF_v = \\sqrt{\\pi^2/8 - \\cos^2\\alpha}/\\cos\\alpha = \\sqrt{0.2337} = 0.483$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Ripple",
+      "q": "As α approaches 90° in a full converter with continuous current, the voltage ripple factor…",
+      "options": [
+        "approaches 1.11",
+        "approaches 0.483",
+        "grows without limit",
+        "falls to zero"
+      ],
+      "answer": 2,
+      "explain": "The mean output $0.9V\\cos\\alpha$ tends to zero while the AC part does not, so $RF_v \\to \\infty$. The slides' \"maximum 1.11\" is wrong."
+    },
+    {
+      "type": "mcq",
+      "topic": "Harmonics",
+      "q": "Which harmonics appear in the output voltage of a single-phase full converter?",
+      "options": [
+        "Odd: 3, 5, 7…",
+        "Even: 2, 4, 6…",
+        "Only the 6th and 12th",
+        "Triplen only"
+      ],
+      "answer": 1,
+      "explain": "The output repeats every half cycle of the supply, so only even harmonics of the supply frequency appear."
+    },
+    {
+      "type": "mcq",
+      "topic": "RL load",
+      "q": "A full converter feeds R = 10 Ω, L = 50 mH at 50 Hz (φ = 57.5°). At α = 75°, the current is…",
+      "options": [
+        "continuous, because α > φ",
+        "discontinuous, because α > φ",
+        "continuous, because α < 90°",
+        "zero"
+      ],
+      "answer": 1,
+      "explain": "With no back EMF, conduction is continuous only while α < φ = tan⁻¹(ωL/R)."
+    },
+    {
+      "type": "short",
+      "topic": "RL load",
+      "q": "What is the natural power-factor angle φ (in degrees) of R = 10 Ω, L = 50 mH at 50 Hz?",
+      "answer": 57.5,
+      "tolerance": 0.3,
+      "unit": "°",
+      "explain": "$\\phi = \\tan^{-1}(2\\pi \\times 50 \\times 0.05/10) = \\tan^{-1}1.571 = 57.5°$."
+    },
+    {
+      "type": "short",
+      "topic": "RL load",
+      "q": "A full converter at 240 V, α = 45°, continuous current, feeds 10 Ω in series with 50 mH and a 50 V EMF. What is the average load current?",
+      "answer": 10.28,
+      "tolerance": 0.05,
+      "unit": "A",
+      "explain": "$V_o = 152.8$ V; $I_o = (152.8 - 50)/10 = 10.28$ A."
+    },
+    {
+      "type": "short",
+      "topic": "Three-phase",
+      "q": "A three-phase fully controlled bridge on a 415 V (line) supply runs with continuous current at α = 30°. What is the average output voltage?",
+      "answer": 485.3,
+      "tolerance": 1.5,
+      "unit": "V",
+      "explain": "$V_{av} = 1.35V_{LL}\\cos\\alpha = 1.3505 \\times 415 \\times 0.866 = 485.3$ V."
+    },
+    {
+      "type": "mcq",
+      "topic": "Three-phase",
+      "q": "In a three-phase fully controlled bridge, how often is a thyristor fired?",
+      "options": [
+        "Every 30°",
+        "Every 60°",
+        "Every 120°",
+        "Every 180°"
+      ],
+      "answer": 1,
+      "explain": "Six thyristors are fired in sequence every 60°, giving six pulses per cycle."
+    },
+    {
+      "type": "short",
+      "topic": "Three-phase",
+      "q": "A three-phase full converter carries a ripple-free 120 A DC current. What is the rms line current?",
+      "answer": 98.0,
+      "tolerance": 0.3,
+      "unit": "A",
+      "explain": "$I_{L,rms} = \\sqrt{2/3}\\,I_o = 0.8165 \\times 120 = 98.0$ A."
+    },
+    {
+      "type": "short",
+      "topic": "Three-phase",
+      "q": "What is the supply power factor of a three-phase full converter with ripple-free current at α = 60°?",
+      "answer": 0.477,
+      "tolerance": 0.005,
+      "explain": "$pf = \\frac{3}{\\pi}\\cos\\alpha = 0.955 \\times 0.5 = 0.477$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Three-phase",
+      "q": "For a resistive load, when does a three-phase full converter's output current become discontinuous?",
+      "options": [
+        "α > 30°",
+        "α > 60°",
+        "α > 90°",
+        "Never"
+      ],
+      "answer": 1,
+      "explain": "Above 60° the line voltage reaches zero within a conduction interval; then $V_o = 2.34V[1 + \\cos(\\alpha + 60°)]$."
+    },
+    {
+      "type": "short",
+      "topic": "Buck",
+      "q": "A buck converter steps 48 V down to 12 V in continuous conduction. What is the duty cycle?",
+      "answer": 0.25,
+      "tolerance": 0.001,
+      "explain": "$V_c = \\delta E$, so $\\delta = 12/48 = 0.25$."
+    },
+    {
+      "type": "short",
+      "topic": "Buck",
+      "q": "Find the minimum inductance (in µH) for continuous current in a buck converter with δ = 0.4, R = 6 Ω and f = 5 kHz.",
+      "answer": 360,
+      "tolerance": 2,
+      "unit": "µH",
+      "explain": "$L_{min} = (1 - \\delta)RT/2 = 0.6 \\times 6 \\times 200\\ \\mu s/2 = 360\\ \\mu$H."
+    },
+    {
+      "type": "mcq",
+      "topic": "Buck",
+      "q": "In a buck converter in discontinuous conduction, the output voltage…",
+      "options": [
+        "is always δE",
+        "depends on the load as well as δ",
+        "is zero",
+        "is higher than E"
+      ],
+      "answer": 1,
+      "explain": "In DCM $V_c/E = K[-1 + \\sqrt{1 + 2/K}]$ with $K = TR\\delta^2/4L$, which contains R."
+    },
+    {
+      "type": "short",
+      "topic": "Buck",
+      "q": "A buck converter has D = 0.75, L = 0.75 mH, C = 0.47 µF and f = 50 kHz. What is the output ripple $\\Delta V_o/V_o$ in percent?",
+      "answer": 3.5,
+      "tolerance": 0.1,
+      "unit": "%",
+      "explain": "$\\frac{1 - D}{8LCf^2} = \\frac{0.25}{8 \\times 0.75\\text{m} \\times 0.47\\mu \\times 2.5 \\times 10^9} = 0.035$."
+    },
+    {
+      "type": "short",
+      "topic": "Boost",
+      "q": "A boost converter raises 40 V to 150 V. What is δ?",
+      "answer": 0.733,
+      "tolerance": 0.002,
+      "explain": "$V_c = E/(1 - \\delta)$, so $\\delta = 1 - 40/150 = 0.733$."
+    },
+    {
+      "type": "short",
+      "topic": "Boost",
+      "q": "A boost converter supplies 6 A to its load at δ = 0.733. What is the average inductor current?",
+      "answer": 22.5,
+      "tolerance": 0.1,
+      "unit": "A",
+      "explain": "$I_L = I_o/(1 - \\delta) = 6/0.267 = 22.5$ A."
+    },
+    {
+      "type": "mcq",
+      "topic": "Boost",
+      "q": "In a boost converter, what feeds the load while the switch is on?",
+      "options": [
+        "The source through the diode",
+        "The inductor",
+        "The output capacitor alone",
+        "Nothing"
+      ],
+      "answer": 2,
+      "explain": "The diode is reverse biased while the switch is on, so the capacitor supplies the load; hence $\\Delta V_o = I_o\\delta/(fC)$."
+    },
+    {
+      "type": "short",
+      "topic": "Buck-boost",
+      "q": "A buck-boost converter must give 50 V from 35 V. What duty cycle is needed?",
+      "answer": 0.588,
+      "tolerance": 0.002,
+      "explain": "$\\delta = V_o/(V_o + V_{in}) = 50/85 = 0.588$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Buck-boost",
+      "q": "A buck-boost converter runs at δ = 0.4. Its output is…",
+      "options": [
+        "higher than the input, same polarity",
+        "lower than the input, inverted",
+        "higher than the input, inverted",
+        "equal to the input"
+      ],
+      "answer": 1,
+      "explain": "$|V_o| = \\frac{\\delta}{1 - \\delta}E = 0.667E$, and the polarity is inverted."
+    },
+    {
+      "type": "mcq",
+      "topic": "Ćuk",
+      "q": "What is the main advantage of the Ćuk converter over the buck-boost converter?",
+      "options": [
+        "Non-inverted output",
+        "Smooth (low-ripple) input and output currents",
+        "Higher voltage gain",
+        "No capacitor needed"
+      ],
+      "answer": 1,
+      "explain": "Inductors in series with both input and output make both currents continuous; energy is transferred by $C_1$."
+    },
+    {
+      "type": "short",
+      "topic": "Ćuk",
+      "q": "A Ćuk converter has E = 12 V and δ = 0.6. What is the magnitude of the output voltage?",
+      "answer": 18,
+      "tolerance": 0.1,
+      "unit": "V",
+      "explain": "$|V_o| = \\frac{\\delta}{1 - \\delta}E = 1.5 \\times 12 = 18$ V (inverted)."
+    },
+    {
+      "type": "mcq",
+      "topic": "DC–DC",
+      "q": "Which DC–DC converter can operate in all four quadrants?",
+      "options": [
+        "Buck",
+        "Boost",
+        "Ćuk",
+        "Full bridge"
+      ],
+      "answer": 3,
+      "explain": "The full-bridge converter has bidirectional voltage and current, so it can also act as an inverter."
+    },
+    {
+      "type": "short",
+      "topic": "Inverters",
+      "q": "A half-bridge inverter has V = 48 V. What is the rms fundamental output voltage?",
+      "answer": 21.6,
+      "tolerance": 0.1,
+      "unit": "V",
+      "explain": "$V_1 = \\frac{2V}{\\sqrt2\\pi} = 0.45V = 21.6$ V."
+    },
+    {
+      "type": "short",
+      "topic": "Inverters",
+      "q": "A full-bridge square-wave inverter has $V_d = 220$ V. What is the rms fundamental output voltage?",
+      "answer": 198.1,
+      "tolerance": 0.5,
+      "unit": "V",
+      "explain": "$V_1 = \\frac{4V_d}{\\sqrt2\\pi} = 0.9V_d = 198.1$ V."
+    },
+    {
+      "type": "mcq",
+      "topic": "Inverters",
+      "q": "Why are feedback diodes connected across the switches of an inverter?",
+      "options": [
+        "To protect against over-voltage only",
+        "To carry the load current after a switch turns off with an inductive load, returning energy to the supply",
+        "To rectify the output",
+        "To reduce switching frequency"
+      ],
+      "answer": 1,
+      "explain": "With an RL load the current cannot reverse instantly; it flows through the diodes back to the DC source."
+    },
+    {
+      "type": "short",
+      "topic": "Inverters",
+      "q": "A six-step inverter runs from $V_d = 600$ V. What is the rms line-to-line output voltage?",
+      "answer": 489.9,
+      "tolerance": 1.0,
+      "unit": "V",
+      "explain": "$V_L = \\sqrt{2/3}V_d = 0.8165 \\times 600 = 489.9$ V."
+    },
+    {
+      "type": "mcq",
+      "topic": "Inverters",
+      "q": "Which harmonics are absent from the line voltage of a six-step inverter?",
+      "options": [
+        "Even harmonics only",
+        "Triplen harmonics (3rd, 9th, …) and even harmonics",
+        "5th and 7th",
+        "None"
+      ],
+      "answer": 1,
+      "explain": "The pole voltages are odd-symmetric (no even harmonics), and their triplen harmonics are in phase, so they cancel in $v_{AB} = v_{AO} - v_{BO}$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Inverters",
+      "q": "In a six-step inverter with a star resistive load, during an interval with S1, S5 and S6 on, the phase voltage $v_{BN}$ is…",
+      "options": [
+        "$+V_d/3$",
+        "$-V_d/3$",
+        "$-2V_d/3$",
+        "$+2V_d/3$"
+      ],
+      "answer": 2,
+      "explain": "A and C are on the positive rail, B on the negative: $v_{BN} = -\\frac{2V_d}{3R}R = -\\frac23V_d$."
+    },
+    {
+      "type": "short",
+      "topic": "PWM",
+      "q": "A multiple-pulse PWM inverter has a 1 kHz carrier and a 50 Hz output. How many pulses per half cycle?",
+      "answer": 10,
+      "tolerance": 0,
+      "explain": "$P = f_c/(2f_o) = 1000/100 = 10$."
+    },
+    {
+      "type": "short",
+      "topic": "PWM",
+      "q": "A single-pulse PWM full bridge has $V_d = 220$ V and a pulse width of 90°. What is the rms output voltage?",
+      "answer": 155.6,
+      "tolerance": 0.5,
+      "unit": "V",
+      "explain": "$V_o = V_d\\sqrt{\\delta/\\pi} = 220\\sqrt{0.5} = 155.6$ V."
+    },
+    {
+      "type": "mcq",
+      "topic": "PWM",
+      "q": "What is the modulation index in PWM?",
+      "options": [
+        "$f_c/f_o$",
+        "$A_r/A_c$",
+        "$A_c/A_r$",
+        "$\\delta/\\pi$"
+      ],
+      "answer": 1,
+      "explain": "$M = A_r/A_c$, the reference amplitude over the carrier amplitude."
+    },
+    {
+      "type": "mcq",
+      "topic": "PWM",
+      "q": "In unipolar SPWM, how are the two legs of a full bridge controlled?",
+      "options": [
+        "Both from the same comparison, switching together",
+        "Leg A from $A_r$ vs $A_c$ and leg B from $-A_r$ vs $A_c$",
+        "Only one leg switches",
+        "By a square-wave reference"
+      ],
+      "answer": 1,
+      "explain": "The legs switch independently, so the output steps between $\\pm V_d$ and 0."
+    }
   ]
 }
