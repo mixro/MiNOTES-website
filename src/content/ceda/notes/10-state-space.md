@@ -98,6 +98,26 @@ $$\begin{gathered}\begin{aligned}\Phi &= I + AT \\ &= \begin{bmatrix}1 & T\\0 & 
 
 With $T = 0.1$ s this is the model used for the pole-placement example in Chapter 8.
 
+## Controllability and observability
+
+For the sampled model $x[k + 1] = \Phi x[k] + \Gamma u[k]$, $y[k] = Cx[k]$ with $n$ states:
+
+- **Controllable:** some input sequence can drive the state from any initial value to any final value in at most $n$ steps. Test: the controllability matrix has rank $n$.
+
+$$M_c = \begin{bmatrix}\Gamma & \Phi\Gamma & \cdots & \Phi^{n-1}\Gamma\end{bmatrix}$$
+
+- **Observable:** the initial state can be worked out from $n$ samples of the output. Test: the observability matrix has rank $n$.
+
+$$M_o = \begin{bmatrix}C\\C\Phi\\\vdots\\C\Phi^{n-1}\end{bmatrix}$$
+
+Pole placement by state feedback (Chapter 8) needs controllability. A state observer, which estimates states that are not measured, needs observability.
+
+*Example:* the double integrator at $T = 0.1$ s, with $\Phi\Gamma = \begin{bmatrix}0.015\\0.1\end{bmatrix}$.
+
+- $M_c = \begin{bmatrix}0.005 & 0.015\\0.1 & 0.1\end{bmatrix}$, $\det M_c = -0.001 \ne 0$: **controllable**.
+- Measuring position, $C = [1\;\;0]$: $M_o = \begin{bmatrix}1 & 0\\1 & 0.1\end{bmatrix}$, $\det = 0.1$: **observable**.
+- Measuring only velocity, $C = [0\;\;1]$: $M_o = \begin{bmatrix}0 & 1\\0 & 1\end{bmatrix}$, $\det = 0$: **not observable**. The position cannot be recovered from velocity readings alone.
+
 > **Corrections to the summary.**
 > - Example 3: the summary writes $\det(sI - A) = s(s - 3) + 2$ and $H(s) = \dfrac{5}{s(s - 3) + 2}$. The (2,2) entry of $sI - A$ is $s + 3$, so $H(s) = \dfrac{5}{s^2 + 3s + 2}$. The summary's version would have poles at $+1$ and $+2$, which is unstable and contradicts the eigenvalues of $A$.
 > - Example 4: the summary's matrix has the first two rows as $[1\;0\;0]$ and $[0\;1\;0]$. In phase-variable form they are $[0\;1\;0]$ and $[0\;0\;1]$ (from $\dot x_1 = x_2$, $\dot x_2 = x_3$), as its own equations state.

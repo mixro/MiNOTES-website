@@ -162,5 +162,49 @@
   {
     "front": "State-space transfer function",
     "back": "$H(s) = C(sI - A)^{-1}B + D$; the poles are the eigenvalues of $A$."
+  },
+  {
+    "front": "Root locus: stability limit in the z-plane",
+    "back": "Where a branch crosses the unit circle (find it with Jury), not where it crosses the imaginary axis."
+  },
+  {
+    "front": "Desired z-plane pole from ζ and ωn",
+    "back": "|z| = e^{−ζωnT}, ∠z = ωdT. Aim for 8–10 or more samples per damped cycle, N = ωs/ωd."
+  },
+  {
+    "front": "Static error constants (digital)",
+    "back": "Kp = lim G(z); Kv = (1/T) lim (z−1)G(z); Ka = (1/T²) lim (z−1)²G(z), all as z → 1."
+  },
+  {
+    "front": "System type (digital)",
+    "back": "The number of open-loop poles at z = 1. Type 1: zero step error, finite ramp error."
+  },
+  {
+    "front": "Design via the s-plane",
+    "back": "Design Gc(s) for ζ and ωn, convert with Tustin s = (2/T)(z−1)/(z+1), and check the z-domain poles. Works when T is small."
+  },
+  {
+    "front": "Deadbeat control",
+    "back": "All closed-loop poles at z = 0: exact settling in at most n samples, but large control effort and poor robustness."
+  },
+  {
+    "front": "LQR",
+    "back": "u = −Kx minimising Σ(xᵀQx + uᵀRu); K from the discrete Riccati equation."
+  },
+  {
+    "front": "MPC",
+    "back": "Predict over a horizon, optimise the moves, apply the first, repeat each sample. Handles constraints."
+  },
+  {
+    "front": "Controllability test",
+    "back": "rank [Γ ΦΓ … Φⁿ⁻¹Γ] = n."
+  },
+  {
+    "front": "Observability test",
+    "back": "rank [C; CΦ; …; CΦⁿ⁻¹] = n."
+  },
+  {
+    "front": "Causal discrete system",
+    "back": "Output depends only on present and past inputs: h(k) = 0 for k < 0, and G(z) is proper."
   }
 ]

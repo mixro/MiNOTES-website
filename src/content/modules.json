@@ -156,7 +156,7 @@
       "credits": 6,
       "color": "#007aff",
       "icon": "wave",
-      "summary": "Sampling and quantisation, the z-transform and its inverse, ZOH and pulse transfer functions, sampled-data block diagrams, z-plane stability (Jury, bilinear), digital lead/lag/PID and state feedback, with an analogue design review.",
+      "summary": "Sampling and quantisation, the z-transform and its inverse, ZOH and pulse transfer functions, sampled-data block diagrams, z-plane stability (Jury, bilinear), digital lead/lag/PID and state feedback, root-locus design and steady-state error, with an analogue design review.",
       "chapters": [
         {
           "id": "01-digital-control-systems",
@@ -215,8 +215,14 @@
         {
           "id": "10-state-space",
           "title": "Review: state-space methods",
-          "summary": "State equations, examples, sampled state model",
+          "summary": "State equations, controllability, sampled state model",
           "file": "notes/10-state-space.md"
+        },
+        {
+          "id": "11-root-locus-design",
+          "title": "Root-locus design and steady-state error",
+          "summary": "Digital root locus, ζ in the z-plane, error constants, lead design",
+          "file": "notes/11-root-locus-design.md"
         }
       ],
       "quiz": "quiz.json",
@@ -235,6 +241,24 @@
           "title": "Practice problems",
           "summary": "Twelve checked problems across the whole module",
           "file": "tutorials/practice-problems.md"
+        },
+        {
+          "id": "tutorial-2",
+          "title": "Tutorial questions II",
+          "summary": "Transforms, pulse transfer functions, Jury, ranges of K and T, PI design, state models",
+          "file": "tutorials/tutorial-2.md"
+        },
+        {
+          "id": "test-one",
+          "title": "Test 1, Paper D",
+          "summary": "Twenty multiple-choice questions with explained answers",
+          "file": "tutorials/test-one.md"
+        },
+        {
+          "id": "group-assignments",
+          "title": "Group assignment questions",
+          "summary": "Thirty questions from the six group topics, answered",
+          "file": "tutorials/group-assignments.md"
         }
       ]
     },
