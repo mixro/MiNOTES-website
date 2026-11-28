@@ -1,10 +1,154 @@
 [
-  { "front": "What makes a system real-time?", "back": "Its correctness depends on both the result and the time at which the result is produced." },
-  { "front": "Hard vs soft deadline", "back": "Missing a hard deadline is a failure. Missing a soft deadline only lowers quality." },
-  { "front": "Utilisation of a task set", "back": "$U = \\sum C_i / T_i$" },
-  { "front": "RMS priority rule", "back": "Shorter period means higher (fixed) priority." },
-  { "front": "Liu and Layland bound", "back": "$U \\le n(2^{1/n}-1)$, tending to $\\ln 2 \\approx 0.693$" },
-  { "front": "EDF schedulability test", "back": "Schedulable on one CPU if and only if $U \\le 1$ (with $D = T$)." },
-  { "front": "Priority inversion", "back": "A high-priority task is blocked by a lower one holding a resource, while a medium task runs." },
-  { "front": "WCET", "back": "Worst-case execution time: the longest a task can take to run, used in timing analysis." }
+ {
+  "front": "Real-time system",
+  "back": "A system whose correctness depends on the logical result AND the time at which it is produced."
+ },
+ {
+  "front": "Embedded vs real-time",
+  "back": "Embedded: a dedicated function inside a larger system, not necessarily time bound. Real-time: timing constraints define correctness."
+ },
+ {
+  "front": "Hard / firm / soft",
+  "back": "Hard: a miss is failure. Firm: a late result is useless and discarded. Soft: quality degrades; average response matters."
+ },
+ {
+  "front": "Periodic / aperiodic / sporadic",
+  "back": "Periodic: fixed period, time driven. Aperiodic: irregular, event driven. Sporadic: irregular with a minimum inter-arrival time."
+ },
+ {
+  "front": "Timing constraint types",
+  "back": "Delay, deadline and duration, each either a performance (system) or behavioural (environment) constraint."
+ },
+ {
+  "front": "Fail-safe state",
+  "back": "A state that causes no damage when the system fails. Safety-critical systems have none, so they need very high reliability."
+ },
+ {
+  "front": "Four ways to high reliability",
+  "back": "Error avoidance; error detection and removal; fault tolerance; built-in self-test."
+ },
+ {
+  "front": "TMR",
+  "back": "Triple modular redundancy: three modules and a majority voter mask one faulty module."
+ },
+ {
+  "front": "Software fault tolerance",
+  "back": "N-version programming; recovery blocks; checkpointing and rollback."
+ },
+ {
+  "front": "Why software FT is harder",
+  "back": "Software failures are correlated (same design faults); redundancy costs time, so it only fits large deadlines."
+ },
+ {
+  "front": "Control architectures",
+  "back": "Centralized (one controller), hierarchical (levels), distributed (cooperating peers, no master)."
+ },
+ {
+  "front": "Signal conditioning types",
+  "back": "Voltage amplification; level shifting; frequency shifting and filtering; signal mode conversion."
+ },
+ {
+  "front": "Nyquist criterion",
+  "back": "$f_s \\ge 2 f_{max}$ to avoid aliasing."
+ },
+ {
+  "front": "Latency vs jitter",
+  "back": "Latency: the delay from input to response. Jitter: the variation in that timing."
+ },
+ {
+  "front": "RTOS",
+  "back": "An OS that gives logically correct results within deadlines: pre-emptive priority scheduling, bounded latency, small kernel."
+ },
+ {
+  "front": "Context switch",
+  "back": "Save the running task's registers, PC and stack pointer (in its TCB) and restore the next task's."
+ },
+ {
+  "front": "Task control block",
+  "back": "Per-task record: ID, priority, state, saved context, stack, timing, resources."
+ },
+ {
+  "front": "ISR top and bottom halves",
+  "back": "Top half: short urgent ISR. Bottom half (DSR): deferred non-urgent processing in a task."
+ },
+ {
+  "front": "Scheduling points",
+  "back": "Clock driven: timer interrupts. Event driven: events. Hybrid: both."
+ },
+ {
+  "front": "Utilisation",
+  "back": "$U = \\sum C_i / T_i$; if $U > 1$, nothing can schedule the set on one CPU."
+ },
+ {
+  "front": "RM rule and test",
+  "back": "Shorter period means higher fixed priority. Sufficient test $U \\le n(2^{1/n}-1)$, tending to 0.693."
+ },
+ {
+  "front": "EDF",
+  "back": "Run the job with the earliest absolute deadline. Optimal: schedulable if and only if $U \\le 1$ (when $D = T$)."
+ },
+ {
+  "front": "EDF shortcomings",
+  "back": "Transient overload (domino effect); resource sharing; costly implementation; less predictable."
+ },
+ {
+  "front": "Cyclic frame constraints",
+  "back": "$f \\ge \\max C_i$; $f$ divides $M$; $2f - \\gcd(T_i, f) \\le D_i$."
+ },
+ {
+  "front": "Round robin",
+  "back": "Pre-emptive FCFS with a time quantum: fair, no starvation, many context switches."
+ },
+ {
+  "front": "Semaphore",
+  "back": "Integer plus queue with atomic wait (P) and signal (V). Binary: 0/1 lock. Counting: N resources."
+ },
+ {
+  "front": "Deadlock conditions",
+  "back": "Mutual exclusion, hold and wait, no pre-emption, circular wait: all four together."
+ },
+ {
+  "front": "Wait-for graph",
+  "back": "Processes only; Pi → Pj if Pi waits for Pj. A cycle means deadlock (single instance)."
+ },
+ {
+  "front": "Banker's algorithm",
+  "back": "Grant a request only if a safe sequence still exists. Need = Max − Allocation."
+ },
+ {
+  "front": "Priority inversion",
+  "back": "A high task waits for a low task holding a lock; it is unbounded if medium tasks pre-empt the low one."
+ },
+ {
+  "front": "PIP",
+  "back": "The lock holder inherits the priority of the highest waiting task. Greedy."
+ },
+ {
+  "front": "PCP",
+  "back": "Each resource has a ceiling; lock only if priority > current system ceiling. Prevents deadlock and chain blocking; single blocking."
+ },
+ {
+  "front": "CAN",
+  "back": "Small (<50 m) bus; lowest identifier wins non-destructive arbitration; CRC and ACK; up to 1 Mbit/s."
+ },
+ {
+  "front": "QoS parameters",
+  "back": "Bandwidth, latency, jitter, packet loss / loss rate, blocking probability, MOS."
+ },
+ {
+  "front": "Communication models",
+  "back": "Shared memory, message passing, client–server, publish–subscribe."
+ },
+ {
+  "front": "Data distribution types",
+  "back": "Centralized, distributed, publish–subscribe, time-triggered."
+ },
+ {
+  "front": "Requirement engineering",
+  "back": "Gathering and defining the services (and constraints) the real-time system must provide."
+ },
+ {
+  "front": "Little's law",
+  "back": "$L = \\lambda W$: average number in the system = arrival rate × average time in the system."
+ }
 ]

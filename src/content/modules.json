@@ -8,31 +8,81 @@
       "credits": 6,
       "color": "#5e5ce6",
       "icon": "clock",
-      "summary": "Designing systems that must respond on time: tasks, scheduling, RTOS and timing analysis.",
+      "summary": "Designing systems that must respond on time: hardware and I/O, data acquisition, RTOS, scheduling, deadlock and real-time communication.",
       "chapters": [
         {
           "id": "01-introduction",
-          "title": "Introduction to real-time systems",
-          "summary": "Hard, firm and soft deadlines",
+          "title": "Real-time system concepts",
+          "summary": "Hard, firm, soft; model; tasks",
           "file": "notes/01-introduction.md"
         },
         {
-          "id": "02-scheduling",
-          "title": "Task scheduling",
-          "summary": "Rate monotonic and EDF",
-          "file": "notes/02-scheduling.md"
+          "id": "02-reliability-and-control",
+          "title": "Reliability, control and architectures",
+          "summary": "Fault tolerance, TMR, centralized to distributed",
+          "file": "notes/02-reliability-and-control.md"
         },
         {
-          "id": "03-rtos",
-          "title": "RTOS and synchronisation",
-          "summary": "Semaphores, priority inversion",
-          "file": "notes/03-rtos.md"
+          "id": "03-hardware-and-io",
+          "title": "Hardware and I/O interfacing",
+          "summary": "Analog, digital and pulse I/O",
+          "file": "notes/03-hardware-and-io.md"
+        },
+        {
+          "id": "04-data-acquisition",
+          "title": "Data acquisition",
+          "summary": "Sampling, latency, jitter",
+          "file": "notes/04-data-acquisition.md"
+        },
+        {
+          "id": "05-rtos-and-resources",
+          "title": "RTOS and resource management",
+          "summary": "Interrupts, context switch, TCB",
+          "file": "notes/05-rtos-and-resources.md"
+        },
+        {
+          "id": "06-scheduling",
+          "title": "Scheduling algorithms",
+          "summary": "RM, EDF, cyclic, round robin",
+          "file": "notes/06-scheduling.md"
+        },
+        {
+          "id": "07-synchronisation-and-deadlock",
+          "title": "Synchronisation, deadlock and priority inversion",
+          "summary": "Semaphores, Banker’s, PIP and PCP",
+          "file": "notes/07-synchronisation-and-deadlock.md"
+        },
+        {
+          "id": "08-real-time-communication",
+          "title": "Real-time communication",
+          "summary": "CAN, LAN, QoS, protocols",
+          "file": "notes/08-real-time-communication.md"
+        },
+        {
+          "id": "09-design-and-deployment",
+          "title": "Designing, building and deploying",
+          "summary": "Requirements, firmware, testing",
+          "file": "notes/09-design-and-deployment.md"
         }
       ],
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
       "formulas": "formulas.json",
-      "papers": []
+      "papers": [],
+      "tutorials": [
+        {
+          "id": "revision-questions",
+          "title": "Revision questions (32)",
+          "summary": "All the end-of-notes questions with full answers, including cyclic frame and RM/EDF tests.",
+          "file": "tutorials/revision-questions.md"
+        },
+        {
+          "id": "scheduling-problems",
+          "title": "Worked problems",
+          "summary": "RM response time, cyclic frames, round robin, Banker’s, deadlock and DAQ timing.",
+          "file": "tutorials/scheduling-problems.md"
+        }
+      ]
     },
     {
       "id": "ceda",

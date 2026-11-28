@@ -1,7 +1,62 @@
 [
-  { "title": "Processor utilisation", "tex": "U = \\sum_{i=1}^{n} \\frac{C_i}{T_i}", "note": "Must be at most 1 on a single processor." },
-  { "title": "Liu and Layland bound (RMS)", "tex": "U \\le n\\left(2^{1/n}-1\\right)", "note": "Sufficient test. Tends to $\\ln 2 \\approx 0.693$." },
-  { "title": "Response time analysis", "tex": "R_i = C_i + \\sum_{j \\in hp(i)} \\left\\lceil \\frac{R_i}{T_j} \\right\\rceil C_j", "note": "Iterate from $R_i = C_i$ until it converges. Schedulable if $R_i \\le D_i$." },
-  { "title": "EDF test", "tex": "U \\le 1", "note": "Necessary and sufficient when $D_i = T_i$." },
-  { "title": "Hyperperiod", "tex": "H = \\operatorname{lcm}(T_1, T_2, \\dots, T_n)", "note": "The schedule repeats every hyperperiod." }
+ {
+  "title": "Processor utilisation",
+  "tex": "U = \\sum_{i=1}^{n} \\frac{C_i}{T_i}",
+  "note": "Must be at most 1 on a single processor."
+ },
+ {
+  "title": "Liu and Layland bound (RM)",
+  "tex": "U \\le n\\left(2^{1/n}-1\\right)",
+  "note": "Sufficient test: 1.000, 0.828, 0.780, 0.757 for n = 1–4; tends to $\\ln 2 \\approx 0.693$."
+ },
+ {
+  "title": "Response-time analysis (RM)",
+  "tex": "R_i = C_i + \\sum_{j \\in hp(i)} \\left\\lceil \\frac{R_i}{T_j} \\right\\rceil C_j",
+  "note": "Iterate from $R_i = C_i$ until it settles. Schedulable if $R_i \\le D_i$."
+ },
+ {
+  "title": "EDF test",
+  "tex": "U \\le 1",
+  "note": "Necessary and sufficient when $D_i = T_i$."
+ },
+ {
+  "title": "Hyperperiod (major cycle)",
+  "tex": "M = \\operatorname{lcm}(T_1, T_2, \\dots, T_n)",
+  "note": "The schedule repeats every $M$."
+ },
+ {
+  "title": "Cyclic frame size",
+  "tex": "f \\ge \\max_i C_i,\\quad M \\bmod f = 0,\\quad 2f - \\gcd(T_i, f) \\le D_i",
+  "note": "All three must hold for every task."
+ },
+ {
+  "title": "Task rate",
+  "tex": "\\text{rate} = \\frac{1}{T}",
+  "note": "The inverse of the period."
+ },
+ {
+  "title": "Nyquist criterion",
+  "tex": "f_s \\ge 2 f_{max}",
+  "note": "Sample at least twice the highest frequency to avoid aliasing."
+ },
+ {
+  "title": "Latency budget",
+  "tex": "t_{ADC} + t_{proc} + t_{comm} \\le D",
+  "note": "The total latency must be within the deadline."
+ },
+ {
+  "title": "Turnaround and waiting time",
+  "tex": "TAT = C - A,\\quad WT = TAT - B",
+  "note": "Completion, arrival and burst times."
+ },
+ {
+  "title": "Banker's need",
+  "tex": "\\text{Need} = \\text{Max} - \\text{Allocation}",
+  "note": "Grant only if a safe sequence exists."
+ },
+ {
+  "title": "Little's law",
+  "tex": "L = \\lambda W",
+  "note": "Average number in the system = arrival rate × average time in the system."
+ }
 ]
