@@ -370,7 +370,18 @@
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
       "formulas": "formulas.json",
-      "papers": [],
+      "papers": [
+        {
+          "title": "Test 1, 7 Jan 2025 (questions only)",
+          "year": "2024/2025",
+          "file": "test1-2025-01-07.pdf"
+        },
+        {
+          "title": "Test 1, 23 Dec 2024 (questions only)",
+          "year": "2024/2025",
+          "file": "test1-2024-12-23.pdf"
+        }
+      ],
       "tutorials": [
         {
           "id": "rectifier-examples",
@@ -389,6 +400,24 @@
           "title": "Inverter worked examples",
           "summary": "Half and full bridge, six-step and PWM",
           "file": "tutorials/inverter-examples.md"
+        },
+        {
+          "id": "test-2024-12",
+          "title": "Test 1, 23 December 2024",
+          "summary": "Battery charger, half-wave controlled and three-phase bridge, buck DCM, boost design, buck-boost, Ćuk",
+          "file": "tutorials/test-2024-12.md"
+        },
+        {
+          "id": "test-2025-01",
+          "title": "Test 1, 7 January 2025",
+          "summary": "Battery charger, half-wave controlled, three-phase 100 A load, buck DCM, buck-boost",
+          "file": "tutorials/test-2025-01.md"
+        },
+        {
+          "id": "test-2026-01",
+          "title": "Test 1, 19 January 2026",
+          "summary": "Full converter feeding a DC motor, buck chopper ripple",
+          "file": "tutorials/test-2026-01.md"
         }
       ]
     },
