@@ -106,7 +106,16 @@ To make it event driven, store records **when an event occurs** (an alarm, a thr
 
 ## Performance analysis and testing *(Outcomes 5d and 7)*
 
-The performance of an RTOS-based system is measured by:
+**Performance analysis** checks whether the **timing and functional requirements** are met. *Example:* does the airbag fire within milliseconds of crash detection?
+
+**System-level parameters** (from the Group 7 presentation):
+
+- **response time:** from the event to the completed reaction;
+- **latency:** the delay before the reaction starts;
+- **deadline miss ratio:** missed deadlines ÷ total jobs, which must be **0** for hard tasks;
+- **CPU utilisation:** $U = \sum C_i/T_i$, with a margin for overload.
+
+**RTOS-level parameters** (from the notes):
 
 - the average **interrupt time** and the average **interrupt latency**;
 - the average **task-switch time**;
@@ -114,12 +123,25 @@ The performance of an RTOS-based system is measured by:
 - the **semaphore shuffle time** (from release to the waiting task starting);
 - the **deadlock break time**.
 
-**How to test:**
+### Types of testing
+
+*(From the Group 7 presentation.)* Testing checks the system's behaviour under **real and worst-case** conditions.
+
+| Test | What it checks | Example |
+|---|---|---|
+| **Functional** | Correct outputs for given inputs; the logic, **ignoring timing** | Washing machine: Start begins the wash; wash → rinse → spin in the right order |
+| **Timing** | Response time, latency, **deadline compliance** | Traffic lights change exactly at the programmed times; a late change confuses drivers |
+| **Stress** | Stability, performance under **overload**, how the system fails | A telecom base station when many users call at once |
+| **Hardware-in-the-loop (HIL)** | The **real controller** connected to a **simulated plant**; sensor and actuator interaction; safety before deployment | A motor-drive controller driving a computer model of the motor |
+
+In short: functional = correct operation; timing = correct time; stress = extreme load; HIL = real hardware with a simulated environment. Airbag controllers are tested by feeding them **simulated crash signals** and measuring the firing time.
+
+**How to measure:**
 
 1. Measure the **WCET** of each task: toggle a GPIO pin at the start and end and watch it on an oscilloscope, or use a cycle counter.
 2. Run the **schedulability analysis** (utilisation, RM bound or response time, EDF $U \le 1$).
 3. **Stress-test** with the worst-case input rates and bursts.
-4. **Fault-injection** testing: disconnect sensors, corrupt messages, stop tasks; check that the watchdog and fallback modes work.
+4. **Fault injection:** disconnect sensors, corrupt messages, stop tasks; check that the watchdog and fallback modes work.
 5. **Measure jitter and latency** at the I/O pins, not only in software.
 6. Run a **long soak test** to find memory leaks and drift.
 
@@ -135,7 +157,25 @@ The performance of an RTOS-based system is measured by:
 
 ## Applying real-time techniques to engineering problems *(Outcome 7)*
 
-**Identifying where an embedded real-time system is needed:** the problem has a **deadline-driven** physical process (protection, motion, dosing, safety interlocks); local sensing and actuation; unattended continuous operation; or a need for low power and low cost in a dedicated function.
+### Identifying the area of deployment
+
+*(From the Group 7 presentation.)* The first step defines **where** the system will be used. It considers:
+
+1. the **purpose** of the system;
+2. the **environment** (industrial, medical, automotive, outdoor);
+3. the **timing constraints** (hard or soft deadlines).
+
+An embedded real-time system is the right choice when the problem has a deadline-driven physical process (protection, motion, dosing, safety interlocks), local sensing and actuation, unattended continuous operation, or a need for low power and low cost in one dedicated function.
+
+| Area | What the embedded system does |
+|---|---|
+| **Automotive** | Engine management, ABS braking, airbags, stability control |
+| **Medical** | Patient monitoring, ECG and heart-rate monitors, infusion pumps: sensor processing with real-time feedback |
+| **Industrial automation** | Machine and motor control, sensor handling, efficiency and reliability |
+| **Telecommunications** | Base stations, switching |
+| **Consumer electronics** | Washing machines, cameras, smart-home devices |
+
+**Three systems analysed in exam questions:**
 
 | Application | How it works as a real-time system |
 |---|---|
@@ -143,13 +183,24 @@ The performance of an RTOS-based system is measured by:
 | **Networked multimedia** | Audio and video are captured, compressed and sent in frames (RTP over UDP). Each frame has a **firm** deadline: a late frame is dropped. Buffers absorb jitter. QoS covers bandwidth, delay, jitter and loss. |
 | **Process control** (chemical plant) | Sensors are sampled periodically; PID loops run as periodic tasks (DDC); supervisory control sets the setpoints; alarms and emergency shutdown are **hard** deadlines. Often a hierarchical DCS. |
 
-**Deploying in the environment:**
+### Deploying the system in the environment
 
-- **Enclosure:** IP rating against dust and water; temperature range; vibration.
-- **EMC:** shielding, grounding, filtering, isolation.
-- **Power quality:** a UPS or battery.
-- **Commissioning:** calibrate the sensors, verify timing on site, train operators, document everything.
-- **Maintenance:** remote monitoring, secure firmware updates.
+**Deployment** means installing and running the system in its real environment. The main activities (from the Group 7 presentation) are:
+
+1. **Hardware installation:** sensors, controller, actuators, wiring.
+2. **Software loading:** installing the RTOS and the application firmware.
+3. **System configuration:** setting the parameters and operating modes.
+4. **Testing and commissioning:** run the plant and check its timing, safety and response.
+
+*Example:* a **PLC for industrial motor control**. Mount and wire the PLC and I/O; load the program; set the parameters (ramp times, overload limits); then run the motor and check the start-up timing, the emergency stop response and the protection trips.
+
+**Environmental requirements** *(beyond the notes)*:
+
+- an enclosure with a suitable **IP rating**, temperature range and vibration resistance;
+- **EMC** measures: shielding, grounding, filtering and isolation;
+- **power quality**: a UPS or battery;
+- **commissioning**: calibrate the sensors and train the operators;
+- **maintenance**: remote monitoring and secure firmware updates.
 
 ### Problems pipelined processors cause for real-time design *(beyond the notes)*
 

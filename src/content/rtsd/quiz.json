@@ -555,6 +555,71 @@
    ],
    "answer": 1,
    "explain": "It is safety-critical with stable requirements."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "Which protocol combines a time-triggered static segment with an event-triggered dynamic segment?",
+   "options": [
+    "CAN",
+    "FlexRay",
+    "MQTT",
+    "UDP"
+   ],
+   "answer": 1,
+   "explain": "FlexRay is hybrid and uses a global clock."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "End-to-end delay in a real-time control chain is:",
+   "options": [
+    "Only the network delay",
+    "Acquisition + processing + distribution + actuation",
+    "The ADC conversion time",
+    "The sampling period"
+   ],
+   "answer": 1,
+   "explain": "The whole chain must fit within the deadline."
+  },
+  {
+   "type": "mcq",
+   "topic": "Testing",
+   "q": "Testing a real controller connected to a computer simulation of the plant is:",
+   "options": [
+    "Functional testing",
+    "Stress testing",
+    "Hardware-in-the-loop testing",
+    "Timing testing"
+   ],
+   "answer": 2,
+   "explain": "HIL: real hardware plus a simulated environment."
+  },
+  {
+   "type": "mcq",
+   "topic": "Testing",
+   "q": "Checking that a base station stays stable when many users call at once is:",
+   "options": [
+    "Functional testing",
+    "Stress testing",
+    "HIL testing",
+    "Unit testing"
+   ],
+   "answer": 1,
+   "explain": "Stress testing applies extreme load."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "WirelessHART and 5G URLLC are examples of:",
+   "options": [
+    "Fieldbuses",
+    "Wireless real-time networks",
+    "Real-time Ethernet",
+    "Internet protocols"
+   ],
+   "answer": 1,
+   "explain": "Timing is guaranteed by scheduled access."
   }
  ]
 }

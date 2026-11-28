@@ -58,6 +58,17 @@ $$\text{Total latency} = t_{ADC} + t_{proc} + t_{comm} \le \text{Deadline}$$
 
 **Example (latency check).** The ADC takes 20 µs, filtering 300 µs and sending the result 500 µs. Total latency $= 0.82$ ms, which meets a 1 ms deadline with 0.18 ms to spare.
 
+### Real-time constraints on acquisition
+
+*(From the Group 4 presentation.)*
+
+- The **sampling period** must be short enough for **control-loop stability**, not only for Nyquist. A common rule is to sample 10–20 times faster than the closed-loop bandwidth *(beyond the notes)*.
+- The **latency** from sensor to CPU must be **bounded**.
+- **Jitter** must be minimised.
+- The **data must be fresh**: a stale value leads to wrong control decisions, so samples are **timestamped**, and a value older than its validity interval is discarded.
+
+Acquisition is either **time-triggered** (fixed periodic sampling, used in hard real-time loops such as motor control, digital power converters and flight-control sensors) or **event-triggered** (sampling on an interrupt or threshold, used for fault detection and emergency shutdown). The RTOS or firmware handles the acquisition tasks and interrupts, and a **sampling clock (timer)** fixes the sampling instants.
+
 ## Hardware, processing and storage
 
 - **DAQ hardware:** DAQ cards or modules, embedded systems, microcontrollers and interface buses (USB, PCI, Ethernet). Choose it by **sampling speed, number of channels, real-time constraints and power consumption**.

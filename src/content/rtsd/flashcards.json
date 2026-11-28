@@ -150,5 +150,17 @@
  {
   "front": "Little's law",
   "back": "$L = \\lambda W$: average number in the system = arrival rate × average time in the system."
+ },
+ {
+  "front": "Time- vs event-triggered communication",
+  "back": "Time-triggered: fixed slots from a global schedule (very deterministic). Event-triggered: sent when an event occurs (flexible). Hybrid: both (FlexRay)."
+ },
+ {
+  "front": "Four types of RTS testing",
+  "back": "Functional (correct output), timing (deadlines), stress (overload), hardware-in-the-loop (real controller, simulated plant)."
+ },
+ {
+  "front": "Deployment activities",
+  "back": "Hardware installation, software (RTOS) loading, configuration, testing and commissioning."
  }
 ]
