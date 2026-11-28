@@ -1,10 +1,187 @@
 [
-  { "title": "z-transform definition", "tex": "X(z) = \\sum_{k=0}^{\\infty} x(k)z^{-k}" },
-  { "title": "Plane mapping", "tex": "z = e^{sT}" },
-  { "title": "Zero-order hold", "tex": "G_{h0}(s) = \\frac{1-e^{-sT}}{s}" },
-  { "title": "Plant with ZOH", "tex": "G(z) = (1-z^{-1})\\,\\mathcal{Z}\\left\\{\\frac{G(s)}{s}\\right\\}" },
-  { "title": "Final value theorem", "tex": "x(\\infty) = \\lim_{z\\to 1}(z-1)X(z)" },
-  { "title": "Unit step", "tex": "\\mathcal{Z}\\{1(k)\\} = \\frac{z}{z-1}" },
-  { "title": "Bilinear transform", "tex": "z = \\frac{1+w}{1-w}", "note": "Maps the unit circle onto the imaginary axis for a Routh test." },
-  {"title": "Jury conditions (2nd order)", "tex": "P(1)>0,\\; P(-1)>0,\\; |a_0|<a_2"}
+  {
+    "title": "Sampling",
+    "tex": "x(k) = x(kT_s),\\quad f_s = 1/T_s"
+  },
+  {
+    "title": "Nyquist criterion",
+    "tex": "f_s \\ge 2f_{max}",
+    "note": "In practice $f_s$ = 5–10 × $f_{max}$, or ≥ 10 × the closed-loop bandwidth."
+  },
+  {
+    "title": "Alias frequency",
+    "tex": "f_{alias} = |f - nf_s|",
+    "note": "For the integer $n$ that brings it below $f_s/2$."
+  },
+  {
+    "title": "Quantisation step",
+    "tex": "\\Delta = \\frac{V_{max} - V_{min}}{2^n},\\quad |e_q| \\le \\frac{\\Delta}{2}"
+  },
+  {
+    "title": "ADC resolution",
+    "tex": "\\frac{1}{2^n}\\times100\\%",
+    "note": "8-bit: 0.39%; 12-bit: 0.024%."
+  },
+  {
+    "title": "z-transform",
+    "tex": "X(z) = \\sum_{k=0}^{\\infty}x(k)z^{-k}"
+  },
+  {
+    "title": "s to z",
+    "tex": "z = e^{sT},\\quad |z| = e^{\\sigma T}"
+  },
+  {
+    "title": "Impulse and step",
+    "tex": "\\begin{gathered}\\delta(k) \\to 1, \\\\ \\delta(k - m) \\to z^{-m}, \\\\ u(k) \\to \\frac{z}{z - 1}\\end{gathered}",
+    "note": "Step ROC: $|z| > 1$."
+  },
+  {
+    "title": "Exponential",
+    "tex": "a^k \\to \\frac{z}{z - a},\\quad e^{-akT} \\to \\frac{z}{z - e^{-aT}}"
+  },
+  {
+    "title": "Ramp",
+    "tex": "kT \\to \\frac{Tz}{(z - 1)^2},\\quad ka^k \\to \\frac{az}{(z - a)^2}"
+  },
+  {
+    "title": "Sine and cosine",
+    "tex": "\\begin{gathered}\\sin\\omega kT \\to \\frac{z\\sin\\omega T}{z^2 - 2z\\cos\\omega T + 1}, \\\\ \\cos\\omega kT \\to \\frac{z(z - \\cos\\omega T)}{z^2 - 2z\\cos\\omega T + 1}\\end{gathered}"
+  },
+  {
+    "title": "Damped sine",
+    "tex": "a^k\\sin\\omega k \\to \\frac{az\\sin\\omega}{z^2 - 2az\\cos\\omega + a^2}"
+  },
+  {
+    "title": "Shift right",
+    "tex": "\\mathcal{Z}\\{x(k - n)\\} = z^{-n}X(z)"
+  },
+  {
+    "title": "Shift left",
+    "tex": "\\begin{aligned}\\mathcal{Z}\\{x(k + n)\\} &= z^nX(z) \\\\ &\\quad - z^n\\sum_{k=0}^{n-1}x(k)z^{-k}\\end{aligned}"
+  },
+  {
+    "title": "Multiplication by aᵏ",
+    "tex": "\\mathcal{Z}\\{a^kx(k)\\} = X(z/a)"
+  },
+  {
+    "title": "Initial and final value",
+    "tex": "\\begin{gathered}x(0) = \\lim_{z\\to\\infty}X(z), \\\\ x(\\infty) = \\lim_{z\\to1}(z - 1)X(z)\\end{gathered}",
+    "note": "Final value only if $(z - 1)X(z)$ is stable."
+  },
+  {
+    "title": "Inversion integral",
+    "tex": "x(k) = \\frac{1}{2\\pi j}\\oint X(z)z^{k - 1}\\,dz"
+  },
+  {
+    "title": "Pulse transfer function",
+    "tex": "G(z) = \\frac{Y(z)}{U(z)} = \\frac{b_0 + b_1z^{-1} + \\cdots}{1 + a_1z^{-1} + \\cdots}"
+  },
+  {
+    "title": "ZOH",
+    "tex": "G_{h0}(s) = \\frac{1 - e^{-sT}}{s}"
+  },
+  {
+    "title": "Plant with ZOH",
+    "tex": "G(z) = (1 - z^{-1})\\,\\mathcal{Z}\\Big\\{\\frac{G(s)}{s}\\Big\\}"
+  },
+  {
+    "title": "ZOH of a first-order lag",
+    "tex": "\\frac{1}{s + a} \\to \\frac1a\\cdot\\frac{1 - e^{-aT}}{z - e^{-aT}}"
+  },
+  {
+    "title": "ZOH of 1/[s(s+1)]",
+    "tex": "\\begin{gathered}G(z) = \\frac{b_1z + b_0}{(z - 1)(z - e^{-T})}, \\\\ b_1 = T - 1 + e^{-T}, \\\\ b_0 = 1 - e^{-T} - Te^{-T}\\end{gathered}",
+    "note": "$T = 0.1$: $(0.004837z + 0.004679)/(z^2 - 1.9048z + 0.9048)$."
+  },
+  {
+    "title": "ZOH staircase",
+    "tex": "\\small \\begin{aligned}x_h(t) = \\sum_kx(k)\\big[&u(t - kT) \\\\ &- u(t - (k + 1)T)\\big]\\end{aligned}"
+  },
+  {
+    "title": "Tustin (bilinear) discretisation",
+    "tex": "s = \\frac2T\\cdot\\frac{1 - z^{-1}}{1 + z^{-1}},\\quad z = \\frac{1 + sT/2}{1 - sT/2}"
+  },
+  {
+    "title": "Frequency warping",
+    "tex": "\\omega_a = \\frac2T\\tan\\frac{\\omega_dT}{2}"
+  },
+  {
+    "title": "Cascade, no sampler between",
+    "tex": "\\begin{gathered}C(z) = R(z)\\,G_1G_2(z), \\\\ G_1G_2(z) = \\mathcal{Z}\\{G_1(s)G_2(s)\\}\\end{gathered}"
+  },
+  {
+    "title": "Loop, forward sampler only",
+    "tex": "\\frac{C(z)}{R(z)} = \\frac{G(z)}{1 + GH(z)}"
+  },
+  {
+    "title": "Loop, samplers in both paths",
+    "tex": "\\frac{C(z)}{R(z)} = \\frac{G(z)}{1 + G(z)H(z)}"
+  },
+  {
+    "title": "Stability",
+    "tex": "|z_p| < 1 \\text{ for all poles}"
+  },
+  {
+    "title": "BIBO",
+    "tex": "\\sum_{k}|h(k)| < \\infty"
+  },
+  {
+    "title": "Bilinear stability test",
+    "tex": "z = \\frac{s + 1}{s - 1} \\;\\Leftrightarrow\\; s = \\frac{z + 1}{z - 1}",
+    "note": "Then Routh–Hurwitz on $D(s)$."
+  },
+  {
+    "title": "Jury (second order)",
+    "tex": "\\begin{gathered}D(1) > 0, \\\\ D(-1) > 0, \\\\ |a_0| < a_2\\end{gathered}"
+  },
+  {
+    "title": "Digital lag",
+    "tex": "K\\frac{z - z_0}{z - p_0},\\quad 0 < z_0 < p_0 < 1",
+    "note": "DC gain $(1 - z_0)/(1 - p_0) > 1$."
+  },
+  {
+    "title": "Digital lead",
+    "tex": "K\\frac{z - z_0}{z - p_0},\\quad 0 < p_0 < z_0 < 1"
+  },
+  {
+    "title": "PID, position form",
+    "tex": "\\begin{aligned}u[k] &= K_pe[k] + K_iT\\sum_{j=0}^{k}e[j] \\\\ &\\quad + \\frac{K_d}{T}(e[k] - e[k - 1])\\end{aligned}"
+  },
+  {
+    "title": "PID, velocity form",
+    "tex": "\\begin{aligned}u[k] &= u[k - 1] + K_p\\Delta e[k] \\\\ &\\quad + K_iTe[k] \\\\ &\\quad + \\frac{K_d}{T}\\big(e[k] - 2e[k - 1] \\\\ &\\qquad + e[k - 2]\\big)\\end{aligned}"
+  },
+  {
+    "title": "PID transfer function",
+    "tex": "C(z) = K_p + \\frac{K_iTz}{z - 1} + \\frac{K_d}{T}\\cdot\\frac{z - 1}{z}"
+  },
+  {
+    "title": "State feedback",
+    "tex": "\\begin{gathered}u[k] = -Kx[k], \\\\ x[k + 1] = (A - BK)x[k]\\end{gathered}"
+  },
+  {
+    "title": "Sampled state model",
+    "tex": "\\Phi = e^{AT},\\quad \\Gamma = \\int_0^Te^{A\\tau}d\\tau\\,B"
+  },
+  {
+    "title": "Dominant pole",
+    "tex": "s_d = -\\zeta\\omega_n \\pm j\\omega_n\\sqrt{1 - \\zeta^2}"
+  },
+  {
+    "title": "Overshoot",
+    "tex": "M_p = e^{-\\pi\\zeta/\\sqrt{1 - \\zeta^2}}"
+  },
+  {
+    "title": "Lead network",
+    "tex": "\\begin{gathered}G_c = \\beta\\frac{1 + \\tau s}{1 + \\beta\\tau s}, \\\\ \\tau = R_1C,\\; \\beta = \\frac{R_2}{R_1 + R_2}\\end{gathered}"
+  },
+  {
+    "title": "PID by frequency response",
+    "tex": "K_p = \\frac{\\cos\\theta}{A_0},\\quad K_d\\omega - \\frac{K_i}{\\omega} = \\frac{\\sin\\theta}{A_0}",
+    "note": "$A_0 = |G(j\\omega)|$, $\\theta = -180° + PM - \\angle G(j\\omega)$."
+  },
+  {
+    "title": "State-space transfer function",
+    "tex": "H(s) = C(sI - A)^{-1}B + D"
+  }
 ]

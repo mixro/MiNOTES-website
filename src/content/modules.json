@@ -156,31 +156,87 @@
       "credits": 6,
       "color": "#007aff",
       "icon": "wave",
-      "summary": "Sampled-data control: the z-transform, discrete transfer functions, stability and digital controllers.",
+      "summary": "Sampling and quantisation, the z-transform and its inverse, ZOH and pulse transfer functions, sampled-data block diagrams, z-plane stability (Jury, bilinear), digital lead/lag/PID and state feedback, with an analogue design review.",
       "chapters": [
         {
-          "id": "01-sampling",
-          "title": "Sampling and reconstruction",
-          "summary": "Sampling theorem, zero-order hold",
-          "file": "notes/01-sampling.md"
+          "id": "01-digital-control-systems",
+          "title": "Digital control systems",
+          "summary": "Structure, ADC/DAC, advantages, difference equations",
+          "file": "notes/01-digital-control-systems.md"
         },
         {
-          "id": "02-z-transform",
+          "id": "02-sampling-quantisation",
+          "title": "Sampling and quantisation",
+          "summary": "Nyquist, aliasing, quantisation, resolution",
+          "file": "notes/02-sampling-quantisation.md"
+        },
+        {
+          "id": "03-z-transform",
           "title": "The z-transform",
-          "summary": "Pulse transfer functions",
-          "file": "notes/02-z-transform.md"
+          "summary": "Definition, ROC, table, properties, transfer functions",
+          "file": "notes/03-z-transform.md"
         },
         {
-          "id": "03-stability",
-          "title": "Stability of discrete systems",
-          "summary": "Unit circle and Jury test",
-          "file": "notes/03-stability.md"
+          "id": "04-inverse-z-transform",
+          "title": "The inverse z-transform",
+          "summary": "Power series, partial fractions, residues, ROC",
+          "file": "notes/04-inverse-z-transform.md"
+        },
+        {
+          "id": "05-zoh-pulse-transfer",
+          "title": "Sampler, ZOH and pulse transfer functions",
+          "summary": "ZOH, G(z) with ZOH, Tustin, warping",
+          "file": "notes/05-zoh-pulse-transfer.md"
+        },
+        {
+          "id": "06-block-diagrams",
+          "title": "Block diagrams of sampled-data systems",
+          "summary": "Sampler rules, phantom samplers, reduction",
+          "file": "notes/06-block-diagrams.md"
+        },
+        {
+          "id": "07-stability",
+          "title": "Stability in the z-plane",
+          "summary": "Unit circle, BIBO, Jury, bilinear plus Routh, effect of T",
+          "file": "notes/07-stability.md"
+        },
+        {
+          "id": "08-digital-controllers",
+          "title": "Digital controllers",
+          "summary": "Lag/lead, digital PID, root locus, state feedback",
+          "file": "notes/08-digital-controllers.md"
+        },
+        {
+          "id": "09-analogue-compensation",
+          "title": "Review: analogue compensator design",
+          "summary": "Lead/lag networks, root-locus and frequency PID design",
+          "file": "notes/09-analogue-compensation.md"
+        },
+        {
+          "id": "10-state-space",
+          "title": "Review: state-space methods",
+          "summary": "State equations, examples, sampled state model",
+          "file": "notes/10-state-space.md"
         }
       ],
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
       "formulas": "formulas.json",
-      "papers": []
+      "papers": [],
+      "tutorials": [
+        {
+          "id": "tutorial-questions",
+          "title": "Tutorial questions 1–44",
+          "summary": "Sampling, z-transforms, inverses, ZOH, block diagrams, stability and controllers, corrected",
+          "file": "tutorials/tutorial-questions.md"
+        },
+        {
+          "id": "practice-problems",
+          "title": "Practice problems",
+          "summary": "Twelve checked problems across the whole module",
+          "file": "tutorials/practice-problems.md"
+        }
+      ]
     },
     {
       "id": "ed",
