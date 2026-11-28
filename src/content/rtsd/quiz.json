@@ -1,13 +1,625 @@
 {
-  "timeLimit": 600,
-  "questions": [
-    { "type": "mcq", "topic": "Deadlines", "q": "Missing a deadline in an airbag controller is an example of which type of deadline?", "options": ["Soft", "Firm", "Hard", "Aperiodic"], "answer": 2, "explain": "A missed hard deadline means system failure that may cause harm." },
-    { "type": "mcq", "topic": "Rate monotonic", "q": "Under rate monotonic scheduling, which task gets the highest priority?", "options": ["The longest execution time", "The shortest period", "The earliest absolute deadline", "The task released first"], "answer": 1, "explain": "RMS gives fixed priorities by rate: shorter period means higher priority." },
-    { "type": "short", "topic": "Utilisation", "q": "Three tasks have $(C,T)$ of $(1,4)$, $(2,6)$ and $(1,10)$ ms. What is the total utilisation $U$? Give 3 decimal places.", "answer": 0.683, "tolerance": 0.01, "explain": "$U = 1/4 + 2/6 + 1/10 = 0.250 + 0.333 + 0.100 = 0.683$." },
-    { "type": "short", "topic": "Rate monotonic", "q": "What is the Liu and Layland utilisation bound for $n = 2$ tasks? Give 3 decimal places.", "answer": 0.828, "tolerance": 0.01, "explain": "$2(2^{1/2} - 1) = 0.828$." },
-    { "type": "mcq", "topic": "EDF", "q": "On a single processor with $D_i = T_i$, EDF can schedule a task set if and only if:", "options": ["$U \\le 0.693$", "$U \\le n(2^{1/n}-1)$", "$U \\le 1$", "All periods are harmonic"], "answer": 2, "explain": "EDF is optimal on one processor, so any set with $U \\le 1$ is schedulable." },
-    { "type": "mcq", "topic": "Priority inversion", "q": "Which technique lets a low-priority task holding a lock temporarily run at the priority of the highest task waiting for it?", "options": ["Round robin", "Priority inheritance", "Time slicing", "Watchdog timer"], "answer": 1, "explain": "Priority inheritance bounds the blocking time caused by priority inversion." },
-    { "type": "mcq", "topic": "Task types", "q": "An emergency stop button with a known minimum time between presses and a hard deadline is a:", "options": ["Periodic task", "Aperiodic task", "Sporadic task", "Background task"], "answer": 2, "explain": "Sporadic tasks are irregular but have a minimum inter-arrival time and a hard deadline." },
-    { "type": "mcq", "topic": "Deadlock", "q": "Which is NOT one of the four necessary conditions for deadlock?", "options": ["Mutual exclusion", "Circular wait", "Pre-emption", "Hold and wait"], "answer": 2, "explain": "The condition is *no* pre-emption. Allowing pre-emption breaks deadlock." }
-  ]
+ "timeLimit": 900,
+ "questions": [
+  {
+   "type": "mcq",
+   "topic": "Concepts",
+   "q": "A real-time system is one whose correctness depends on:",
+   "options": [
+    "Only the logical result",
+    "Only the speed of the CPU",
+    "The logical result and the time it is produced",
+    "The number of tasks"
+   ],
+   "answer": 2,
+   "explain": "Correct but late is incorrect in a real-time system."
+  },
+  {
+   "type": "mcq",
+   "topic": "Concepts",
+   "q": "Missing a deadline in an airbag controller is an example of a:",
+   "options": [
+    "Soft deadline",
+    "Firm deadline",
+    "Hard deadline",
+    "Aperiodic deadline"
+   ],
+   "answer": 2,
+   "explain": "A missed hard deadline is system failure, possibly catastrophic."
+  },
+  {
+   "type": "mcq",
+   "topic": "Concepts",
+   "q": "In a firm real-time system, a result produced after its deadline is:",
+   "options": [
+    "Still fully useful",
+    "Discarded because its value is zero",
+    "Causes system failure",
+    "Delivered at lower priority"
+   ],
+   "answer": 1,
+   "explain": "Firm: the late result is useless but the system does not fail."
+  },
+  {
+   "type": "mcq",
+   "topic": "Concepts",
+   "q": "Which is the best example of a soft real-time system?",
+   "options": [
+    "Pacemaker",
+    "Anti-missile system",
+    "Web browsing / video streaming",
+    "Nuclear reactor shutdown"
+   ],
+   "answer": 2,
+   "explain": "Occasional delays only lower quality."
+  },
+  {
+   "type": "mcq",
+   "topic": "Concepts",
+   "q": "Which statement about embedded systems is true?",
+   "options": [
+    "They always have hard deadlines",
+    "They perform a dedicated function within a larger system and need not have a time bound",
+    "They never interact with the real world",
+    "They are the same as real-time systems"
+   ],
+   "answer": 1,
+   "explain": "Real-time emphasises timing; embedded emphasises a dedicated function."
+  },
+  {
+   "type": "mcq",
+   "topic": "Concepts",
+   "q": "'Real-time computing is the same as fast computing' is:",
+   "options": [
+    "True",
+    "A common misconception: real-time means predictable",
+    "True only for hard systems",
+    "True only for soft systems"
+   ],
+   "answer": 1,
+   "explain": "Real-time is about meeting deadlines predictably, not raw speed."
+  },
+  {
+   "type": "mcq",
+   "topic": "Tasks",
+   "q": "An emergency stop with a known minimum time between presses and a hard deadline is a:",
+   "options": [
+    "Periodic task",
+    "Aperiodic task",
+    "Sporadic task",
+    "Non-real-time task"
+   ],
+   "answer": 2,
+   "explain": "Sporadic: irregular but with a minimum inter-arrival time."
+  },
+  {
+   "type": "mcq",
+   "topic": "Tasks",
+   "q": "A constraint imposed on the stimuli produced by the environment is a:",
+   "options": [
+    "Performance constraint",
+    "Behavioural constraint",
+    "Resource constraint",
+    "Precedence constraint"
+   ],
+   "answer": 1,
+   "explain": "Behavioural constraints make sure the environment is well behaved."
+  },
+  {
+   "type": "mcq",
+   "topic": "Reliability",
+   "q": "Safety-critical systems guarantee safety mainly through:",
+   "options": [
+    "A fail-safe state",
+    "Very high reliability",
+    "Low cost",
+    "Soft deadlines"
+   ],
+   "answer": 1,
+   "explain": "They have no fail-safe state, so reliability must be very high."
+  },
+  {
+   "type": "mcq",
+   "topic": "Reliability",
+   "q": "In TMR, a single faulty module is masked by:",
+   "options": [
+    "A watchdog timer",
+    "A majority voter",
+    "Checkpointing",
+    "An acceptance test"
+   ],
+   "answer": 1,
+   "explain": "Three modules, two-out-of-three vote."
+  },
+  {
+   "type": "mcq",
+   "topic": "Reliability",
+   "q": "Software fault tolerance is harder than hardware fault tolerance mainly because:",
+   "options": [
+    "Software is cheaper",
+    "Failures of software versions are statistically correlated",
+    "Hardware never fails",
+    "Software cannot be duplicated"
+   ],
+   "answer": 1,
+   "explain": "Versions fail for the same reasons; hardware faults are independent."
+  },
+  {
+   "type": "mcq",
+   "topic": "Reliability",
+   "q": "A primary module, an acceptance test and alternate modules describe:",
+   "options": [
+    "N-version programming",
+    "Recovery blocks",
+    "TMR",
+    "BIST"
+   ],
+   "answer": 1,
+   "explain": "If the acceptance test fails, an alternate is tried."
+  },
+  {
+   "type": "mcq",
+   "topic": "Architecture",
+   "q": "Which architecture has a single point of failure?",
+   "options": [
+    "Centralized",
+    "Distributed",
+    "Peer-to-peer",
+    "None"
+   ],
+   "answer": 0,
+   "explain": "One controller does everything."
+  },
+  {
+   "type": "mcq",
+   "topic": "Architecture",
+   "q": "In a hierarchical control system, the strictest real-time deadlines are handled at the:",
+   "options": [
+    "Upper level",
+    "Middle level",
+    "Lower level",
+    "User interface"
+   ],
+   "answer": 2,
+   "explain": "The lower level does fast local control of sensors and actuators."
+  },
+  {
+   "type": "mcq",
+   "topic": "Hardware",
+   "q": "Changing a sensor's bipolar output into the 0–5 V range of an ADC without changing its shape is:",
+   "options": [
+    "Amplification",
+    "Voltage level shifting",
+    "Filtering",
+    "Mode conversion"
+   ],
+   "answer": 1,
+   "explain": "Level shifting moves the signal into the accepted range."
+  },
+  {
+   "type": "mcq",
+   "topic": "Hardware",
+   "q": "For accurate measurement of encoder pulses, the preferred method is:",
+   "options": [
+    "Software polling",
+    "Hardware timer capture or counters",
+    "A DAC",
+    "Round robin"
+   ],
+   "answer": 1,
+   "explain": "Hardware capture avoids missed pulses and jitter."
+  },
+  {
+   "type": "mcq",
+   "topic": "Hardware",
+   "q": "Which I/O type carries information in pulse width, frequency or count?",
+   "options": [
+    "Analog",
+    "Digital",
+    "Pulse",
+    "Serial"
+   ],
+   "answer": 2,
+   "explain": "Pulse I/O: PWM, encoders, flow meters."
+  },
+  {
+   "type": "short",
+   "topic": "DAQ",
+   "q": "A signal has a maximum frequency of 250 Hz. What is the minimum (Nyquist) sampling frequency in Hz?",
+   "answer": 500,
+   "tolerance": 1,
+   "explain": "$f_s \\ge 2f_{max} = 500$ Hz."
+  },
+  {
+   "type": "mcq",
+   "topic": "DAQ",
+   "q": "The variation in sampling or execution timing is called:",
+   "options": [
+    "Latency",
+    "Jitter",
+    "Bandwidth",
+    "Throughput"
+   ],
+   "answer": 1,
+   "explain": "Jitter distorts samples; RTOS and hardware timers reduce it."
+  },
+  {
+   "type": "mcq",
+   "topic": "DAQ",
+   "q": "Sampling all channels at the same instant is:",
+   "options": [
+    "Asynchronous DAQ",
+    "Buffered DAQ",
+    "Synchronous DAQ",
+    "Event-driven DAQ"
+   ],
+   "answer": 2,
+   "explain": "Needed for multi-lead ECG or three-phase measurements."
+  },
+  {
+   "type": "mcq",
+   "topic": "RTOS",
+   "q": "Which should NOT be done inside an ISR?",
+   "options": [
+    "Clear the interrupt flag",
+    "Read the device register",
+    "Wait on a semaphore",
+    "Signal a task"
+   ],
+   "answer": 2,
+   "explain": "An ISR must never wait indefinitely for a resource."
+  },
+  {
+   "type": "mcq",
+   "topic": "RTOS",
+   "q": "The data structure holding a task's priority, state and saved registers is the:",
+   "options": [
+    "Semaphore",
+    "Task control block",
+    "Schedule table",
+    "Interrupt vector"
+   ],
+   "answer": 1,
+   "explain": "The TCB lets the scheduler suspend and resume tasks."
+  },
+  {
+   "type": "mcq",
+   "topic": "RTOS",
+   "q": "In a clock-driven scheduler, scheduling points are:",
+   "options": [
+    "When tasks complete",
+    "Interrupts from a periodic timer",
+    "Random",
+    "When a semaphore is released"
+   ],
+   "answer": 1,
+   "explain": "Event-driven ones use events; hybrid ones use both."
+  },
+  {
+   "type": "short",
+   "topic": "Utilisation",
+   "q": "Three tasks have $(C, T)$ of $(1, 4)$, $(2, 6)$ and $(1, 10)$ ms. What is the total utilisation $U$? Give 3 decimal places.",
+   "answer": 0.683,
+   "tolerance": 0.01,
+   "explain": "$U = 0.250 + 0.333 + 0.100 = 0.683$."
+  },
+  {
+   "type": "short",
+   "topic": "Rate monotonic",
+   "q": "What is the Liu and Layland utilisation bound for $n = 3$ tasks? Give 3 decimal places.",
+   "answer": 0.78,
+   "tolerance": 0.005,
+   "explain": "$3(2^{1/3} - 1) = 0.780$."
+  },
+  {
+   "type": "mcq",
+   "topic": "Rate monotonic",
+   "q": "Under rate monotonic scheduling, the highest priority goes to the task with the:",
+   "options": [
+    "Longest execution time",
+    "Shortest period",
+    "Earliest absolute deadline",
+    "Earliest release"
+   ],
+   "answer": 1,
+   "explain": "Fixed priority, inversely proportional to the period."
+  },
+  {
+   "type": "mcq",
+   "topic": "Rate monotonic",
+   "q": "A task set has $U = 0.80$ with three tasks. Under RM it is:",
+   "options": [
+    "Definitely unschedulable",
+    "Definitely schedulable",
+    "Not guaranteed by the bound; check with response-time analysis",
+    "Schedulable only under round robin"
+   ],
+   "answer": 2,
+   "explain": "The Liu and Layland test is sufficient, not necessary."
+  },
+  {
+   "type": "mcq",
+   "topic": "EDF",
+   "q": "On one processor with $D_i = T_i$, EDF schedules a task set if and only if:",
+   "options": [
+    "$U \\le 0.693$",
+    "$U \\le n(2^{1/n}-1)$",
+    "$U \\le 1$",
+    "Periods are harmonic"
+   ],
+   "answer": 2,
+   "explain": "EDF is optimal on a uniprocessor."
+  },
+  {
+   "type": "mcq",
+   "topic": "EDF",
+   "q": "Under EDF overload, tasks miss their deadlines one after another. This is the:",
+   "options": [
+    "Convoy effect",
+    "Domino effect",
+    "Priority inversion",
+    "Starvation"
+   ],
+   "answer": 1,
+   "explain": "Transient overload causes a cascade of misses."
+  },
+  {
+   "type": "short",
+   "topic": "EDF",
+   "q": "T1 = (1, 4), T2 = (2, 6), T3 = (3, 8). What is $U$? Give 3 decimal places.",
+   "answer": 0.958,
+   "tolerance": 0.005,
+   "explain": "$0.250 + 0.333 + 0.375 = 0.958 \\le 1$: EDF-schedulable."
+  },
+  {
+   "type": "short",
+   "topic": "Cyclic",
+   "q": "Tasks have periods 4, 5 and 20. What is the major cycle (hyperperiod)?",
+   "answer": 20,
+   "tolerance": 0,
+   "explain": "lcm(4, 5, 20) = 20."
+  },
+  {
+   "type": "mcq",
+   "topic": "Cyclic",
+   "q": "Which is the cyclic scheduler's constraint that a full frame lies between release and deadline?",
+   "options": [
+    "$f \\ge \\max C_i$",
+    "$M \\bmod f = 0$",
+    "$2f - \\gcd(T_i, f) \\le D_i$",
+    "$U \\le 1$"
+   ],
+   "answer": 2,
+   "explain": "Constraint 3."
+  },
+  {
+   "type": "short",
+   "topic": "Round robin",
+   "q": "P1 (5, arrives 0), P2 (4, 1), P3 (2, 2), P4 (1, 4), quantum 2 ms. What is the average waiting time in ms?",
+   "answer": 4.75,
+   "tolerance": 0.01,
+   "explain": "Waiting times 7, 6, 2, 4; average 19/4 = 4.75 ms."
+  },
+  {
+   "type": "mcq",
+   "topic": "Scheduling",
+   "q": "Which statement about non-pre-emptive scheduling is true?",
+   "options": [
+    "Higher schedulability",
+    "More context switches",
+    "A task runs to completion once started",
+    "Used by RM"
+   ],
+   "answer": 2,
+   "explain": "Less overhead but lower schedulability."
+  },
+  {
+   "type": "mcq",
+   "topic": "Synchronisation",
+   "q": "A semaphore used for a pool of five identical printers should be a:",
+   "options": [
+    "Binary semaphore",
+    "Counting semaphore initialised to 5",
+    "Mutex",
+    "Spin lock"
+   ],
+   "answer": 1,
+   "explain": "A counting semaphore covers N identical resources."
+  },
+  {
+   "type": "mcq",
+   "topic": "Deadlock",
+   "q": "Which is NOT one of the four necessary conditions for deadlock?",
+   "options": [
+    "Mutual exclusion",
+    "Circular wait",
+    "Pre-emption",
+    "Hold and wait"
+   ],
+   "answer": 2,
+   "explain": "The condition is *no* pre-emption."
+  },
+  {
+   "type": "mcq",
+   "topic": "Deadlock",
+   "q": "With one instance per resource, deadlock exists if the wait-for graph:",
+   "options": [
+    "Has more processes than resources",
+    "Contains a cycle",
+    "Is disconnected",
+    "Has a process with no edges"
+   ],
+   "answer": 1,
+   "explain": "A closed loop of waits is deadlock."
+  },
+  {
+   "type": "mcq",
+   "topic": "Deadlock",
+   "q": "The Banker's algorithm grants a request only if:",
+   "options": [
+    "The resource is free",
+    "The system remains in a safe state",
+    "The process has the highest priority",
+    "No other process is waiting"
+   ],
+   "answer": 1,
+   "explain": "It is a deadlock avoidance algorithm."
+  },
+  {
+   "type": "mcq",
+   "topic": "Priority inversion",
+   "q": "Unbounded priority inversion is caused when a high-priority task waits for a low one and:",
+   "options": [
+    "A medium-priority task pre-empts the low one",
+    "The low task finishes early",
+    "Interrupts are disabled",
+    "The CPU idles"
+   ],
+   "answer": 0,
+   "explain": "M keeps L from releasing the lock."
+  },
+  {
+   "type": "mcq",
+   "topic": "Priority inversion",
+   "q": "Which protocol may refuse a request for a FREE resource?",
+   "options": [
+    "Priority inheritance (PIP)",
+    "Priority ceiling (PCP)",
+    "Round robin",
+    "EDF"
+   ],
+   "answer": 1,
+   "explain": "PCP is not greedy; it denies requests at or below the current system ceiling."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "CAN bus arbitration gives the bus to the message with the:",
+   "options": [
+    "Largest data field",
+    "Lowest identifier (highest priority)",
+    "Earliest sender",
+    "Longest wait"
+   ],
+   "answer": 1,
+   "explain": "Bitwise, non-destructive arbitration: dominant 0 bits win."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "The Internet is suitable in real-time systems mainly for:",
+   "options": [
+    "Hard real-time control",
+    "Safety interlocks",
+    "Soft real-time monitoring and supervision",
+    "Motor control loops"
+   ],
+   "answer": 2,
+   "explain": "It cannot guarantee bounded delay."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "A protocol in which a single frame passes through all nodes and each reads or writes on the fly is:",
+   "options": [
+    "MQTT",
+    "EtherCAT",
+    "RTP",
+    "UDP"
+   ],
+   "answer": 1,
+   "explain": "This gives microsecond synchronization."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "In which communication model does the producer not need to know who consumes the data?",
+   "options": [
+    "Client–server",
+    "Shared memory",
+    "Publish–subscribe",
+    "Message passing"
+   ],
+   "answer": 2,
+   "explain": "A broker decouples publishers and subscribers."
+  },
+  {
+   "type": "mcq",
+   "topic": "Design",
+   "q": "The most suitable process model for an anti-lock braking controller is:",
+   "options": [
+    "Agile with no documentation",
+    "Waterfall / V-model with full verification",
+    "Pure prototyping",
+    "Reuse of an accounting package"
+   ],
+   "answer": 1,
+   "explain": "It is safety-critical with stable requirements."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "Which protocol combines a time-triggered static segment with an event-triggered dynamic segment?",
+   "options": [
+    "CAN",
+    "FlexRay",
+    "MQTT",
+    "UDP"
+   ],
+   "answer": 1,
+   "explain": "FlexRay is hybrid and uses a global clock."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "End-to-end delay in a real-time control chain is:",
+   "options": [
+    "Only the network delay",
+    "Acquisition + processing + distribution + actuation",
+    "The ADC conversion time",
+    "The sampling period"
+   ],
+   "answer": 1,
+   "explain": "The whole chain must fit within the deadline."
+  },
+  {
+   "type": "mcq",
+   "topic": "Testing",
+   "q": "Testing a real controller connected to a computer simulation of the plant is:",
+   "options": [
+    "Functional testing",
+    "Stress testing",
+    "Hardware-in-the-loop testing",
+    "Timing testing"
+   ],
+   "answer": 2,
+   "explain": "HIL: real hardware plus a simulated environment."
+  },
+  {
+   "type": "mcq",
+   "topic": "Testing",
+   "q": "Checking that a base station stays stable when many users call at once is:",
+   "options": [
+    "Functional testing",
+    "Stress testing",
+    "HIL testing",
+    "Unit testing"
+   ],
+   "answer": 1,
+   "explain": "Stress testing applies extreme load."
+  },
+  {
+   "type": "mcq",
+   "topic": "Communication",
+   "q": "WirelessHART and 5G URLLC are examples of:",
+   "options": [
+    "Fieldbuses",
+    "Wireless real-time networks",
+    "Real-time Ethernet",
+    "Internet protocols"
+   ],
+   "answer": 1,
+   "explain": "Timing is guaranteed by scheduled access."
+  }
+ ]
 }

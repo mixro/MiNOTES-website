@@ -1,12 +1,186 @@
 [
-  { "title": "Duty cycle", "tex": "D = \\frac{t_{on}}{T_s}" },
-  { "title": "Buck", "tex": "V_o = D V_s" },
-  { "title": "Boost", "tex": "V_o = \\frac{V_s}{1-D}" },
-  { "title": "Buck-boost", "tex": "V_o = -\\frac{D}{1-D}V_s" },
-  { "title": "Buck minimum inductance", "tex": "L_{min} = \\frac{(1-D)R}{2f_s}" },
-  { "title": "Buck output ripple", "tex": "\\frac{\\Delta V_o}{V_o} = \\frac{1-D}{8LCf_s^2}" },
-  { "title": "1-phase full converter", "tex": "V_{dc} = \\frac{2V_m}{\\pi}\\cos\\alpha" },
-  { "title": "3-phase full converter", "tex": "V_{dc} = \\frac{3V_{mL}}{\\pi}\\cos\\alpha" },
-  { "title": "Switching loss", "tex": "P_{sw} \\approx \\tfrac{1}{2}VI(t_{on}+t_{off})f_s" },
-  { "title": "Junction temperature", "tex": "T_j = T_a + P(R_{\\theta jc}+R_{\\theta cs}+R_{\\theta sa})" }
+  {
+    "title": "Half-wave rectifier, R load",
+    "tex": "V_{dc} = \\frac{V_m}{\\pi},\\quad V_{rms} = \\frac{V_m}{2}"
+  },
+  {
+    "title": "Half-wave rectifier, RL load",
+    "tex": "i = \\frac{V_m}{Z}\\left[\\sin(\\omega t - \\theta) + \\sin\\theta\\, e^{-\\omega t/\\tan\\theta}\\right]",
+    "note": "$Z = \\sqrt{R^2 + \\omega^2L^2}$, $\\theta = \\tan^{-1}(\\omega L/R)$"
+  },
+  {
+    "title": "Full-wave bridge, R load",
+    "tex": "V_{dc} = \\frac{2V_m}{\\pi},\\quad V_{rms} = \\frac{V_m}{\\sqrt2}"
+  },
+  {
+    "title": "Three-phase diode bridge",
+    "tex": "V_{dc} = \\frac{3\\sqrt3}{\\pi}V_m = 1.654V_m,\\quad V_{rms} = 1.6554V_m",
+    "note": "$V_m$ = peak phase voltage; PIV $= \\sqrt3V_m$"
+  },
+  {
+    "title": "Three-phase bridge diode currents",
+    "tex": "I_d = 0.3183I_m,\\quad I_{d,rms} = 0.5518I_m,\\quad I_s = 0.7804I_m",
+    "note": "$I_m = \\sqrt3V_m/R$"
+  },
+  {
+    "title": "Half-wave controlled, R load",
+    "tex": "V_{av} = \\frac{V_m}{2\\pi}(1 + \\cos\\alpha)"
+  },
+  {
+    "title": "Half-wave controlled, rms",
+    "tex": "V_{rms} = \\frac{V_m}{2}\\left(1 - \\frac{\\alpha}{\\pi} + \\frac{\\sin2\\alpha}{2\\pi}\\right)^{1/2}"
+  },
+  {
+    "title": "Full-wave controlled, R load",
+    "tex": "V_{av} = \\frac{V_m}{\\pi}(1 + \\cos\\alpha),\\quad V_{rms} = \\frac{V_m}{\\sqrt2}\\left(1 - \\frac{\\alpha}{\\pi} + \\frac{\\sin2\\alpha}{2\\pi}\\right)^{1/2}"
+  },
+  {
+    "title": "Full converter, continuous current",
+    "tex": "V_{av} = \\frac{2V_m}{\\pi}\\cos\\alpha = 0.9V\\cos\\alpha,\\quad V_{rms} = V"
+  },
+  {
+    "title": "Source inductance",
+    "tex": "V_{dc} = 0.9V\\cos\\alpha - \\frac{2\\omega L_{ac}}{\\pi}I_{dc}"
+  },
+  {
+    "title": "Ripple factor",
+    "tex": "r = \\frac{V_{ripple,rms}}{V_{dc}} = \\sqrt{FF^2 - 1}",
+    "note": "$FF = V_{rms}/V_{dc}$"
+  },
+  {
+    "title": "Full converter ripple",
+    "tex": "V_{ac} = V\\sqrt{1 - \\frac{8}{\\pi^2}\\cos^2\\alpha},\\quad RF_v = \\frac{\\sqrt{\\pi^2/8 - \\cos^2\\alpha}}{\\cos\\alpha}"
+  },
+  {
+    "title": "Full converter harmonics (rms)",
+    "tex": "V_n = \\frac{2V}{\\pi}\\left[\\frac{1}{(n - 1)^2} + \\frac{1}{(n + 1)^2} - \\frac{2\\cos2\\alpha}{(n - 1)(n + 1)}\\right]^{1/2}",
+    "note": "$n = 2, 4, 6, \\ldots$; $I_n = V_n/\\sqrt{R^2 + (n\\omega L)^2}$"
+  },
+  {
+    "title": "Natural power-factor angle",
+    "tex": "\\phi = \\tan^{-1}\\frac{\\omega L}{R}",
+    "note": "Continuous current (no EMF) when α < φ"
+  },
+  {
+    "title": "Discontinuous full converter",
+    "tex": "V_o = \\frac{\\sqrt2V}{\\pi}(\\cos\\alpha - \\cos\\beta)"
+  },
+  {
+    "title": "Load with back EMF",
+    "tex": "I_o = \\frac{V_o - E}{R}"
+  },
+  {
+    "title": "Three-phase full converter",
+    "tex": "V_{av} = \\frac{3\\sqrt3V_m}{\\pi}\\cos\\alpha = 2.34V_{ph}\\cos\\alpha = 1.35V_{LL}\\cos\\alpha"
+  },
+  {
+    "title": "Three-phase, R load, α > 60°",
+    "tex": "V_o = 2.34V_{ph}\\left[1 + \\cos\\left(\\alpha + \\frac{\\pi}{3}\\right)\\right]"
+  },
+  {
+    "title": "Three-phase line currents",
+    "tex": "I_{L,rms} = \\sqrt{\\tfrac23}I_o,\\quad I_1 = \\frac{\\sqrt6}{\\pi}I_o,\\quad pf = \\frac{3}{\\pi}\\cos\\alpha"
+  },
+  {
+    "title": "Three-phase powers",
+    "tex": "S_1 = \\sqrt3V_{LL}I_1,\\quad P = S_1\\cos\\alpha,\\quad Q = S_1\\sin\\alpha"
+  },
+  {
+    "title": "Buck output",
+    "tex": "V_c = \\delta E"
+  },
+  {
+    "title": "Buck currents",
+    "tex": "I_{max,min} = \\delta E\\left[\\frac1R \\pm \\frac{(1 - \\delta)T}{2L}\\right]"
+  },
+  {
+    "title": "Buck critical inductance",
+    "tex": "L_{min} = \\frac{(1 - \\delta)RT}{2}"
+  },
+  {
+    "title": "Buck output ripple",
+    "tex": "\\frac{\\Delta V_o}{V_o} = \\frac{1 - \\delta}{8LCf^2}"
+  },
+  {
+    "title": "Buck DCM",
+    "tex": "\\frac{V_c}{E} = K\\left[-1 + \\sqrt{1 + \\frac2K}\\right],\\quad K = \\frac{TR\\delta^2}{4L}"
+  },
+  {
+    "title": "Boost output",
+    "tex": "V_c = \\frac{E}{1 - \\delta}"
+  },
+  {
+    "title": "Boost currents",
+    "tex": "I_{max,min} = \\frac{E}{R(1 - \\delta)^2} \\pm \\frac{E\\delta T}{2L}"
+  },
+  {
+    "title": "Boost critical inductance",
+    "tex": "L_c = \\frac{RT}{2}\\delta(1 - \\delta)^2"
+  },
+  {
+    "title": "Boost and buck-boost ripple",
+    "tex": "\\frac{\\Delta V_o}{V_o} = \\frac{\\delta}{RCf}"
+  },
+  {
+    "title": "Boost DCM",
+    "tex": "\\frac{V_c}{E} = \\frac12\\left(1 + \\sqrt{1 + 8K}\\right)"
+  },
+  {
+    "title": "Buck-boost output",
+    "tex": "V_c = \\frac{\\delta}{1 - \\delta}E",
+    "note": "Inverted polarity"
+  },
+  {
+    "title": "Buck-boost currents",
+    "tex": "I_{max,min} = \\frac{\\delta E}{R(1 - \\delta)^2} \\pm \\frac{E\\delta T}{2L}"
+  },
+  {
+    "title": "Buck-boost critical inductance",
+    "tex": "L_c = \\frac{RT}{2}(1 - \\delta)^2"
+  },
+  {
+    "title": "Capacitor rms current (boost, buck-boost)",
+    "tex": "I_{C,rms} = \\sqrt{\\delta I_o^2 + (1 - \\delta)\\left[(I_L - I_o)^2 + \\frac{\\Delta I_L^2}{12}\\right]}",
+    "note": "$I_L = I_o/(1 - \\delta)$"
+  },
+  {
+    "title": "Ćuk converter",
+    "tex": "V_o = -\\frac{\\delta}{1 - \\delta}E,\\quad V_{C1} = \\frac{E}{1 - \\delta}"
+  },
+  {
+    "title": "Half-bridge inverter",
+    "tex": "v_o = \\sum_{n\\,odd}\\frac{2V}{n\\pi}\\sin n\\omega t,\\quad V_{rms} = \\frac V2,\\quad V_1 = 0.45V"
+  },
+  {
+    "title": "Full-bridge inverter",
+    "tex": "v_o = \\sum_{n\\,odd}\\frac{4V_d}{n\\pi}\\sin n\\omega t,\\quad V_{rms} = V_d,\\quad V_1 = 0.9V_d"
+  },
+  {
+    "title": "Harmonic voltage and THD",
+    "tex": "V_h = \\sqrt{V_{rms}^2 - V_1^2},\\quad THD = \\frac{V_h}{V_1}"
+  },
+  {
+    "title": "RLC load impedance",
+    "tex": "Z_n = \\sqrt{R^2 + \\left(n\\omega L - \\frac{1}{n\\omega C}\\right)^2}"
+  },
+  {
+    "title": "Six-step line voltage",
+    "tex": "v_{ab} = \\sum_{n\\,odd}\\frac{4V_d}{n\\pi}\\cos\\frac{n\\pi}{6}\\sin n\\left(\\omega t + \\frac{\\pi}{6}\\right)"
+  },
+  {
+    "title": "Six-step rms values",
+    "tex": "V_L = 0.8165V_d,\\; V_{L1} = 0.7797V_d,\\; V_{ph} = 0.4714V_d"
+  },
+  {
+    "title": "Single-pulse PWM",
+    "tex": "V_o = V_d\\sqrt{\\frac{\\delta}{\\pi}},\\quad v_o = \\sum_{n\\,odd}\\frac{4V_d}{n\\pi}\\sin\\frac{n\\delta}{2}\\sin n\\omega t"
+  },
+  {
+    "title": "Multiple-pulse PWM",
+    "tex": "P = \\frac{f_c}{2f_o},\\quad V_o = V_d\\sqrt{\\frac{P\\delta}{\\pi}}"
+  },
+  {
+    "title": "Modulation index",
+    "tex": "M = \\frac{A_r}{A_c}"
+  }
 ]

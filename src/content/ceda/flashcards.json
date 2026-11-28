@@ -1,9 +1,166 @@
 [
-  { "front": "Nyquist sampling criterion", "back": "$f_s > 2 f_{max}$" },
-  { "front": "What is aliasing?", "back": "High-frequency content appearing as a false low frequency because sampling is too slow." },
-  { "front": "ZOH transfer function", "back": "$G_{h0}(s) = \\frac{1-e^{-sT}}{s}$" },
-  { "front": "s-plane to z-plane mapping", "back": "$z = e^{sT}$" },
-  { "front": "Stability region in the z-plane", "back": "Inside the unit circle, $\\lvert z \\rvert < 1$" },
-  { "front": "Final value theorem (z)", "back": "$\\lim_{k\\to\\infty} x(k) = \\lim_{z\\to 1}(z-1)X(z)$" },
-  { "front": "Z-transform of $a^k$", "back": "$\\frac{z}{z-a}$" }
+  {
+    "front": "Digital control system",
+    "back": "A feedback control system whose signals are measured, processed and generated at discrete instants: ADC → digital controller → DAC → plant."
+  },
+  {
+    "front": "Three ADC processes",
+    "back": "Sampling (discretise time), quantisation (discretise amplitude), encoding (binary code)."
+  },
+  {
+    "front": "Advantages and disadvantages of digital control",
+    "back": "Advantages: lower cost, flexibility (reprogrammable). Disadvantages: limited by the sampling frequency, needs an ADC and a DAC, computational delay."
+  },
+  {
+    "front": "Sampling",
+    "back": "Measuring a continuous signal at uniform intervals: $x(k) = x(kT_s)$."
+  },
+  {
+    "front": "Aliasing",
+    "back": "Under-sampled high frequencies appear as false lower frequencies, $|f - nf_s|$. Prevent it with $f_s \\ge 2f_{max}$ and an anti-aliasing filter before the ADC."
+  },
+  {
+    "front": "Nyquist–Shannon theorem",
+    "back": "A band-limited signal can be reconstructed if $f_s \\ge 2f_{max}$. $2f_{max}$ is the Nyquist rate; $f_s/2$ is the Nyquist frequency."
+  },
+  {
+    "front": "Choosing the sampling rate",
+    "back": "In practice $f_s$ = 5–10 × $f_{max}$, and at least 10 × the closed-loop bandwidth for control."
+  },
+  {
+    "front": "Quantisation step",
+    "back": "$\\Delta = (V_{max} - V_{min})/2^n$; maximum error $\\pm\\Delta/2$; resolution $1/2^n \\times 100\\%$."
+  },
+  {
+    "front": "z-transform",
+    "back": "$X(z) = \\sum_{k=0}^\\infty x(k)z^{-k}$; $z^{-1}$ is a one-sample delay; $z = e^{sT}$."
+  },
+  {
+    "front": "Region of convergence",
+    "back": "The set of $z$ for which the series converges. Causal: outside the outermost pole. Stable: includes the unit circle."
+  },
+  {
+    "front": "Key pair",
+    "back": "$a^k \\leftrightarrow \\dfrac{z}{z - a}$, $|z| > |a|$. Step: $z/(z - 1)$. Impulse: 1."
+  },
+  {
+    "front": "Sampled ramp and exponential",
+    "back": "$kT \\leftrightarrow Tz/(z - 1)^2$; $e^{-akT} \\leftrightarrow z/(z - e^{-aT})$."
+  },
+  {
+    "front": "Shift theorems",
+    "back": "Right: $\\mathcal{Z}\\{x(k - n)\\} = z^{-n}X(z)$. Left: $\\mathcal{Z}\\{x(k + 1)\\} = zX(z) - zx(0)$."
+  },
+  {
+    "front": "Initial and final value theorems",
+    "back": "$x(0) = \\lim_{z\\to\\infty}X(z)$; $x(\\infty) = \\lim_{z\\to1}(z - 1)X(z)$ (if the final value exists)."
+  },
+  {
+    "front": "Pulse transfer function",
+    "back": "$G(z) = Y(z)/U(z) = \\dfrac{b_0 + b_1z^{-1} + \\cdots}{1 + a_1z^{-1} + \\cdots}$. Poles give stability; zeros shape the response."
+  },
+  {
+    "front": "Three inverse methods",
+    "back": "Power series (long division), partial fractions (on $X(z)/z$), residues ($\\frac{1}{2\\pi j}\\oint X(z)z^{k - 1}dz$)."
+  },
+  {
+    "front": "Inverse gives only samples",
+    "back": "The inverse z-transform gives values only at $t = kT$; $z/(z - 1)$ is any function equal to 1 at the sampling instants."
+  },
+  {
+    "front": "Zero-order hold",
+    "back": "Holds each sample constant for one period (a staircase); $G_{h0}(s) = (1 - e^{-sT})/s$; a low-pass filter with an average delay of $T/2$."
+  },
+  {
+    "front": "Plant with a ZOH",
+    "back": "$G(z) = (1 - z^{-1})\\mathcal{Z}\\{G(s)/s\\}$: divide by $s$, transform, multiply by $(z - 1)/z$."
+  },
+  {
+    "front": "ZOH of $1/(s + a)$",
+    "back": "$\\dfrac1a\\cdot\\dfrac{1 - e^{-aT}}{z - e^{-aT}}$ (the slides omit the $1/a$)."
+  },
+  {
+    "front": "Tustin (bilinear) discretisation",
+    "back": "$s = \\dfrac2T\\cdot\\dfrac{z - 1}{z + 1}$; preserves stability, no aliasing, but frequency warping (pre-warp critical frequencies)."
+  },
+  {
+    "front": "Sampler rule",
+    "back": "Blocks in one continuous path (no sampler between) are multiplied in $s$ first: $G_1G_2(z) \\ne G_1(z)G_2(z)$."
+  },
+  {
+    "front": "Loop with a forward sampler only",
+    "back": "$T(z) = \\dfrac{G(z)}{1 + GH(z)}$. With samplers in both paths: $\\dfrac{G(z)}{1 + G(z)H(z)}$."
+  },
+  {
+    "front": "Phantom samplers",
+    "back": "They can be added at the output of a block with a sampled input, or at the inputs of a summing junction whose output is sampled (if synchronised)."
+  },
+  {
+    "front": "Stability in the z-plane",
+    "back": "All poles $|z| < 1$: stable. Any $|z| > 1$: unstable. Simple poles on $|z| = 1$: marginal. Repeated on $|z| = 1$: unstable."
+  },
+  {
+    "front": "Why the unit circle",
+    "back": "A pole at $z = a$ gives a mode $a^k$, which decays only if $|a| < 1$. $z = e^{sT}$ maps the left half-plane inside the circle."
+  },
+  {
+    "front": "BIBO stability",
+    "back": "Bounded input gives bounded output ⇔ $\\sum|h(k)| < \\infty$ ⇔ all poles inside the unit circle."
+  },
+  {
+    "front": "Bilinear stability test",
+    "back": "Substitute $z = (s + 1)/(s - 1)$, clear the denominators, apply Routh–Hurwitz: if $D(s)$ is stable, so is $D(z)$."
+  },
+  {
+    "front": "Jury, second order",
+    "back": "For $a_2z^2 + a_1z + a_0$, $a_2 > 0$: $D(1) > 0$, $D(-1) > 0$, $|a_0| < a_2$."
+  },
+  {
+    "front": "Sampling period and stability",
+    "back": "A large $T$ can make a stable analog loop unstable: for $K/[s(s + 1)]$ with a ZOH, the largest $K$ is 20.3 at $T = 0.1$ s and 1.46 at $T = 2$ s."
+  },
+  {
+    "front": "Controller objectives",
+    "back": "Stability, accuracy (small steady-state error), speed (fast rise), robustness."
+  },
+  {
+    "front": "Digital lag",
+    "back": "$K\\dfrac{z - z_0}{z - p_0}$ with $0 < z_0 < p_0 < 1$ (pole nearer $z = 1$): raises the DC gain, so a smaller steady-state error but a slower response."
+  },
+  {
+    "front": "Digital lead",
+    "back": "$K\\dfrac{z - z_0}{z - p_0}$ with $0 < p_0 < z_0 < 1$ (zero nearer $z = 1$): adds phase, giving a faster rise, less overshoot and more phase margin."
+  },
+  {
+    "front": "Velocity-form PID",
+    "back": "$u[k] = u[k - 1] + K_p(e[k] - e[k - 1]) + K_iTe[k] + \\frac{K_d}{T}(e[k] - 2e[k - 1] + e[k - 2])$."
+  },
+  {
+    "front": "PID transfer function",
+    "back": "$C(z) = K_p + \\dfrac{K_iTz}{z - 1} + \\dfrac{K_d}{T}\\cdot\\dfrac{z - 1}{z}$; the integrator pole at $z = 1$ removes the step error."
+  },
+  {
+    "front": "Digital root locus",
+    "back": "The closed-loop poles as $K$ varies, with the usual rules; stability boundary = the unit circle. $K(z + 0.5)/[z(z - 0.8)]$ is stable for $0 < K < 2$."
+  },
+  {
+    "front": "State feedback",
+    "back": "$u[k] = -Kx[k]$ gives $x[k + 1] = (A - BK)x[k]$; place the eigenvalues of $A - BK$ inside the unit circle."
+  },
+  {
+    "front": "Lead network",
+    "back": "$\\beta\\dfrac{1 + \\tau s}{1 + \\beta\\tau s}$, $\\tau = R_1C$, $\\beta = R_2/(R_1 + R_2) < 1$: the zero is nearer the origin."
+  },
+  {
+    "front": "Lag network",
+    "back": "$\\dfrac{1 + \\tau s}{1 + \\beta\\tau s}$, $\\tau = R_2C$, $\\beta = (R_1 + R_2)/R_2 > 1$: the pole is nearer the origin."
+  },
+  {
+    "front": "Angle deficiency",
+    "back": "The angle a lead compensator must add at $s_d$ so that the total angle is ±180°: $\\phi = 180° - \\angle G(s_d)$."
+  },
+  {
+    "front": "State-space transfer function",
+    "back": "$H(s) = C(sI - A)^{-1}B + D$; the poles are the eigenvalues of $A$."
+  }
 ]

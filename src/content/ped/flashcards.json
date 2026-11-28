@@ -1,9 +1,154 @@
 [
-  { "front": "Buck converter ratio", "back": "$V_o = D\\,V_s$" },
-  { "front": "Boost converter ratio", "back": "$V_o = \\frac{V_s}{1-D}$" },
-  { "front": "Buck-boost ratio", "back": "$V_o = -\\frac{D}{1-D}V_s$" },
-  { "front": "Single-phase full converter output", "back": "$V_{dc} = \\frac{2V_m}{\\pi}\\cos\\alpha$" },
-  { "front": "Holding current", "back": "The minimum anode current that keeps a thyristor latched on." },
-  { "front": "IGBT vs MOSFET", "back": "IGBT: higher voltage and current, slower. MOSFET: faster, best at low voltage." },
-  { "front": "Snubber circuit", "back": "An RC network that limits dv/dt across a switch and absorbs switching energy." }
+  {
+    "front": "Power electronics",
+    "back": "The application of solid-state electronics to the control and conversion of electric power; its aim is to control the transfer of power from a source to a load."
+  },
+  {
+    "front": "Four conversion types",
+    "back": "AC–DC (rectifiers), DC–AC (inverters), DC–DC (choppers), AC–AC (AC voltage controllers, cycloconverters)."
+  },
+  {
+    "front": "Half-wave diode rectifier, R load",
+    "back": "$V_{dc} = V_m/\\pi$, $V_{rms} = V_m/2$, $PIV = V_m$."
+  },
+  {
+    "front": "Extinction angle β",
+    "back": "The angle at which the current of an inductive load falls to zero; with an RL load it is beyond π."
+  },
+  {
+    "front": "Full-wave bridge, R load",
+    "back": "$V_{dc} = 2V_m/\\pi$, $V_{rms} = V_m/\\sqrt2$; D1, D2 conduct in one half cycle, D3, D4 in the other."
+  },
+  {
+    "front": "Three-phase diode bridge",
+    "back": "Six diodes, each conducting 120°; $V_{dc} = 3\\sqrt3V_m/\\pi = 1.654V_m$, $PIV = \\sqrt3V_m$."
+  },
+  {
+    "front": "Firing (delay) angle α",
+    "back": "The angle after the natural turn-on point at which the thyristor gate is pulsed; it controls the output voltage."
+  },
+  {
+    "front": "Half-wave controlled, R load",
+    "back": "$V_{av} = \\frac{V_m}{2\\pi}(1 + \\cos\\alpha)$."
+  },
+  {
+    "front": "Full converter, continuous current",
+    "back": "$V_{av} = \\frac{2V_m}{\\pi}\\cos\\alpha = 0.9V\\cos\\alpha$; $V_{rms} = V$; rectifier for α < 90°, inverter for α > 90°."
+  },
+  {
+    "front": "Continuous vs discontinuous (RL load)",
+    "back": "Continuous when α < φ = tan⁻¹(ωL/R) (no back EMF); otherwise the current dies at β < π + α."
+  },
+  {
+    "front": "Form factor and ripple factor",
+    "back": "$FF = V_{rms}/V_{dc}$; $r = \\sqrt{FF^2 - 1}$."
+  },
+  {
+    "front": "Ripple factor of the full converter",
+    "back": "$RF_v = \\sqrt{\\pi^2/8 - \\cos^2\\alpha}/\\cos\\alpha$: 0.483 at α = 0, unbounded as α → 90°."
+  },
+  {
+    "front": "Source inductance effect",
+    "back": "$V_{dc} = 0.9V\\cos\\alpha - \\frac{2\\omega L_{ac}}{\\pi}I_{dc}$: the output falls with load current."
+  },
+  {
+    "front": "Thyristor rating rule",
+    "back": "Voltage rating about 1.5 × the peak system voltage; also average, rms and surge current, di/dt and dv/dt limits."
+  },
+  {
+    "front": "Snubber circuit",
+    "back": "An RC network across a switch that limits dv/dt and voltage spikes and improves commutation."
+  },
+  {
+    "front": "Three-phase full converter",
+    "back": "$V_{av} = 2.34V_{ph}\\cos\\alpha = 1.35V_{LL}\\cos\\alpha$; each thyristor 120°, fired every 60°."
+  },
+  {
+    "front": "Three-phase full converter, line current",
+    "back": "Ripple-free $I_o$: $I_{L,rms} = \\sqrt{2/3}I_o$, $I_1 = \\frac{\\sqrt6}{\\pi}I_o$, $pf = \\frac{3}{\\pi}\\cos\\alpha$."
+  },
+  {
+    "front": "Chopper",
+    "back": "Another name for a DC–DC converter; the DC equivalent of a transformer with a variable turns ratio."
+  },
+  {
+    "front": "Duty cycle δ",
+    "back": "The fraction of the switching period for which the switch is closed."
+  },
+  {
+    "front": "CCM vs DCM",
+    "back": "Continuous conduction: the inductor current never reaches zero. Discontinuous: it is zero for part of each cycle."
+  },
+  {
+    "front": "Buck converter",
+    "back": "$V_c = \\delta E$; $L_{min} = (1 - \\delta)RT/2$; $\\Delta V_o/V_o = (1 - \\delta)/8LCf^2$."
+  },
+  {
+    "front": "Boost converter",
+    "back": "$V_c = E/(1 - \\delta)$; $L_c = \\frac{RT}{2}\\delta(1 - \\delta)^2$; $\\Delta V_o/V_o = \\delta/RCf$."
+  },
+  {
+    "front": "Buck-boost converter",
+    "back": "$V_c = \\frac{\\delta}{1 - \\delta}E$, inverted; buck for δ < 0.5, boost for δ > 0.5; $L_c = \\frac{RT}{2}(1 - \\delta)^2$."
+  },
+  {
+    "front": "Ćuk converter",
+    "back": "$V_o = -\\frac{\\delta}{1 - \\delta}E$; energy moves through the series capacitor $C_1$ ($V_{C1} = E/(1 - \\delta)$); smooth input and output currents."
+  },
+  {
+    "front": "Full-bridge DC–DC converter",
+    "back": "Four-quadrant: bidirectional voltage and current, so it can also work as an inverter. Buck, boost, buck-boost and Ćuk are unidirectional."
+  },
+  {
+    "front": "Inverter",
+    "back": "Converts DC power to AC power; single-phase (half or full bridge) or three-phase."
+  },
+  {
+    "front": "Half-bridge inverter",
+    "back": "Centre-tapped supply; output ±V/2; $V_{rms} = V/2$, $V_1 = 0.45V$. TR1 and TR2 must never conduct together."
+  },
+  {
+    "front": "Full-bridge inverter",
+    "back": "TR1 + TR4 give +V_d, TR2 + TR3 give −V_d; $V_{rms} = V_d$, $V_1 = 0.9V_d$."
+  },
+  {
+    "front": "Feedback diodes",
+    "back": "Diodes across inverter switches that carry inductive load current after turn-off and return energy to the DC source."
+  },
+  {
+    "front": "Six-step inverter",
+    "back": "Three-phase VSI; each switch on for 180°, switches fired every 60°; line voltage quasi-square, phase voltage six steps."
+  },
+  {
+    "front": "Six-step voltages",
+    "back": "$V_L = 0.8165V_d$, $V_{L1} = 0.7797V_d$, $V_{ph} = 0.4714V_d$, $V_{ph1} = 0.45V_d$."
+  },
+  {
+    "front": "Why the line voltage has no 3rd harmonic",
+    "back": "The triplen harmonics of the three pole voltages are in phase and cancel when two are subtracted."
+  },
+  {
+    "front": "PWM",
+    "back": "Pulse-width modulation: a reference compared with a triangular carrier sets the switching instants, so the inverter controls its own output voltage."
+  },
+  {
+    "front": "Modulation index",
+    "back": "$M = A_r/A_c$, reference amplitude over carrier amplitude."
+  },
+  {
+    "front": "Single-pulse PWM",
+    "back": "One pulse of width δ per half cycle: $V_o = V_d\\sqrt{\\delta/\\pi}$; $V_n \\propto \\sin(n\\delta/2)$."
+  },
+  {
+    "front": "Multiple-pulse PWM",
+    "back": "$P = f_c/2f_o$ pulses per half cycle; $V_o = V_d\\sqrt{P\\delta/\\pi}$."
+  },
+  {
+    "front": "Sinusoidal PWM",
+    "back": "Each pulse width is proportional to a sine wave at the pulse centre; low-order harmonics are greatly reduced."
+  },
+  {
+    "front": "Bipolar vs unipolar SPWM",
+    "back": "Bipolar: both legs switch together, output ±V_d. Unipolar: legs switch independently, output steps to 0, harmonics at twice the carrier frequency."
+  }
 ]

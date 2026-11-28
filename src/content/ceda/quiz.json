@@ -1,12 +1,600 @@
 {
-  "timeLimit": 600,
+  "timeLimit": 1800,
   "questions": [
-    { "type": "short", "topic": "Sampling", "q": "A signal has its highest frequency at 50 Hz. What is the minimum sampling frequency in Hz to avoid aliasing?", "answer": 100, "tolerance": 0, "unit": "Hz", "explain": "The Nyquist criterion needs $f_s > 2f_{max} = 100$ Hz (just above in practice)." },
-    { "type": "mcq", "topic": "Stability", "q": "A discrete-time system is stable when all closed-loop poles lie:", "options": ["In the left half of the z-plane", "Inside the unit circle", "On the unit circle", "Outside the unit circle"], "answer": 1, "explain": "The left half s-plane maps to $\\lvert z \\rvert < 1$." },
-    { "type": "mcq", "topic": "z-transform", "q": "What is the z-transform of a unit step?", "options": ["$1$", "$\\frac{1}{z-1}$", "$\\frac{z}{z-1}$", "$\\frac{Tz}{(z-1)^2}$"], "answer": 2, "explain": "$\\sum z^{-k} = \\frac{z}{z-1}$ for $\\lvert z \\rvert > 1$." },
-    { "type": "mcq", "topic": "Zero-order hold", "q": "The transfer function of a zero-order hold is:", "options": ["$\\frac{1-e^{-sT}}{s}$", "$e^{-sT}$", "$\\frac{1}{1+sT}$", "$\\frac{1}{s}$"], "answer": 0, "explain": "It holds each sample for one period $T$." },
-    { "type": "short", "topic": "Stability", "q": "For $P(z) = z^2 - z + 0.5$, what is $P(1)$?", "answer": 0.5, "tolerance": 0.01, "explain": "$1 - 1 + 0.5 = 0.5 > 0$, so the first Jury condition holds." },
-    { "type": "mcq", "topic": "z-transform", "q": "The relation between the s-plane and the z-plane is:", "options": ["$z = sT$", "$z = e^{sT}$", "$z = \\ln(sT)$", "$z = 1/s$"], "answer": 1, "explain": "Sampling maps $s$ to $z = e^{sT}$." },
-    { "type": "mcq", "topic": "Difference equations", "q": "$\\frac{Y(z)}{U(z)} = \\frac{0.5}{z-0.8}$ gives which difference equation?", "options": ["$y(k)=0.8y(k-1)+0.5u(k-1)$", "$y(k)=0.5y(k-1)+0.8u(k)$", "$y(k)=0.8u(k)+0.5y(k)$", "$y(k)=-0.8y(k-1)+0.5u(k)$"], "answer": 0, "explain": "Divide by $z$: $Y(1-0.8z^{-1}) = 0.5z^{-1}U$." }
+    {
+      "type": "mcq",
+      "topic": "Digital control",
+      "q": "In a digital control system, which block converts the controller output back into an analog signal?",
+      "options": [
+        "ADC",
+        "DAC",
+        "Sampler",
+        "Encoder"
+      ],
+      "answer": 1,
+      "explain": "The DAC (with its hold) turns the controller's numbers into a continuous signal for the plant."
+    },
+    {
+      "type": "mcq",
+      "topic": "Digital control",
+      "q": "Which is a disadvantage of digital control?",
+      "options": [
+        "Higher cost than analog",
+        "Cannot be reprogrammed",
+        "Computational delay and a limit set by the sampling frequency",
+        "Cannot implement PID"
+      ],
+      "answer": 2,
+      "explain": "Digital control is cheap and flexible, but it needs an ADC and a DAC, is limited by the sampling rate, and the computation adds delay."
+    },
+    {
+      "type": "mcq",
+      "topic": "Digital control",
+      "q": "The three processes inside an ADC, in order, are",
+      "options": [
+        "Encoding, sampling, quantisation",
+        "Sampling, quantisation, encoding",
+        "Quantisation, sampling, encoding",
+        "Holding, sampling, encoding"
+      ],
+      "answer": 1,
+      "explain": "Sample in time, round the amplitude to a level, then write the level as a binary code."
+    },
+    {
+      "type": "short",
+      "topic": "Sampling",
+      "q": "$x(t) = \\sin(200\\pi t)$ is sampled every 1 ms. What is the signal frequency?",
+      "answer": 100,
+      "tolerance": 0.5,
+      "explain": "$\\omega = 200\\pi = 2\\pi f$, so $f = 100$ Hz; $f_s = 1000$ Hz satisfies Nyquist (≥ 200 Hz).",
+      "unit": "Hz"
+    },
+    {
+      "type": "short",
+      "topic": "Sampling",
+      "q": "A signal has components up to 1.2 kHz and is sampled at 1.5 kHz. At what frequency does the 1.2 kHz component appear?",
+      "answer": 300,
+      "tolerance": 1,
+      "explain": "It is above the 750 Hz Nyquist frequency, so it folds to $|1200 - 1500| = 300$ Hz.",
+      "unit": "Hz"
+    },
+    {
+      "type": "mcq",
+      "topic": "Sampling",
+      "q": "The Nyquist rate of a signal whose highest frequency is $f_{max}$ is",
+      "options": [
+        "$f_{max}/2$",
+        "$f_{max}$",
+        "$2f_{max}$",
+        "$10f_{max}$"
+      ],
+      "answer": 2,
+      "explain": "Perfect reconstruction needs $f_s \\ge 2f_{max}$; $2f_{max}$ is the Nyquist rate."
+    },
+    {
+      "type": "mcq",
+      "topic": "Sampling",
+      "q": "A rule of thumb for a control loop with closed-loop bandwidth 80 Hz is to sample at about",
+      "options": [
+        "80 Hz",
+        "160 Hz",
+        "400–800 Hz or more",
+        "50 Hz"
+      ],
+      "answer": 2,
+      "explain": "Use 5–10× the bandwidth (at least 10× for good control), with an anti-aliasing filter."
+    },
+    {
+      "type": "mcq",
+      "topic": "Sampling",
+      "q": "What prevents aliasing?",
+      "options": [
+        "A faster processor",
+        "An analog low-pass filter before the ADC, and a high enough sampling rate",
+        "A digital filter after the ADC",
+        "More ADC bits"
+      ],
+      "answer": 1,
+      "explain": "Once aliased, the samples are identical to the false signal; the high frequencies must be removed before sampling."
+    },
+    {
+      "type": "short",
+      "topic": "Quantisation",
+      "q": "A 3-bit ADC covers 0–8 V. What is the step size $\\Delta$?",
+      "answer": 1,
+      "tolerance": 0.01,
+      "explain": "$\\Delta = (8 - 0)/2^3 = 1$ V.",
+      "unit": "V"
+    },
+    {
+      "type": "short",
+      "topic": "Quantisation",
+      "q": "What is the resolution of a 12-bit ADC, in percent?",
+      "answer": 0.0244,
+      "tolerance": 0.0005,
+      "explain": "$1/4096 \\times 100 = 0.0244\\%$.",
+      "unit": "%"
+    },
+    {
+      "type": "mcq",
+      "topic": "Quantisation",
+      "q": "The maximum quantisation error of a rounding quantiser with step $\\Delta$ is",
+      "options": [
+        "$\\Delta$",
+        "$\\pm\\Delta/2$",
+        "$2\\Delta$",
+        "$\\Delta/2^n$"
+      ],
+      "answer": 1,
+      "explain": "Each input is rounded to the nearest level, so it is never more than half a step away."
+    },
+    {
+      "type": "mcq",
+      "topic": "z-transform",
+      "q": "$\\mathcal{Z}\\{\\delta(k - 3)\\}$ is",
+      "options": [
+        "1",
+        "$z^3$",
+        "$z^{-3}$",
+        "$z/(z - 3)$"
+      ],
+      "answer": 2,
+      "explain": "A single unit sample at $k = 3$ gives the single term $z^{-3}$."
+    },
+    {
+      "type": "mcq",
+      "topic": "z-transform",
+      "q": "The ROC of the unit step $z/(z - 1)$ is",
+      "options": [
+        "$|z| < 1$",
+        "$|z| > 1$",
+        "$|z^{-1}| > 1$",
+        "all $z$"
+      ],
+      "answer": 1,
+      "explain": "The series $1 + z^{-1} + \\cdots$ converges for $|z^{-1}| < 1$, i.e. outside the unit circle."
+    },
+    {
+      "type": "mcq",
+      "topic": "z-transform",
+      "q": "$\\mathcal{Z}\\{a^k\\}$ for $k \\ge 0$ is",
+      "options": [
+        "$\\dfrac{1}{z - a}$",
+        "$\\dfrac{z}{z - a}$",
+        "$\\dfrac{az}{(z - a)^2}$",
+        "$\\dfrac{a}{z - 1}$"
+      ],
+      "answer": 1,
+      "explain": "Geometric series: $\\sum(az^{-1})^k = 1/(1 - az^{-1}) = z/(z - a)$, for $|z| > |a|$."
+    },
+    {
+      "type": "mcq",
+      "topic": "z-transform",
+      "q": "The z-transform of a sampled unit ramp $f(kT) = kT$ is",
+      "options": [
+        "$\\dfrac{z}{(z - 1)^2}$",
+        "$\\dfrac{Tz}{(z - 1)^2}$",
+        "$\\dfrac{Tz}{z - 1}$",
+        "$\\dfrac{1}{s^2}$"
+      ],
+      "answer": 1,
+      "explain": "From $zF - F = Tz/(z - 1)$."
+    },
+    {
+      "type": "mcq",
+      "topic": "z-transform",
+      "q": "The final-value theorem in the z-domain is",
+      "options": [
+        "$\\lim_{z\\to0}zX(z)$",
+        "$\\lim_{z\\to\\infty}X(z)$",
+        "$\\lim_{z\\to1}(z - 1)X(z)$",
+        "$\\lim_{z\\to1}X(z)$"
+      ],
+      "answer": 2,
+      "explain": "Valid only if $(z - 1)X(z)$ has all its poles inside the unit circle; $\\lim_{z\\to\\infty}X(z)$ is the initial value."
+    },
+    {
+      "type": "mcq",
+      "topic": "z-transform",
+      "q": "Shifting a sequence one place to the right (a delay) multiplies its transform by",
+      "options": [
+        "$z$",
+        "$z^{-1}$",
+        "$1 - z^{-1}$",
+        "$e^{-sT}$"
+      ],
+      "answer": 1,
+      "explain": "$\\mathcal{Z}\\{r(k - 1)\\} = z^{-1}R(z)$; $z^{-1}$ is the unit delay."
+    },
+    {
+      "type": "mcq",
+      "topic": "z-transform",
+      "q": "The difference equation $y(k) = 0.5y(k - 1) + x(k)$ has transfer function",
+      "options": [
+        "$\\dfrac{z}{z + 0.5}$",
+        "$\\dfrac{z}{z - 0.5}$",
+        "$\\dfrac{0.5}{z - 1}$",
+        "$\\dfrac{1}{z - 0.5}$"
+      ],
+      "answer": 1,
+      "explain": "$Y(1 - 0.5z^{-1}) = X$, so $G = 1/(1 - 0.5z^{-1}) = z/(z - 0.5)$."
+    },
+    {
+      "type": "short",
+      "topic": "Inverse z-transform",
+      "q": "By long division, $E(z) = \\dfrac{23z^3 + 13z^2 - 15z}{z^3 - z^2 + z + 3}$ gives $e(1) =$ ?",
+      "answer": 36,
+      "tolerance": 0,
+      "explain": "The series is $23 + 36z^{-1} - 2z^{-2} - 107z^{-3} - \\cdots$."
+    },
+    {
+      "type": "short",
+      "topic": "Inverse z-transform",
+      "q": "For $X(z) = \\dfrac{z^2}{(z - 1)(z - 0.5)}$, what is $x(2)$?",
+      "answer": 1.75,
+      "tolerance": 0.001,
+      "explain": "$x(k) = 2 - 0.5^k$, so $x(2) = 2 - 0.25 = 1.75$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Inverse z-transform",
+      "q": "Why is the partial-fraction expansion done on $X(z)/z$?",
+      "options": [
+        "To remove the poles",
+        "Because the table pairs have $z$ in the numerator, e.g. $z/(z - a) \\leftrightarrow a^k$",
+        "To make the system causal",
+        "To find the ROC"
+      ],
+      "answer": 1,
+      "explain": "Expanding $X(z)/z$ and multiplying back by $z$ gives terms of the form $Az/(z - a)$."
+    },
+    {
+      "type": "short",
+      "topic": "Inverse z-transform",
+      "q": "$Y(z) = \\dfrac{3.894z}{z^2 + 0.6065}$ gives $y(k) = A(0.7788)^k\\sin(k\\pi/2)$. What is $A$?",
+      "answer": 5.0,
+      "tolerance": 0.01,
+      "explain": "The poles are $\\pm j0.7788$; $A = 3.894/0.7788 = 5.00$."
+    },
+    {
+      "type": "mcq",
+      "topic": "ZOH and pulse transfer function",
+      "q": "The transfer function of a zero-order hold is",
+      "options": [
+        "$\\dfrac1s$",
+        "$e^{-sT}$",
+        "$\\dfrac{1 - e^{-sT}}{s}$",
+        "$\\dfrac{1}{1 - z^{-1}}$"
+      ],
+      "answer": 2,
+      "explain": "Its impulse response is one pulse of height 1 and width $T$: a step minus a delayed step."
+    },
+    {
+      "type": "mcq",
+      "topic": "ZOH and pulse transfer function",
+      "q": "On average, a ZOH delays the signal by about",
+      "options": [
+        "$T$",
+        "$T/2$",
+        "$2T$",
+        "no delay"
+      ],
+      "answer": 1,
+      "explain": "The staircase lags the samples by half a period, which reduces the phase margin."
+    },
+    {
+      "type": "short",
+      "topic": "ZOH and pulse transfer function",
+      "q": "The ZOH equivalent of $1/(s + 2)$ with $T = 0.5$ s is $b/(z - 0.368)$. Find $b$.",
+      "answer": 0.316,
+      "tolerance": 0.002,
+      "explain": "$b = \\frac12(1 - e^{-1}) = 0.5 \\times 0.632 = 0.316$."
+    },
+    {
+      "type": "mcq",
+      "topic": "ZOH and pulse transfer function",
+      "q": "The ZOH equivalent of $1/(s + a)$ is",
+      "options": [
+        "$\\dfrac{1 - e^{-aT}}{z - e^{-aT}}$",
+        "$\\dfrac1a\\cdot\\dfrac{1 - e^{-aT}}{z - e^{-aT}}$",
+        "$\\dfrac{z}{z - e^{-aT}}$",
+        "$\\dfrac{T}{z - 1}$"
+      ],
+      "answer": 1,
+      "explain": "The $1/a$ is needed so that the DC gain $G(1) = 1/a$ matches the plant; the slides omit it."
+    },
+    {
+      "type": "mcq",
+      "topic": "ZOH and pulse transfer function",
+      "q": "Which discretisation maps the whole $j\\omega$ axis onto the unit circle (no aliasing, but frequency warping)?",
+      "options": [
+        "Impulse invariance",
+        "Bilinear (Tustin)",
+        "Forward Euler",
+        "Matched pole–zero"
+      ],
+      "answer": 1,
+      "explain": "Tustin squeezes $0 \\le \\omega < \\infty$ onto the circle, so frequencies are warped but never aliased."
+    },
+    {
+      "type": "mcq",
+      "topic": "Block diagrams",
+      "q": "Two blocks $G_1(s)$ and $G_2(s)$ are in cascade with **no** sampler between them. The pulse transfer function is",
+      "options": [
+        "$G_1(z)G_2(z)$",
+        "$G_1G_2(z) = \\mathcal{Z}\\{G_1(s)G_2(s)\\}$",
+        "$G_1(z) + G_2(z)$",
+        "$G_1(z)/G_2(z)$"
+      ],
+      "answer": 1,
+      "explain": "Blocks in one continuous path must be multiplied in $s$ before transforming."
+    },
+    {
+      "type": "mcq",
+      "topic": "Block diagrams",
+      "q": "A loop has a sampler in the forward path only, with $G(s)$ forward and $H(s)$ in the feedback. $C(z)/R(z) =$",
+      "options": [
+        "$\\dfrac{G(z)}{1 + G(z)H(z)}$",
+        "$\\dfrac{G(z)}{1 + GH(z)}$",
+        "$\\dfrac{GH(z)}{1 + G(z)}$",
+        "$G(z)H(z)$"
+      ],
+      "answer": 1,
+      "explain": "$G$ and $H$ are in one continuous path round the loop, so the loop term is $GH(z)$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Block diagrams",
+      "q": "Unity feedback round $G(z) = z/(z - 0.8)$ gives",
+      "options": [
+        "$\\dfrac{z}{z - 0.8}$",
+        "$\\dfrac{0.5z}{z - 0.4}$",
+        "$\\dfrac{z}{z - 1.8}$",
+        "$\\dfrac{0.8}{z}$"
+      ],
+      "answer": 1,
+      "explain": "$z/(2z - 0.8) = 0.5z/(z - 0.4)$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Stability",
+      "q": "A discrete LTI system is stable if all its poles satisfy",
+      "options": [
+        "$\\text{Re}(z) < 0$",
+        "$|z| < 1$",
+        "$|z| > 1$",
+        "$|z| = 1$"
+      ],
+      "answer": 1,
+      "explain": "$z = e^{sT}$ maps the left half-plane inside the unit circle."
+    },
+    {
+      "type": "mcq",
+      "topic": "Stability",
+      "q": "Repeated poles on the unit circle make a system",
+      "options": [
+        "Stable",
+        "Marginally stable",
+        "Unstable (the response grows)",
+        "Non-minimum phase"
+      ],
+      "answer": 2,
+      "explain": "A double pole at $z = 1$, for example, gives a response that grows linearly."
+    },
+    {
+      "type": "mcq",
+      "topic": "Stability",
+      "q": "The poles of $z^2 + 1.2z + 0.32$ are",
+      "options": [
+        "0.4 and 0.8",
+        "−0.4 and −0.8",
+        "0.4 and −0.8",
+        "$-0.6 \\pm j0.4$"
+      ],
+      "answer": 1,
+      "explain": "$(z + 0.4)(z + 0.8)$; both inside the circle, so stable. The notes give +0.4 and +0.8."
+    },
+    {
+      "type": "mcq",
+      "topic": "Stability",
+      "q": "A controller has poles at 0.6 and 1.05. It is",
+      "options": [
+        "Stable",
+        "Marginally stable",
+        "Unstable",
+        "Stable only for small inputs"
+      ],
+      "answer": 2,
+      "explain": "1.05 is outside the unit circle; that mode grows as $1.05^k$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Stability",
+      "q": "The bilinear substitution used for the stability test is",
+      "options": [
+        "$z = \\dfrac{s + 1}{s - 2}$",
+        "$z = \\dfrac{s + 1}{s - 1}$",
+        "$z = e^{sT}$",
+        "$z = 1 + sT$"
+      ],
+      "answer": 1,
+      "explain": "Its inverse is $s = (z + 1)/(z - 1)$; it maps $|z| < 1$ onto $\\text{Re}(s) < 0$. The notes once misprint $s - 2$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Stability",
+      "q": "Substituting the bilinear map into $z^2 - z + 0.2$ gives",
+      "options": [
+        "$0.2s^2 + 1.6s + 2.2$",
+        "$s^2 - s + 0.2$",
+        "$0.2s^2 - 1.6s + 2.2$",
+        "$2.2s^2 + 1.6s + 0.2$"
+      ],
+      "answer": 0,
+      "explain": "All coefficients positive, so stable; the z-roots are 0.724 and 0.276."
+    },
+    {
+      "type": "mcq",
+      "topic": "Stability",
+      "q": "Second-order Jury conditions for $a_2z^2 + a_1z + a_0$ ($a_2 > 0$) are",
+      "options": [
+        "$D(0) > 0$ only",
+        "$D(1) > 0$, $D(-1) > 0$, $|a_0| < a_2$",
+        "all coefficients positive",
+        "$|a_1| < a_2$"
+      ],
+      "answer": 1,
+      "explain": "These three conditions put both roots inside the unit circle."
+    },
+    {
+      "type": "short",
+      "topic": "Stability",
+      "q": "Unity feedback with $G(z) = K/[(z - 1)(z - 0.5)]$. What is the largest $K$ for stability?",
+      "answer": 0.5,
+      "tolerance": 0.001,
+      "explain": "Characteristic equation $z^2 - 1.5z + 0.5 + K$; $|0.5 + K| < 1$ gives $K < 0.5$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Stability",
+      "q": "Making the sampling period larger in a loop with a stable analog plant",
+      "options": [
+        "Always improves stability",
+        "Can push the z-poles outside the unit circle",
+        "Has no effect",
+        "Removes the ZOH delay"
+      ],
+      "answer": 1,
+      "explain": "For $K/[s(s + 1)]$ with a ZOH, the largest stable $K$ falls from 20.3 at $T = 0.1$ s to 1.46 at $T = 2$ s."
+    },
+    {
+      "type": "mcq",
+      "topic": "Digital controllers",
+      "q": "A digital lag compensator $K(z - z_0)/(z - p_0)$ has",
+      "options": [
+        "$0 < p_0 < z_0 < 1$",
+        "$0 < z_0 < p_0 < 1$",
+        "$z_0 = p_0$",
+        "$p_0 > 1$"
+      ],
+      "answer": 1,
+      "explain": "Its pole is nearer $z = 1$, giving a DC gain $(1 - z_0)/(1 - p_0) > 1$. The slides have the inequalities for lag and lead swapped."
+    },
+    {
+      "type": "mcq",
+      "topic": "Digital controllers",
+      "q": "The main purpose of a lead compensator is to",
+      "options": [
+        "Reduce the steady-state error",
+        "Improve the transient response and the phase margin",
+        "Remove noise",
+        "Add an integrator"
+      ],
+      "answer": 1,
+      "explain": "A lead gives a faster rise and less overshoot; a lag improves accuracy."
+    },
+    {
+      "type": "mcq",
+      "topic": "Digital controllers",
+      "q": "In the velocity-form PID, the derivative term is",
+      "options": [
+        "$\\dfrac{K_d}{T}(e[k] - e[k - 1])$",
+        "$\\dfrac{K_d}{T}(e[k] - 2e[k - 1] + e[k - 2])$",
+        "$K_dTe[k]$",
+        "$K_d(e[k] + e[k - 1])$"
+      ],
+      "answer": 1,
+      "explain": "Differencing the position-form derivative once more gives the second backward difference."
+    },
+    {
+      "type": "short",
+      "topic": "Digital controllers",
+      "q": "Velocity PID with $K_p = 1$, $K_i = 2$, $K_d = 0.05$, $T = 0.1$ and all past values zero: $e[0] = 1$. Find $u[0]$.",
+      "answer": 1.7,
+      "tolerance": 0.001,
+      "explain": "$u[0] = 1(1) + 0.2(1) + 0.5(1) = 1.7$."
+    },
+    {
+      "type": "short",
+      "topic": "Digital controllers",
+      "q": "Unity feedback with $K(z + 0.5)/[z(z - 0.8)]$. The loop is stable for $0 < K <$ ?",
+      "answer": 2,
+      "tolerance": 0.001,
+      "explain": "Characteristic equation $z^2 + (K - 0.8)z + 0.5K$; $0.5K < 1$. At $K = 2$ the poles are $-0.6 \\pm j0.8$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Digital controllers",
+      "q": "For MIMO state feedback $u[k] = -Kx[k]$, the design goal is",
+      "options": [
+        "$\\det A = 0$",
+        "the eigenvalues of $A - BK$ inside the unit circle",
+        "$K = B^{-1}A$",
+        "the eigenvalues of $A$ on the unit circle"
+      ],
+      "answer": 1,
+      "explain": "The closed loop is $x[k + 1] = (A - BK)x[k]$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Analogue review",
+      "q": "In the RC lead network $\\beta\\dfrac{1 + \\tau s}{1 + \\beta\\tau s}$, $\\beta$ is",
+      "options": [
+        "$> 1$",
+        "$< 1$",
+        "$= 1$",
+        "negative"
+      ],
+      "answer": 1,
+      "explain": "$\\beta = R_2/(R_1 + R_2) < 1$, so the zero ($-1/\\tau$) is nearer the origin than the pole."
+    },
+    {
+      "type": "short",
+      "topic": "Analogue review",
+      "q": "A design needs $\\zeta = 0.6$. What percentage overshoot does the dominant pair give?",
+      "answer": 9.48,
+      "tolerance": 0.05,
+      "explain": "$M_p = e^{-\\pi\\zeta/\\sqrt{1 - \\zeta^2}} = e^{-2.356} = 0.0948$.",
+      "unit": "%"
+    },
+    {
+      "type": "mcq",
+      "topic": "Analogue review",
+      "q": "Why can a PI controller not supply 57.6° of phase lead in the PD example?",
+      "options": [
+        "PI adds only phase lag",
+        "PI has too much gain",
+        "PI cannot be implemented digitally",
+        "PI removes the steady-state error"
+      ],
+      "answer": 0,
+      "explain": "The design formula then gives a negative $K_i$, which is meaningless; PD or lead is needed."
+    },
+    {
+      "type": "mcq",
+      "topic": "State space",
+      "q": "For $A = \\begin{bmatrix}0 & 1\\\\-2 & -3\\end{bmatrix}$, $B = [0\\;\\;5]^T$, $C = [1\\;\\;0]$, the transfer function is",
+      "options": [
+        "$\\dfrac{5}{s^2 - 3s + 2}$",
+        "$\\dfrac{5}{s^2 + 3s + 2}$",
+        "$\\dfrac{5s}{s^2 + 3s + 2}$",
+        "$\\dfrac{1}{s^2 + 3s + 2}$"
+      ],
+      "answer": 1,
+      "explain": "$\\det(sI - A) = s^2 + 3s + 2$; the summary's $s(s - 3) + 2$ is a sign error."
+    },
+    {
+      "type": "mcq",
+      "topic": "State space",
+      "q": "A sampled state model $x[k + 1] = \\Phi x[k] + \\Gamma u[k]$ has $\\Phi =$",
+      "options": [
+        "$A$",
+        "$e^{AT}$",
+        "$I + B$",
+        "$(sI - A)^{-1}$"
+      ],
+      "answer": 1,
+      "explain": "Each eigenvalue $\\lambda$ of $A$ becomes $e^{\\lambda T}$, the same $z = e^{sT}$ mapping."
+    }
   ]
 }
