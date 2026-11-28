@@ -595,6 +595,152 @@
       ],
       "answer": 1,
       "explain": "Each eigenvalue $\\lambda$ of $A$ becomes $e^{\\lambda T}$, the same $z = e^{sT}$ mapping."
+    },
+    {
+      "type": "mcq",
+      "topic": "Root-locus design",
+      "q": "For $G(z) = \\dfrac{K(z + 1)}{(z - 1)(z - 0.5)}$ in unity feedback, the range of $K$ for stability is",
+      "options": [
+        "$0 < K < 0.5$",
+        "$0 < K < 1.5$",
+        "$-1.5 < K < 0.5$",
+        "$K > 0$"
+      ],
+      "answer": 0,
+      "explain": "Jury: $D(1) = 2K > 0$ and $|K + 0.5| < 1$. At $K = 0.5$ the poles are $0.5 \\pm j0.866$, on the unit circle. ($K = 1.5$ is where the locus crosses the imaginary axis, which is not a boundary in the z-plane.)"
+    },
+    {
+      "type": "mcq",
+      "topic": "Root-locus design",
+      "q": "In the z-plane, the root-locus gain at the stability limit is found where the locus crosses",
+      "options": [
+        "The imaginary axis",
+        "The unit circle",
+        "The real axis",
+        "The line $\\text{Re}(z) = 1$"
+      ],
+      "answer": 1,
+      "explain": "Stability needs $|z| < 1$, so the limit is where a branch reaches the unit circle."
+    },
+    {
+      "type": "short",
+      "topic": "Root-locus design",
+      "q": "A design needs $\\zeta = 0.5$ and $\\omega_n = 4$ rad/s with $T = 0.2$ s. What is $|z|$ of the desired closed-loop pole?",
+      "answer": 0.6703,
+      "tolerance": 0.002,
+      "explain": "$|z| = e^{-\\zeta\\omega_nT} = e^{-0.4} = 0.6703$; its angle is $\\omega_dT = 3.464 \\times 0.2 = 39.7°$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Root-locus design",
+      "q": "A digital lead controller $K\\dfrac{z - 0.6703}{z - p}$ is chosen with its zero at the plant pole 0.6703 mainly to",
+      "options": [
+        "Cancel that slow plant pole",
+        "Make the loop type 2",
+        "Remove the ZOH delay",
+        "Avoid aliasing"
+      ],
+      "answer": 0,
+      "explain": "Cancelling a slow pole simplifies the locus; the controller pole is then placed to meet the angle condition."
+    },
+    {
+      "type": "short",
+      "topic": "Steady-state error",
+      "q": "ZOH and $\\dfrac{10}{s(s + 1)}$ in a stable unity-feedback loop. What is the steady-state error for a unit ramp?",
+      "answer": 0.1,
+      "tolerance": 0.001,
+      "explain": "$K_v = \\frac1T\\lim_{z\\to1}(z - 1)G(z) = 10$, so $e_{ss} = 1/K_v = 0.1$."
+    },
+    {
+      "type": "mcq",
+      "topic": "Steady-state error",
+      "q": "The type of a digital loop is the number of open-loop poles at",
+      "options": [
+        "$z = 0$",
+        "$z = 1$",
+        "$z = -1$",
+        "Infinity"
+      ],
+      "answer": 1,
+      "explain": "A pole at $z = 1$ is a digital integrator, the counterpart of $s = 0$."
+    },
+    {
+      "type": "short",
+      "topic": "Stability",
+      "q": "ZOH and $\\dfrac{20}{s + 5}$ in unity feedback. What is the largest sampling period (s) for stability?",
+      "answer": 0.102,
+      "tolerance": 0.002,
+      "explain": "The closed-loop pole is $5e^{-5T} - 4$; $|z| < 1$ gives $T < \\frac15\\ln\\frac53 = 0.102$ s.",
+      "unit": "s"
+    },
+    {
+      "type": "short",
+      "topic": "Stability",
+      "q": "ZOH and $\\dfrac{1}{s(s + 1)}$ with unit gain in unity feedback. Up to what sampling period (s) is the loop stable?",
+      "answer": 3.92,
+      "tolerance": 0.02,
+      "explain": "The characteristic equation is $z^2 + (T - 2)z + 1 - Te^{-T} = 0$; $D(-1) > 0$ needs $T(1 + e^{-T}) < 4$, so $T < 3.92$ s.",
+      "unit": "s"
+    },
+    {
+      "type": "mcq",
+      "topic": "Stability",
+      "q": "After the bilinear transformation, the Routh table of $D(s)$ has one sign change in its first column. The z-plane system has",
+      "options": [
+        "One pole outside the unit circle",
+        "One pole on the unit circle",
+        "One pole inside the unit circle",
+        "One zero outside the unit circle"
+      ],
+      "answer": 0,
+      "explain": "Each sign change is a right-half-plane root of $D(s)$, which is a pole outside the unit circle."
+    },
+    {
+      "type": "mcq",
+      "topic": "Digital controllers",
+      "q": "A deadbeat controller places the closed-loop poles at",
+      "options": [
+        "$z = 1$",
+        "$z = 0$",
+        "$z = -1$",
+        "The plant poles"
+      ],
+      "answer": 1,
+      "explain": "All poles at the origin make the response settle in a finite number of samples, at the cost of large control effort."
+    },
+    {
+      "type": "mcq",
+      "topic": "Digital controllers",
+      "q": "The main practical advantage of model predictive control is that it",
+      "options": [
+        "Needs no model",
+        "Handles input and output constraints explicitly",
+        "Always settles in one sample",
+        "Needs no computation"
+      ],
+      "answer": 1,
+      "explain": "MPC optimises over a receding horizon and can include limits on inputs and outputs."
+    },
+    {
+      "type": "mcq",
+      "topic": "State space",
+      "q": "The sampled double integrator is measured through velocity only, $C = [0\\;\\;1]$. It is",
+      "options": [
+        "Controllable and observable",
+        "Controllable but not observable",
+        "Observable but not controllable",
+        "Neither"
+      ],
+      "answer": 1,
+      "explain": "$M_c$ has full rank, but $M_o = \\begin{bmatrix}0 & 1\\\\0 & 1\\end{bmatrix}$ is singular: position cannot be recovered from velocity."
+    },
+    {
+      "type": "short",
+      "topic": "Jury test",
+      "q": "How many roots of $z^3 - 2.2z^2 + 1.21z + 0.338$ lie outside the unit circle?",
+      "answer": 2,
+      "tolerance": 0,
+      "explain": "It factors as $(z + 0.2)(z^2 - 2.4z + 1.69)$; the pair $1.2 \\pm j0.5$ has $|z| = 1.3$."
     }
   ]
 }

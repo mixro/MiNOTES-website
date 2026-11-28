@@ -155,6 +155,33 @@ Its open-loop eigenvalues are both at $z = 1$ (marginal). To place both closed-l
 
 SISO and MIMO need different design approaches: transfer functions and root locus for SISO, state space and eigenvalue placement for MIMO.
 
+## Other digital control laws
+
+**Deadbeat control.** Place every closed-loop pole at $z = 0$. The response then settles **exactly** in a finite number of samples (at most the system order), something no continuous controller can do. The price is a large control effort and high sensitivity to model errors and to $T$.
+
+*Example.* For the ZOH plant $G(z) = \dfrac{0.0952}{z - 0.9048}$ ($\frac{1}{s + 1}$ at $T = 0.1$ s), ask for $T(z) = z^{-1}$, a one-sample delay. Then
+
+$$\begin{aligned}D(z) &= \frac{T(z)}{G(z)\,[1 - T(z)]} \\ &= \frac{1}{G(z)(z - 1)} \\ &= \frac{10.5(z - 0.9048)}{z - 1}\end{aligned}$$
+
+For a unit step the output is 0 at $k = 0$ and exactly 1 from $k = 1$ on. The controller output is $u = 10.5$ for the first sample and then 1: ten times the steady value.
+
+**LQR (linear quadratic regulator).** For $x[k + 1] = Ax[k] + Bu[k]$, choose $u[k] = -Kx[k]$ to minimise
+
+$$J = \sum_{k=0}^{\infty}\left(x[k]^TQx[k] + u[k]^TRu[k]\right)$$
+
+$Q$ weights the state error and $R$ the control effort. $K$ comes from the discrete algebraic Riccati equation. LQR handles MIMO plants naturally, and with $Q$ and $R$ positive definite and a controllable plant it always gives a stable loop.
+
+**MPC (model predictive control).** At each sample, use the model to predict the output over a horizon of $N$ future samples, solve an optimisation for the best sequence of $N$ control moves, apply only the first move, then repeat at the next sample with new measurements (a "receding horizon"). Its main strength is that it handles **constraints** on inputs and outputs directly.
+
+| | Deadbeat | MPC |
+|---|---|---|
+| Idea | All poles at $z = 0$ | Optimise over a moving horizon |
+| Settling | Finite, in $n$ samples | Set by the cost weights |
+| Control effort | Very large | Limited by constraints and weights |
+| Constraints | Not handled | Handled explicitly |
+| Computation | A fixed difference equation | An optimisation every sample |
+| Robustness | Poor | Good, with feedback at every sample |
+
 ## Evaluating performance
 
 | Time domain | Frequency domain and stability |

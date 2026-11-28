@@ -75,6 +75,28 @@ The continuous loop is stable for every $K > 0$. The digital loop is stable only
 
 So a gain of $K = 2$ is stable when sampled at 1 s but unstable at 2 s. The sampler and hold add phase lag, roughly the $T/2$ delay of the ZOH.
 
+### Finding the range of $T$ for a first-order plant
+
+With a ZOH, a first-order plant gives a first-order closed loop, so the stable range of $T$ comes straight from $|z| < 1$.
+
+*Example 1.* ZOH and $G(s) = \dfrac{20}{s + 5}$ in unity feedback.
+
+$$\begin{aligned}G(z) &= (1 - z^{-1})\,\mathcal{Z}\left\{\frac{20}{s(s + 5)}\right\} \\ &= \frac{4(1 - e^{-5T})}{z - e^{-5T}}\end{aligned}$$
+
+$$T(z) = \frac{G}{1 + G} = \frac{4(1 - e^{-5T})}{z - (5e^{-5T} - 4)}$$
+
+The closed-loop pole is $z = 5e^{-5T} - 4$. Stability needs $-1 < 5e^{-5T} - 4 < 1$, i.e. $\tfrac35 < e^{-5T} < 1$:
+
+$$0 < T < \tfrac15\ln\tfrac53 = 0.102 \text{ s}$$
+
+*Example 2.* ZOH and $G(s) = \dfrac{10}{s + 1}$. The closed-loop pole is $z = 11e^{-T} - 10$, so the loop is stable for $0 < T < \ln\tfrac{11}{9} = 0.201$ s and unstable for $T > 0.201$ s.
+
+**General rule.** For $G(s) = \dfrac{K}{s + a}$ with $K > a$, the pole is $z = (1 + K/a)e^{-aT} - K/a$, and the loop is stable for
+
+$$T < \frac1a\ln\frac{K/a + 1}{K/a - 1}$$
+
+The higher the loop gain, the faster the loop must be sampled. (For $K \le a$ the loop is stable for every $T$.)
+
 ## The Jury test (second order)
 
 For a characteristic polynomial $D(z) = a_2z^2 + a_1z + a_0$ with $a_2 > 0$, both roots are inside the unit circle if and only if
@@ -134,6 +156,23 @@ $$\small (s + 1)^2 - (s + 1)(s - 1) + 0.2(s - 1)^2 = 0$$
 $$\begin{gathered}(s^2 + 2s + 1) - (s^2 - 1) \\ + 0.2(s^2 - 2s + 1) = 0 \\ \Rightarrow 0.2s^2 + 1.6s + 2.2 = 0\end{gathered}$$
 
 For a second-order polynomial, Routh–Hurwitz just needs all the coefficients to be positive, and they are. So $D(s)$ has both roots in the left half-plane (at −1.76 and −6.24), and $D(z)$ has both roots inside the unit circle. This agrees with the Jury test above.
+
+**Counting the poles outside the circle.** Routh does more than say yes or no: the number of sign changes in its first column equals the number of right-half-plane roots of $D(s)$, which is the number of z-plane poles **outside** the unit circle. A row of zeros means roots on the imaginary axis, i.e. poles **on** the unit circle.
+
+*Example.* $D(z) = z^3 - z^2 - 0.2z + 0.1$. Substituting and multiplying by $(s - 1)^3$:
+
+$$\begin{aligned}&(s + 1)^3 - (s + 1)^2(s - 1) \\ &\quad - 0.2(s + 1)(s - 1)^2 + 0.1(s - 1)^3 \\ &= -0.1s^3 + 1.9s^2 + 4.5s + 1.7\end{aligned}$$
+
+Multiply by $-10$: $s^3 - 19s^2 - 45s - 17$.
+
+| | | |
+|---|---|---|
+| $s^3$ | 1 | −45 |
+| $s^2$ | −19 | −17 |
+| $s^1$ | −45.89 | 0 |
+| $s^0$ | −17 | |
+
+The first column goes $+, -, -, -$: **one sign change**, so one pole is outside the unit circle and two are inside. The system is unstable. Check: the roots of $D(z)$ are $1.099$, $0.256$ and $-0.355$.
 
 **Bilinear transformation and ZOH are not the same thing:**
 

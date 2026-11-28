@@ -183,5 +183,32 @@
   {
     "title": "State-space transfer function",
     "tex": "H(s) = C(sI - A)^{-1}B + D"
+  },
+  {
+    "title": "Desired pole in the z-plane",
+    "tex": "|z| = e^{-\\zeta\\omega_nT},\\quad \\angle z = \\omega_dT"
+  },
+  {
+    "title": "Root-locus conditions",
+    "tex": "\\begin{gathered}\\angle G(z) = \\pm180°(2N + 1), \\\\ K = \\frac{1}{|G(z)|}\\end{gathered}"
+  },
+  {
+    "title": "Breakaway points",
+    "tex": "K = -\\frac{1}{G(z)},\\quad \\frac{dK}{dz} = 0"
+  },
+  {
+    "title": "Error constants",
+    "tex": "\\begin{gathered}K_p = \\lim_{z\\to1}G(z), \\\\ K_v = \\frac1T\\lim_{z\\to1}(z - 1)G(z), \\\\ K_a = \\frac{1}{T^2}\\lim_{z\\to1}(z - 1)^2G(z)\\end{gathered}",
+    "note": "Step error $1/(1 + K_p)$, ramp $1/K_v$, parabola $1/K_a$."
+  },
+  {
+    "title": "Stable T, first-order plant",
+    "tex": "T < \\frac1a\\ln\\frac{K/a + 1}{K/a - 1}",
+    "note": "ZOH and $K/(s + a)$ in unity feedback, $K > a$."
+  },
+  {
+    "title": "Controllability matrix",
+    "tex": "M_c = [\\Gamma\\;\\; \\Phi\\Gamma\\;\\; \\cdots\\;\\; \\Phi^{n-1}\\Gamma]",
+    "note": "Rank $n$ means controllable."
   }
 ]
