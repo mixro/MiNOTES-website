@@ -68,7 +68,23 @@
       "quiz": "quiz.json",
       "flashcards": "flashcards.json",
       "formulas": "formulas.json",
-      "papers": [],
+      "papers": [
+        {
+          "title": "End of semester exam, 13 Feb 2025 (questions only)",
+          "year": "2024/2025",
+          "file": "exam-2025-02.pdf"
+        },
+        {
+          "title": "End of semester exam, Feb 2022, Paper 1 (questions only)",
+          "year": "2021/2022",
+          "file": "exam-2022-02.pdf"
+        },
+        {
+          "title": "End of semester exam, Mar 2021 (questions only)",
+          "year": "2020/2021",
+          "file": "exam-2021-03.pdf"
+        }
+      ],
       "tutorials": [
         {
           "id": "revision-questions",
@@ -81,6 +97,54 @@
           "title": "Worked problems",
           "summary": "RM response time, cyclic frames, round robin, Banker’s, deadlock and DAQ timing.",
           "file": "tutorials/scheduling-problems.md"
+        },
+        {
+          "id": "past-paper-2025-02",
+          "title": "Exam · 13 Feb 2025",
+          "summary": "Semaphores, interrupts, EDF with D < T, reliable design, QoS, deadlock detection; model answers checked",
+          "file": "tutorials/past-paper-2025-02.md"
+        },
+        {
+          "id": "past-paper-2022-02",
+          "title": "Exam · Feb 2022 (Paper 1)",
+          "summary": "PCP, priority inversion, frame size, fault tolerance, EDF Table 2, traffic models",
+          "file": "tutorials/past-paper-2022-02.md"
+        },
+        {
+          "id": "past-paper-2021-03",
+          "title": "Exam · Mar 2021",
+          "summary": "Basic model, task types, EDF set, cyclic frame size, fault tolerance, QoS, RMA Table 1",
+          "file": "tutorials/past-paper-2021-03.md"
+        },
+        {
+          "id": "question-bank-scheduling",
+          "title": "Question bank 1 · Scheduling",
+          "summary": "Table-driven length, cyclic frames and task splitting, RMA and EDF tests; handwritten answers checked",
+          "file": "tutorials/question-bank-scheduling.md"
+        },
+        {
+          "id": "question-bank-theory",
+          "title": "Question bank 2 · Theory",
+          "summary": "Communication, fault tolerance, synchronisation, RTOS, design, deployment and testing",
+          "file": "tutorials/question-bank-theory.md"
+        },
+        {
+          "id": "model-qa",
+          "title": "Model Q&A (selected)",
+          "summary": "True/false, asynchronous I/O, shaping vs policing, QoS routing, real-time databases",
+          "file": "tutorials/model-qa.md"
+        },
+        {
+          "id": "rtos-mcq",
+          "title": "RTOS and scheduling MCQs",
+          "summary": "RTOS, scheduling and interrupt MCQs, with the answer-key errors corrected",
+          "file": "tutorials/rtos-mcq.md"
+        },
+        {
+          "id": "pid-mini-project",
+          "title": "Mini-project · PID motor speed control",
+          "summary": "Discrete PID with sampling period Ts, worked step response, anti-windup, real-time issues",
+          "file": "tutorials/pid-mini-project.md"
         }
       ]
     },
